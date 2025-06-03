@@ -3,6 +3,7 @@ import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
 import { ReactElement } from "react";
 import { ProductCard } from "@components/ProductCard";
+import { Grid } from "../ui/Grid/Grid";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
@@ -17,10 +18,10 @@ export const ProductsList = (): ReactElement => {
     return <div>Error</div>;
   }
   return (
-    <div>
+    <Grid>
       {data.map((product: TProduct) => (
         <ProductCard key={product.id} data={product} />
       ))}
-    </div>
+    </Grid>
   );
 };

@@ -4,6 +4,15 @@ import { ReactElement } from "react";
 export const ProductCard: React.FC<{ data: TProduct }> = ({
   data,
 }): ReactElement => {
-  console.log(data);
-  return <div>ProductCard</div>;
+  return (
+    <div>
+      <p>{data.title}</p>
+      <img
+        src={data.image}
+        alt={data.title + " image"}
+        width={100}
+        height={100}
+      />
+    </div>
+  );
 };
