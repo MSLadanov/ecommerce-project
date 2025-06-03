@@ -8,29 +8,28 @@ $breakpoint-desktop: 1536px;
   @media (max-width: $breakpoint-mobile) {
     @content;
   }
-}
+};
 
 @mixin fablet {
   @media (max-width: $breakpoint-fablet) {
     @content;
   }
-}
+};
 
 @mixin tablet {
   @media (max-width: $breakpoint-tablet) {
     @content;
   }
-}
-
+};
 
 @mixin laptop {
   @media (max-width: $breakpoint-laptop) {
     @content;
   }
-}
+};
 
 @mixin desktop {
   @media (min-width: $breakpoint-desktop) or (max-width: $breakpoint-desktop) {
     @content;
   }
-}
+};
