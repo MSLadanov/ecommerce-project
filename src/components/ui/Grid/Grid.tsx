@@ -1,6 +1,10 @@
-import { PropsWithChildren, ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import "./style.scss";
 
-export const Grid = ({ children }: PropsWithChildren): ReactElement => {
+interface IGridProps {
+  children: ReactNode;
+}
+
+export const Grid: React.FC<IGridProps> = ({ children }): ReactElement => {
   return <div className="grid-container">{children}</div>;
 };
