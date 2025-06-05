@@ -2,6 +2,13 @@
 
 .grid-container {
   display: grid;
+  .xs{}
+  .md{
+
+  }
+  .lg{
+    
+  }
   @include desktop {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -17,13 +24,5 @@
   @include mobile {
     grid-template-columns: repeat(1, 1fr);
   }
-  .cols2{
-
-  }
-  .cols4{
-
-  }
-  .cols6{
-    
-  }
+  
 }

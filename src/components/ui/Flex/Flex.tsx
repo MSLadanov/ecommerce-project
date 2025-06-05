@@ -3,9 +3,8 @@ import './style.scss'
 
 interface IFlexProps {
   children: ReactNode;
-  maxColumns: 6 | 4 | 2
 }
 
-export const Flex: React.FC<IFlexProps> = ({ children, maxColumns }): ReactElement => {
-  return <div className={`flex-container cols${maxColumns}`}>{children}</div>;
+export const Flex: React.FC<IFlexProps> = ({ children }): ReactElement => {
+  return <div className={`flex-container`}>{children}</div>;
 };
