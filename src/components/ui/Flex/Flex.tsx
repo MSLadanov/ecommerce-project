@@ -3,8 +3,11 @@ import './style.scss'
 
 interface IFlexProps {
   children: ReactNode;
+  flexDirection: 'column' | 'row';
+  justifyContent: 'space-between' | 'center';
+  alignItems: 'center';
 }
 
-export const Flex: React.FC<IFlexProps> = ({ children }): ReactElement => {
-  return <div className={`flex-container`}>{children}</div>;
+export const Flex: React.FC<IFlexProps> = ({ children, flexDirection, alignItems }): ReactElement => {
+  return <div className={`flex-container ${flexDirection} ${alignItems}`}>{children}</div>;
 };
