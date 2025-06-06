@@ -3,7 +3,7 @@ import "./style.scss";
 
 interface IFlexProps {
   children: ReactNode;
-  flexDirection: "column" | "row";
+  flexDirection: "column" | "row" | "column-reverse" | "row-reverse";
   justifyContent:
     | "space-between"
     | "center"
