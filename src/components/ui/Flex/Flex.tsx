@@ -16,13 +16,13 @@ interface IFlexProps {
     | "space-around"
     | "space-evenly";
   alignItems:
-    | "center"
-    | "stretch"
-    | "start"
-    | "flex-start"
-    | "end"
-    | "flex-end"
-    | "baseline";
+    | "align-center"
+    | "align-stretch"
+    | "align-start"
+    | "align-flex-start"
+    | "align-end"
+    | "align-flex-end"
+    | "align-baseline";
 }
 
 export const Flex: React.FC<IFlexProps> = ({
