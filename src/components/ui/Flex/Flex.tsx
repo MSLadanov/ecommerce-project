@@ -3,8 +3,8 @@ import "./style.scss";
 
 interface IFlexProps {
   children: ReactNode;
-  flexDirection: "column" | "row" | "column-reverse" | "row-reverse";
-  justifyContent:
+  flexDirection?: "column" | "row" | "column-reverse" | "row-reverse";
+  justifyContent?:
     | "space-between"
     | "center"
     | "start"
@@ -15,7 +15,7 @@ interface IFlexProps {
     | "left"
     | "space-around"
     | "space-evenly";
-  alignItems:
+  alignItems?:
     | "align-center"
     | "align-stretch"
     | "align-start"
@@ -23,17 +23,18 @@ interface IFlexProps {
     | "align-end"
     | "align-flex-end"
     | "align-baseline";
-    wrap: 'wrap' | 'nowrap' | 'wrap-reverse'
+  wrap?: "wrap" | "nowrap" | "wrap-reverse";
 }
 
 export const Flex: React.FC<IFlexProps> = ({
   children,
-  flexDirection,
-  alignItems,
-  wrap
+  flexDirection = 'row',
+  justifyContent = 'flex-start',
+  alignItems = "align-stretch",
+  wrap = "nowrap",
 }): ReactElement => {
   return (
-    <div className={`flex-container ${flexDirection} ${alignItems} ${wrap}`}>
+    <div className={`flex-container ${flexDirection} ${justifyContent} ${alignItems} ${wrap}`}>
       {children}
     </div>
   );
