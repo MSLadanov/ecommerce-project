@@ -1,12 +1,12 @@
 .grid-container {
   display: grid;
-  .lg{
-    grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
+  &.lg{
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   }
-  .md{
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  &.md{
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  .sx{
+  &.xs{
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }

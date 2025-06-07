@@ -18,7 +18,7 @@ export const ProductsList = (): ReactElement => {
     return <div>Error</div>;
   }
   return (
-    <Grid>
+    <Grid size="xs">
       {data.map((product: TProduct) => (
         <ProductCard key={product.id} data={product} />
       ))}
