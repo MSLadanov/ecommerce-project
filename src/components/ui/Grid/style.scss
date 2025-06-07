@@ -1,28 +1,12 @@
-@use "../../../globals.scss" as *;
-
 .grid-container {
   display: grid;
-  .xs{}
-  .md{
-
-  }
   .lg{
-    
+    grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
   }
-  @include desktop {
-    grid-template-columns: repeat(5, 1fr);
+  .md{
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
-  @include laptop {
-    grid-template-columns: repeat(4, 1fr);
+  .sx{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-  @include tablet {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @include fablet {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @include mobile {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  
 }
