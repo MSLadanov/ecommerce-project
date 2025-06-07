@@ -1,14 +1,15 @@
 .product-card {
-  &__category{
-    
+  &__category {
   }
   &__title {
-   
   }
   &__image {
+    height: 300px;
+    width: 250px;
     img {
-      width: 100px;
-      height: 100px;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      width: 100%;
     }
   }
 }
