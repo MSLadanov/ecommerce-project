@@ -12,5 +12,10 @@ export const Slider: React.FC<ISliderProps> = ({
   withControls = true,
   autoSlide = false,
 }): ReactElement => {
-  return <div>Slider</div>;
+  return (
+    <div className="slider">
+      <div className="slider__frame">{children}</div>
+      {withControls && <div className="slider__controls"></div>}
+    </div>
+  );
 };
