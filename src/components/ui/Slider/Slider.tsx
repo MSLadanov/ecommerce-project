@@ -11,7 +11,7 @@ interface ISliderProps {
 export const Slider: React.FC<ISliderProps> = ({
   children,
   withControls = true,
-  autoSlide = false,
+  autoSlide = true,
   slideDelay = 2000,
 }): ReactElement => {
   const [slides, setSlides] = useState(children);
