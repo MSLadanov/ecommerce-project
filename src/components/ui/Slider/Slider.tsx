@@ -22,7 +22,7 @@ export const Slider: React.FC<ISliderProps> = ({
         initSlider();
       }, slideDelay);
     }
-  }, [autoSlide, slideDelay]);
+  }, [autoSlide, initSlider, slideDelay]);
   return (
     <div className="slider">
       <div className="slider__frame">{slides}</div>
