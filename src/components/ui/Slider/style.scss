@@ -1,14 +1,14 @@
-.slider{
-    &__frame{
-        display: flex;
-    }
-    &__controls{
-
-    }
-    &__control-prev{
-
-    }
-    &__control-next{
-
-    }
+.slider {
+  &__frame {
+    display: flex;
+    height: 300px;
+    width: 600px;
+    overflow: hidden;
+  }
+  &__controls {
+  }
+  &__control-prev {
+  }
+  &__control-next {
+  }
 }
