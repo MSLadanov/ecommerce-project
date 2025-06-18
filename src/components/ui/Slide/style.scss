@@ -1,8 +1,20 @@
 .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
   height: 300px;
-  width: auto;
+  width: 600px;
+  position: relative;
   &__image {
+    height: 100%;
+    width: auto;
+    img {
+      height: 100%;
+      width: auto;
+    }
   }
   &__title {
+    position: absolute;
   }
 }
