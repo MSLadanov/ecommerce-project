@@ -15,7 +15,7 @@ export const Slider: React.FC<ISliderProps> = ({
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const { slides, initSlider, nextSlide, prevSlide } = useSlider(children);
+  const { slides, initSlider, nextSlide, prevSlide } = useSlider([children]);
   useEffect(() => {
     if (autoSlide) {
       setInterval(() => {
