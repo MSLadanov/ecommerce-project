@@ -1,8 +1,22 @@
-import { PropsWithChildren, ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import "./style.scss";
 
-export const Slide: React.FC<PropsWithChildren> = ({
+interface ISlideProps {
+  image?: string;
+  title?: string;
+  children?: ReactNode;
+}
+
+export const Slide: React.FC<ISlideProps> = ({
   children,
+  image,
+  title,
 }): ReactElement => {
-  return <div>{children}</div>;
+  return (
+    <div className="slide">
+      <img className="slide__image" src={image} />
+      <p className="slide__title">{title}</p>
+      {children}
+    </div>
+  );
 };
