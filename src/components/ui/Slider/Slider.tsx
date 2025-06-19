@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode, useEffect } from "react";
 import { useSlider } from "@hooks/useSlider";
+import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import "./style.scss";
 
 interface ISliderProps {
@@ -29,10 +30,10 @@ export const Slider: React.FC<ISliderProps> = ({
       {withControls && (
         <div className="slider__controls">
           <div className="slider__control-prev" onClick={() => prevSlide()}>
-            -
+            <FaArrowCircleLeft />
           </div>
           <div className="slider__control-next" onClick={() => nextSlide()}>
-            +
+            <FaArrowCircleRight />
           </div>
         </div>
       )}
