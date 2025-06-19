@@ -3,7 +3,7 @@ import { RefObject, } from "react";
 export const useSlider = (sliderRef : RefObject<HTMLDivElement>) => {
   
   const prevSlide = () => {
-    console.log(sliderRef)
+    sliderRef.current.classList.add('scroll')
   };
   const nextSlide = () => {
     
