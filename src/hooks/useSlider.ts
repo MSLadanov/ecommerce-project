@@ -1,9 +1,9 @@
 import { RefObject, } from "react";
 
 export const useSlider = (sliderRef : RefObject<HTMLDivElement>) => {
-  
+  const {current} = sliderRef
   const prevSlide = () => {
-    sliderRef.current.classList.add('scroll')
+    console.log(current)
   };
   const nextSlide = () => {
     

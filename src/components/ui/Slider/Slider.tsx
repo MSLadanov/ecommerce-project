@@ -14,24 +14,29 @@ interface ISliderControlsProps {
   sliderRef: RefObject<HTMLDivElement>;
   autoSlide?: boolean;
   slideDelay?: number;
+  withControls: boolean;
 }
 
 const SliderControls: React.FC<ISliderControlsProps> = ({
   sliderRef,
   autoSlide,
   slideDelay,
-}) => {
+  withControls,
+}): ReactElement => {
   const { prevSlide, nextSlide } = useSlider(sliderRef);
-  return (
-    <div className="slider__controls">
-      <div className="slider__control-prev" onClick={() => prevSlide()}>
-        <FaArrowCircleLeft />
+  useEffect(() => {}, []);
+  if (withControls) {
+    return (
+      <div className="slider__controls">
+        <div className="slider__control-prev" onClick={() => prevSlide()}>
+          <FaArrowCircleLeft />
+        </div>
+        <div className="slider__control-next" onClick={() => nextSlide()}>
+          <FaArrowCircleRight />
+        </div>
       </div>
-      <div className="slider__control-next" onClick={() => nextSlide()}>
-        <FaArrowCircleRight />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 export const Slider: React.FC<ISliderProps> = ({
@@ -46,13 +51,12 @@ export const Slider: React.FC<ISliderProps> = ({
       <div className="slider__frame" ref={sliderRef}>
         {children}
       </div>
-      {withControls && (
-        <SliderControls
-          sliderRef={sliderRef}
-          autoSlide={autoSlide}
-          slideDelay={slideDelay}
-        />
-      )}
+      <SliderControls
+        sliderRef={sliderRef}
+        autoSlide={autoSlide}
+        slideDelay={slideDelay}
+        withControls={withControls}
+      />
     </div>
   );
 };
