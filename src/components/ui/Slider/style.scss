@@ -6,6 +6,9 @@
     overflow: hidden;
   }
   &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__control-prev {
   }
