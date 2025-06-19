@@ -3,7 +3,7 @@ import { useSlider } from "@hooks/useSlider";
 import "./style.scss";
 
 interface ISliderProps {
-  children: ReactNode;
+  children: ReactNode[];
   withControls?: boolean;
   autoSlide?: boolean;
   slideDelay?: number;
@@ -15,14 +15,14 @@ export const Slider: React.FC<ISliderProps> = ({
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const { slides, initSlider, nextSlide, prevSlide } = useSlider([children]);
+  const { slides, nextSlide, prevSlide } = useSlider(children);
   useEffect(() => {
     if (autoSlide) {
       setInterval(() => {
-        initSlider();
+        nextSlide()
       }, slideDelay);
     }
-  }, [autoSlide, initSlider, slideDelay]);
+  }, [autoSlide, nextSlide, slideDelay]);
   return (
     <div className="slider">
       <div className="slider__frame">{slides}</div>
