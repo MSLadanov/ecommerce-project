@@ -1,18 +1,12 @@
-import { ReactNode, useState } from "react";
+import { RefObject, } from "react";
 
-export const useSlider = (initialSlides: ReactNode[]) => {
-  const [slides, setSlides] = useState(initialSlides);
+export const useSlider = (sliderRef : RefObject<HTMLDivElement>) => {
+  
   const prevSlide = () => {
-    const currentSlides = [...slides];
-    const lastSlide = currentSlides.pop();
-    const newSlides = [lastSlide, ...currentSlides];
-    setSlides(newSlides);
+    console.log(sliderRef)
   };
   const nextSlide = () => {
-    const currentSlides = [...slides];
-    const firstSlide = currentSlides[0];
-    const newSlides = [...currentSlides.slice(1), firstSlide];
-    setSlides(newSlides);
+    
   };
-  return { slides, nextSlide, prevSlide };
+  return { nextSlide, prevSlide };
 };
