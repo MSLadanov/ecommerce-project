@@ -1,4 +1,11 @@
-import { ReactElement, ReactNode, RefObject, useEffect, useRef } from "react";
+import {
+  ReactElement,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useSlider } from "@hooks/useSlider";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import "./style.scss";
@@ -46,13 +53,17 @@ export const Slider: React.FC<ISliderProps> = ({
   slideDelay = 2000,
 }): ReactElement => {
   const sliderRef = useRef(null);
+  const [sliderRefState, setSliderRefState] = useState(null);
+  useEffect(() => {
+    setSliderRefState(sliderRef);
+  }, [sliderRef]);
   return (
     <div className="slider">
       <div className="slider__frame" ref={sliderRef}>
         {children}
       </div>
       <SliderControls
-        sliderRef={sliderRef}
+        sliderRef={sliderRefState}
         autoSlide={autoSlide}
         slideDelay={slideDelay}
         withControls={withControls}

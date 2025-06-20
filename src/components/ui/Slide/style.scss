@@ -20,6 +20,12 @@
 }
 
 .scroll{
-  transform: translateX(300%);
+  transform: translateX(-100%);
   transition: all ease-in 1s;
 }
+
+.scroll2{
+  transform: translateX(-200%);
+  transition: all ease-in 1s;
+}
+
