@@ -1,4 +1,4 @@
-import { TProduct } from "@/types/Products";
+import { IProduct, IProductsResponse } from "@/types/Products";
 import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
 import { ReactElement } from "react";
@@ -9,7 +9,7 @@ export const ProductsList = (): ReactElement => {
   const { get } = useApi();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
-    queryFn: () => get<TProduct[]>("PRODUCTS"),
+    queryFn: () => get<IProductsResponse>("PRODUCTS"),
   });
   if (isLoading) {
     return <div>Loading</div>;
@@ -19,7 +19,7 @@ export const ProductsList = (): ReactElement => {
   }
   return (
     <Grid size="xs">
-      {data.map((product: TProduct) => (
+      {data.products.map((product: IProduct) => (
         <ProductCard key={product.id} data={product} />
       ))}
     </Grid>
