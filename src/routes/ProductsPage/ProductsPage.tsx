@@ -1,5 +1,5 @@
 import { Slider } from "@components/ui/Slider";
-// import { ProductsList } from "@components/ProductsList";
+import { ProductsList } from "@components/ProductsList";
 import { Slide } from "@components/ui/Slide";
 
 export const ProductsPage = () => {
@@ -25,10 +25,10 @@ export const ProductsPage = () => {
   ));
   return (
     <main>
-      <Slider withControls={true}>
+      <Slider withControls={false}>
         {Slides}
       </Slider>
-      {/* <ProductsList /> */}
+      <ProductsList />
     </main>
   );
 };
