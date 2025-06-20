@@ -68,7 +68,7 @@ export const Slider: React.FC<ISliderProps> = ({
         autoSlide={autoSlide}
         slideDelay={slideDelay}
         withControls={withControls}
-        slidesCount={children.length}
+        slidesCount={children.length - 1}
       />
     </div>
   );
