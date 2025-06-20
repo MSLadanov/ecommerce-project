@@ -13,7 +13,7 @@ export const Slide: React.FC<ISlideProps> = ({
   title,
 }): ReactElement => {
   return (
-    <div className="slide">
+    <div className="slide offset-0">
       <img className="slide__image" src={image} />
       <p className="slide__title">{title}</p>
       {children}
