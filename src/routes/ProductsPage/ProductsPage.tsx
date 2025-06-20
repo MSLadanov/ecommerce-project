@@ -25,7 +25,9 @@ export const ProductsPage = () => {
   ));
   return (
     <main>
-      <Slider>{Slides}</Slider>
+      <Slider withControls={true}>
+        {Slides}
+      </Slider>
       {/* <ProductsList /> */}
     </main>
   );

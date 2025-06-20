@@ -22,7 +22,7 @@ interface ISliderControlsProps {
   autoSlide?: boolean;
   slideDelay?: number;
   withControls: boolean;
-  slidesCount: number
+  slidesCount: number;
 }
 
 const SliderControls: React.FC<ISliderControlsProps> = ({
@@ -30,10 +30,9 @@ const SliderControls: React.FC<ISliderControlsProps> = ({
   autoSlide,
   slideDelay,
   withControls,
-  slidesCount
+  slidesCount,
 }): ReactElement => {
   const { prevSlide, nextSlide } = useSlider(sliderRef, slidesCount);
-  useEffect(() => {}, []);
   if (withControls) {
     return (
       <div className="slider__controls">

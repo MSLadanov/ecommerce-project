@@ -1,4 +1,5 @@
-$slide-offsets: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$slide-offsets: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+  19, 20;
 
 .slide {
   display: flex;
@@ -10,7 +11,7 @@ $slide-offsets: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
   position: relative;
   @each $offset in $slide-offsets {
     &.offset-#{$offset} {
-      transform: translateX(-100% * $offset );
+      transform: translateX(-100% * $offset);
       transition: all ease-in 1s;
     }
   }
