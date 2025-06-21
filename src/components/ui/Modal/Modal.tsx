@@ -1,17 +1,22 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 interface IModalProps {
-  children: ReactNode
-  modalVisibility: 'visible' | 'hidden'
+  children: ReactNode;
+  modalVisibility: "visible" | "hidden";
+  closeModal: () => void;
 }
 
-export const Modal : React.FC<IModalProps> = ({children, modalVisibility}) => {
+export const Modal: React.FC<IModalProps> = ({
+  children,
+  modalVisibility,
+  closeModal,
+}) => {
   function Modal() {
     return (
       <dialog
         id="dialog"
-        className={modalClassName}
+        className={modalVisibility}
         aria-modal="true"
         aria-labelledby="dialog-title"
       >
