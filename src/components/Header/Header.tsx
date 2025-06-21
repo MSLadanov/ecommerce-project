@@ -1,5 +1,8 @@
 import { ReactElement } from "react";
 
 export const Header = (): ReactElement => {
-  return <div>Header</div>;
+  return <div>
+    header
+    <button>Modal</button>
+  </div>;
 };

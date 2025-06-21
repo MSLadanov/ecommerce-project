@@ -1,6 +1,7 @@
 import { IProduct } from "@/types/Products";
 import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
+import { FaDollarSign } from "react-icons/fa";
 import "./style.scss";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
@@ -16,12 +17,15 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
           <p>{data.rating}</p>
         </div>
       </Flex>
-      
       <div className="product-card__title">
         <p>{data.title}</p>
       </div>
       <div className="product-card__image">
         <img src={data.images[0]} alt={data.title + " image"} />
+      </div>
+      <div className="product-card__price">
+        <p>{data.price}</p>
+        <FaDollarSign />
       </div>
     </div>
   );
