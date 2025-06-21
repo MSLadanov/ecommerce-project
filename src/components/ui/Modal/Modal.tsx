@@ -1,0 +1,27 @@
+import { ReactNode, useState } from "react";
+import { createPortal } from "react-dom";
+
+interface IModalProps {
+  children: ReactNode
+  modalVisibility: 'visible' | 'hidden'
+}
+
+export const Modal : React.FC<IModalProps> = ({children, modalVisibility}) => {
+  function Modal() {
+    return (
+      <dialog
+        id="dialog"
+        className={modalClassName}
+        aria-modal="true"
+        aria-labelledby="dialog-title"
+      >
+        <p id="dialog-title">This is a dialog!</p>
+        {children}
+        <button onClick={closeModal} aria-label="Close Modal">
+          Close Me
+        </button>
+      </dialog>
+    );
+  }
+  return createPortal(<Modal />, document.getElementById("modal-root"));
+};
