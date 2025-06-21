@@ -7,7 +7,7 @@ export const Header = (): ReactElement => {
   return (
     <div>
       header
-      <button onClick={() => openModal()}>Modal</button>
+      <button onClick={() => openModal}>Modal</button>
       {ModalPortal}
     </div>
   );
