@@ -37,25 +37,26 @@ $breakpoint-desktop: 1536px;
 #modal-root {
   dialog {
     opacity: 0;
-    visibility: hidden;
     position: fixed;
-    top: 10%;
+    top: -100%;
     left: 50%;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
     &[open] {
-      opacity: 1;
-      visibility: visible;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      animation: modal 2s ease-in forwards;
+      // opacity: 1;
+      // visibility: visible;
+
+      // left: 50%;
+      // transform: translate(-50%, -50%);
     }
-    &.visible {
-      opacity: 1;
-      visibility: visible;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  }
+}
+
+@keyframes modal{
+  0%{
+    opacity:0;
+  }
+  100%{
+    top: 50%;
+    opacity:1;
   }
 }
