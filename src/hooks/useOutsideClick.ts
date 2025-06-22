@@ -14,6 +14,7 @@ export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
         ref.current === event.target && isOpened
       ) {
         callback();
+        console.log('click')
       }
     };
     document.addEventListener("mouseup", handleClickOutside);
