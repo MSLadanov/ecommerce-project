@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 interface IModalProps {
   children: ReactNode;
-  modalVisibility: "visible" | "hidden";
+  modalVisibility: boolean;
   closeModal: () => void;
 }
 
@@ -15,8 +15,7 @@ export const Modal: React.FC<IModalProps> = ({
   function Modal() {
     return (
       <dialog
-        id="dialog"
-        className={modalVisibility}
+        open={modalVisibility}
         aria-modal="true"
         aria-labelledby="dialog-title"
       >
