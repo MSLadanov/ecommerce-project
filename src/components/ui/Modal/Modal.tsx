@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import './style.scss'
 
 interface IModalProps {
   children: ReactNode;
@@ -13,9 +14,18 @@ export const Modal: React.FC<IModalProps> = ({
   closeModal,
 }) => {
   function Modal() {
+    const ref = useRef(null);
+    useEffect(() => {
+      if (ref.current && modalVisibility) {
+        ref.current.showModal();
+      }
+      return () => {
+        ref.current?.close();
+      };
+    }, []);
     return (
       <dialog
-        open={modalVisibility}
+        ref={ref}
         aria-modal="true"
         aria-labelledby="dialog-title"
       >
