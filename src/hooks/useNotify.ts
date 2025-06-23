@@ -4,7 +4,7 @@ interface IUseNotifyProps {
   delay: number;
 }
 
-export const useNotify = ({ delay } : IUseNotifyProps) => {
+export const useNotify = ({ delay }: IUseNotifyProps) => {
   const [isNotifyShowed, setIsNotifyShowed] = useState(false);
   const toggleNotify = () => {
     setIsNotifyShowed(true);
@@ -14,5 +14,5 @@ export const useNotify = ({ delay } : IUseNotifyProps) => {
       setIsNotifyShowed(false);
     }, delay);
   }, [delay, isNotifyShowed]);
-  return { toggleNotify };
+  return { isNotifyShowed, toggleNotify };
 };

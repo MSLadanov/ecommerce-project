@@ -12,17 +12,20 @@ export const Notify: React.FC<INotifyProps> = ({
   notifyVisibility,
   type,
 }) => {
-  const ref = useRef<HTMLDialogElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (ref.current && notifyVisibility) {
-      ref.current.showModal();
+      ref.current.classList.toggle('visible')
     }
   }, [notifyVisibility, ref]);
   function Notify() {
     return (
-      <dialog ref={ref} className={"notify__" + type}>
+      <div
+        ref={ref}
+        className={'notify__' + type}
+      >
         {children}
-      </dialog>
+      </div>
     );
   }
   return createPortal(<Notify />, document.getElementById("notify-root"));
