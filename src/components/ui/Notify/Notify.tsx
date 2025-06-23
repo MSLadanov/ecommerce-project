@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 interface INotifyProps {
@@ -7,9 +7,23 @@ interface INotifyProps {
   type: "error" | "warning" | "success";
 }
 
-export const Notify: React.FC<INotifyProps> = ({ children, notifyVisibility, type  }) => {
+export const Notify: React.FC<INotifyProps> = ({
+  children,
+  notifyVisibility,
+  type,
+}) => {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    if (ref.current && notifyVisibility) {
+      ref.current.showModal();
+    }
+  }, [notifyVisibility, ref]);
   function Notify() {
-    return <dialog>{children}</dialog>;
+    return (
+      <dialog ref={ref} className={"notify__" + type}>
+        {children}
+      </dialog>
+    );
   }
-  createPortal(<Notify />, document.getElementById("notify-root"));
+  return createPortal(<Notify />, document.getElementById("notify-root"));
 };
