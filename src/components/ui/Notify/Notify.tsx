@@ -1,30 +1,31 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { RefObject, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface INotifyProps {
-  children: ReactNode;
   notifyVisibility: boolean;
-  type: "error" | "warning" | "success";
+  ref: RefObject<HTMLDivElement>;
+  notifyType: "error" | "warning" | "success";
+  notifyText: string;
 }
 
 export const Notify: React.FC<INotifyProps> = ({
-  children,
   notifyVisibility,
-  type,
+  ref,
+  notifyType,
+  notifyText,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (ref.current && notifyVisibility) {
-      ref.current.classList.toggle('visible')
+      ref.current.classList.toggle("visible");
     }
   }, [notifyVisibility, ref]);
   function Notify() {
     return (
       <div
         ref={ref}
-        className={'notify__' + type}
+        className={`notify ${notifyType ? `notify__${notifyType}` : ""}`}
       >
-        {children}
+        {notifyText}
       </div>
     );
   }
