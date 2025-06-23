@@ -1,5 +1,6 @@
 import { RefObject, useEffect } from "react";
 import { createPortal } from "react-dom";
+import './style.scss'
 
 interface INotifyProps {
   notifyVisibility: boolean;

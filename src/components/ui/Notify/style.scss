@@ -1,5 +1,11 @@
 #notify-root {
   .notify{
+    width: 250px;
+    height: 50px;
+    background-color: lightgreen;
+    position: fixed;
+    bottom: -100%;
+    right: 10%;
     &__error{
 
     }
@@ -11,6 +17,15 @@
     }
   }
   .visible{
-    
+    animation: notifySlide 0.5s ease-out forwards;
+  }
+}
+
+@keyframes notifySlide {
+  0%{
+    bottom: -100%
+  }
+  100%{
+    bottom: 20%;
   }
 }
