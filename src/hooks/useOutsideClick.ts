@@ -11,10 +11,10 @@ export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
       if (
         ref.current &&
         document.contains(ref.current) &&
-        ref.current === event.target && isOpened
+        ref.current === event.target &&
+        isOpened
       ) {
         callback();
-        console.log('click')
       }
     };
     document.addEventListener("mouseup", handleClickOutside);

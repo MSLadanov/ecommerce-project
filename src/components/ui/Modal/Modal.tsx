@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { useOutsideClick } from "@hooks/useOutsideClick";
 import "./style.scss";
 
 interface IModalProps {
@@ -26,7 +26,6 @@ export const Modal: React.FC<IModalProps> = ({
     }, [ref]);
     return (
       <dialog ref={ref} aria-modal="true" aria-labelledby="dialog-title">
-        <p id="dialog-title">This is a dialog!</p>
         {children}
         <button
           onClick={() => {
