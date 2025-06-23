@@ -12,6 +12,7 @@ export const Header = (): ReactElement => {
       <button onClick={() => setModalVisibility(true)}>Modal</button>
       <Modal
         modalVisibility={modalVisibility}
+        closeModal={() => setModalVisibility(false)}
       >
         <AuthModal />
       </Modal>
