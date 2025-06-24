@@ -3,6 +3,7 @@ import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
 import { useNotify } from "@hooks/useNotify";
 import { Notify } from "@components/ui/Notify";
+import { Button } from "@components/ui/Button";
 
 export const Header = (): ReactElement => {
   const [modalVisibility, setModalVisibility] = useState<true | false>(false);
@@ -13,10 +14,16 @@ export const Header = (): ReactElement => {
   return (
     <div>
       header
-      <button onClick={() => setModalVisibility(true)}>Modal</button>
-      <button onClick={() => toggleNotify("success", "welcome")}>Notify</button>
-      <button onClick={() => toggleNotify("warning", "warning")}>Notify</button>
-      <button onClick={() => toggleNotify("error", "error")}>Notify</button>
+      <Button onClickAction={() => setModalVisibility(true)}>Modal</Button>
+      <Button onClickAction={() => toggleNotify("success", "welcome")}>
+        Notify success
+      </Button>
+      <Button onClickAction={() => toggleNotify("warning", "warning")}>
+        Notify warning
+      </Button>
+      <Button onClickAction={() => toggleNotify("error", "error")}>
+        Notify error
+      </Button>
       <Modal
         modalVisibility={modalVisibility}
         closeModal={() => setModalVisibility(false)}

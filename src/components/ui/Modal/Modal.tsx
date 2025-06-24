@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useOutsideClick } from "@hooks/useOutsideClick";
+import { Button } from "@components/ui/Button";
 import "./style.scss";
 
 interface IModalProps {
@@ -27,15 +28,15 @@ export const Modal: React.FC<IModalProps> = ({
     return (
       <dialog ref={ref} aria-modal="true" aria-labelledby="dialog-title">
         {children}
-        <button
-          onClick={() => {
+        <Button
+          onClickAction={() => {
             ref.current.close();
             closeModal();
           }}
           aria-label="Close Modal"
         >
           Close Me
-        </button>
+        </Button>
       </dialog>
     );
   }
