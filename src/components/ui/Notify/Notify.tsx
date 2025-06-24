@@ -1,6 +1,9 @@
 import { RefObject, useEffect } from "react";
 import { createPortal } from "react-dom";
-import './style.scss'
+import { MdError } from "react-icons/md";
+import { MdWarning } from "react-icons/md";
+import { MdCheckCircle } from "react-icons/md";
+import "./style.scss";
 
 interface INotifyProps {
   notifyVisibility: boolean;
@@ -15,6 +18,11 @@ export const Notify: React.FC<INotifyProps> = ({
   notifyType,
   notifyText,
 }) => {
+  const notifyIcons = {
+    error: <MdError />,
+    warning: <MdWarning />,
+    success: <MdCheckCircle />,
+  };
   useEffect(() => {
     if (ref.current && notifyVisibility) {
       ref.current.classList.toggle("visible");
@@ -26,6 +34,7 @@ export const Notify: React.FC<INotifyProps> = ({
         ref={ref}
         className={`notify ${notifyType ? `notify__${notifyType}` : ""}`}
       >
+        {notifyIcons[notifyType]}
         {notifyText}
       </div>
     );
