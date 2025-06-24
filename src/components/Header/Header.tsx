@@ -15,6 +15,8 @@ export const Header = (): ReactElement => {
       header
       <button onClick={() => setModalVisibility(true)}>Modal</button>
       <button onClick={() => toggleNotify("success", "welcome")}>Notify</button>
+      <button onClick={() => toggleNotify("warning", "warning")}>Notify</button>
+      <button onClick={() => toggleNotify("error", "error")}>Notify</button>
       <Modal
         modalVisibility={modalVisibility}
         closeModal={() => setModalVisibility(false)}

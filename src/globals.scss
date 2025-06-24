@@ -4,6 +4,10 @@ $breakpoint-tablet: 1024px;
 $breakpoint-laptop: 1280px;
 $breakpoint-desktop: 1536px;
 
+$notification-error: #FF4D4F;
+$notification-warning: #FAAD14;
+$notification-success: #52C41A;
+
 @mixin mobile {
   @media (max-width: $breakpoint-mobile) {
     @content;

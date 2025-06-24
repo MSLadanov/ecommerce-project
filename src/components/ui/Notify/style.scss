@@ -1,19 +1,21 @@
+@use '../../../globals.scss' as *;
+
 #notify-root {
   .notify{
     width: 250px;
     height: 50px;
-    background-color: lightgreen;
+    color: white;
     position: fixed;
     bottom: -100%;
     right: 10%;
     &__error{
-
+      background-color: $notification-error;
     }
     &__warning{
-
+      background-color: $notification-warning;
     }
     &__success{
-
+      background-color: $notification-success;
     }
   }
   .visible{
