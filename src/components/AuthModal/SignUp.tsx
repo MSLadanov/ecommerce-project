@@ -10,7 +10,7 @@ export const SignUp: React.FC<ISignUpProps> = ({
   return (
     <div>
       Sign Up
-      <p onClick={() => switchToSignIn()}>Sign in</p>
+      <p onClick={() => switchToSignIn()}>Sign In</p>
     </div>
   );
 };
