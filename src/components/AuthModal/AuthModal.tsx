@@ -4,17 +4,15 @@ import { SignIn } from "./SignIn";
 import { SignUp } from "./SignUp";
 import "./style.scss";
 
-type TModalType = "signIn" | "signUp"
+type TModalType = "signIn" | "signUp";
 
 export const AuthModal = (): ReactElement => {
-  const [authModalType, setAuthModalType] = useState<TModalType>(
-    "signIn"
-  );
-  const handleModalTypeChange = (modalType : TModalType) => {
-    setAuthModalType(modalType)
-  }
+  const [authModalType, setAuthModalType] = useState<TModalType>("signIn");
+  const handleModalTypeChange = (modalType: TModalType) => {
+    setAuthModalType(modalType);
+  };
   if (authModalType === "signIn") {
-    return <SignIn />;
+    return <SignIn switchToSignUp={() => handleModalTypeChange("signUp")} />;
   }
-  return <SignUp />;
+  return <SignUp switchToSignIn={() => handleModalTypeChange("signIn")} />;
 };

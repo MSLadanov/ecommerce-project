@@ -1,9 +1,16 @@
 import { ReactElement } from "react";
 
 interface ISignUpProps {
-    switchToSignIn: () => void
+  switchToSignIn: () => void;
 }
 
-export const SignUp : React.FC<ISignUpProps> = (): ReactElement => {
-  return <div>Sign Up</div>;
+export const SignUp: React.FC<ISignUpProps> = ({
+  switchToSignIn,
+}): ReactElement => {
+  return (
+    <div>
+      Sign Up
+      <p onClick={() => switchToSignIn()}>Sign in</p>
+    </div>
+  );
 };
