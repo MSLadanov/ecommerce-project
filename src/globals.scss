@@ -1,3 +1,45 @@
+@font-face {
+  font-family: "GT Eesti Pro Display Regular";
+  src: local("GT Eesti Pro Display Regular"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_regular.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: "GT Eesti Pro Display Bold";
+  src: local("GT Eesti Pro Display Bold"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_bold.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: "GT Eesti Pro Display Light";
+  src: local("GT Eesti Pro Display Light"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_light.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: "GT Eesti Pro Display Medium";
+  src: local("GT Eesti Pro Display Medium"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_medium.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: "GT Eesti Pro Display Thin";
+  src: local("GT Eesti Pro Display Thin"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_thin.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: "GT Eesti Pro Display UltraBold";
+  src: local("GT Eesti Pro Display UltraBold"),
+    url("./assets/fonts/GTEestiProDisplay/gteestiprodisplay_ultrabold.otf")
+      format("opentype");
+}
+
 $breakpoint-mobile: 640px;
 $breakpoint-fablet: 768px;
 $breakpoint-tablet: 1024px;
@@ -24,6 +66,8 @@ $wb-background: linear-gradient(
 $wb-base: #7c1af8;
 
 $ozon-blue: #005bff;
+
+$ozon-red: #f30e51;
 
 @mixin mobile {
   @media (max-width: $breakpoint-mobile) {

@@ -1,7 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
-import logo from "@assets/logo.png";
 import { Button } from "@components/ui/Button";
 import "./style.scss";
 
@@ -12,7 +11,7 @@ export const Header = (): ReactElement => {
   return (
     <header>
       <div className="header__logo">
-        <img src={logo} alt="logo" />
+        <p>W-Bozone</p>
       </div>
       <nav>
         <Button onClickAction={() => setAuthModalVisibility(true)}>
