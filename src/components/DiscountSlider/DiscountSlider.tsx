@@ -1,0 +1,35 @@
+import { ReactElement } from "react";
+import { Slider } from "@components/ui/Slider";
+import { useApi } from "@hooks/useApi";
+import { IProduct, IProductsResponse } from "@/types/Products";
+import { useQuery } from "@tanstack/react-query";
+import { Slide } from "../ui/Slide";
+import { Flex } from "../ui/Flex";
+
+export const DiscountSlider = (): ReactElement => {
+  const { get } = useApi();
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["sale-products"],
+    queryFn: () =>
+      get<IProductsResponse>(
+        "PRODUCTS",
+        "?limit=10&sortBy=discountPercentage&order=desc"
+      ),
+  });
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  return (
+    <Flex justifyContent="center">
+      <Slider autoSlide withControls={false}>
+        {data.products.map((product: IProduct) => (
+          <Slide key={product.id} image={product.images[0]} />
+        ))}
+      </Slider>
+    </Flex>
+  );
+};

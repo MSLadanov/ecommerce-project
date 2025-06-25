@@ -9,3 +9,7 @@
 *::after {
 	box-sizing: border-box;
 }
+
+main{
+	padding-top: 90px;
+}

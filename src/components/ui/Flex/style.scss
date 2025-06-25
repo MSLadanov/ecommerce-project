@@ -3,61 +3,61 @@
     &.space-between{
         justify-content: space-between;
     }
-    .center{
+    &.center{
         justify-content: center;
     }
-    .start{
+    &.start{
         justify-content: start;
     }
-    .end{
+    &.end{
         justify-content: end;
     }
-    .flex-start{
+    &.flex-start{
         justify-content: flex-start;
     }
-    .flex-end{
+    &.flex-end{
         justify-content: flex-end;
     }
-    .right{
+    &.right{
         justify-content: right;
     }
-    .left{
+    &.left{
         justify-content: left;
     }
-    .space-around{
+    &.space-around{
         justify-content: space-around;
     }
-    .space-evenly{
+    &.space-evenly{
         justify-content: space-evenly;
     }
-    .align-center{
+    &.align-center{
         align-items: center;
     }
-    .align-stretch{
+    &.align-stretch{
         align-items: stretch;
     }
-    .align-start{
+    &.align-start{
         align-items: start;
     }
-    .align-flex-start{
+    &.align-flex-start{
         align-items: flex-start;
     }
-    .align-end{
+    &.align-end{
         align-items: end;
     }
-    .align-flex-end{
+    &.align-flex-end{
         align-items: flex-end;
     }
-    .align-baseline{
+    &.align-baseline{
         align-items: baseline;
     }
-    .wrap{
+    &.wrap{
         flex-wrap: wrap;
     }
-    .nowrap{
+    &.nowrap{
         flex-wrap: nowrap;
     }
-    .wrap-reverse{
+    &.wrap-reverse{
         flex-wrap: wrap-reverse;
     }
 }
