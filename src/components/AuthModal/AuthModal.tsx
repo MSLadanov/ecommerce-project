@@ -1,6 +1,20 @@
 import { ReactElement } from "react";
-import './style.scss'
+import { useState } from "react";
+import { SignIn } from "./SignIn";
+import { SignUp } from "./SignUp";
+import "./style.scss";
 
-export const AuthModal = () : ReactElement => {
-  return <div>AuthModal</div>;
+type TModalType = "signIn" | "signUp"
+
+export const AuthModal = (): ReactElement => {
+  const [authModalType, setAuthModalType] = useState<TModalType>(
+    "signIn"
+  );
+  const handleModalTypeChange = (modalType : TModalType) => {
+    setAuthModalType(modalType)
+  }
+  if (authModalType === "signIn") {
+    return <SignIn />;
+  }
+  return <SignUp />;
 };
