@@ -4,9 +4,26 @@ $breakpoint-tablet: 1024px;
 $breakpoint-laptop: 1280px;
 $breakpoint-desktop: 1536px;
 
-$notification-error: #FF4D4F;
-$notification-warning: #FAAD14;
-$notification-success: #52C41A;
+$notification-error: #ff4d4f;
+$notification-warning: #faad14;
+$notification-success: #52c41a;
+
+$wb-background: linear-gradient(
+    97.26deg,
+    #ed3cca 0.49%,
+    #df34d2 14.88%,
+    #d02bd9 29.27%,
+    #bf22e1 43.14%,
+    #ae1ae8 57.02%,
+    #9a10f0 70.89%,
+    #8306f7 84.76%,
+    #7c1af8 99.15%
+  ),
+  linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+
+$wb-base: #7c1af8;
+
+$ozon-blue: #005bff;
 
 @mixin mobile {
   @media (max-width: $breakpoint-mobile) {

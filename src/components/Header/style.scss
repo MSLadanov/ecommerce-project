@@ -1,0 +1,21 @@
+@use "../../globals.scss" as *;
+
+header {
+  display: flex;
+  padding: 2% 3%;
+  justify-content: space-between;
+  align-content: center;
+  background: $wb-base; 
+  background: $wb-background;
+  background-blend-mode: multiply;
+  .header {
+    &__logo {
+      
+      img {
+        border-radius: 16px;
+        width: 165px;
+        height: 60px;
+      }
+    }
+  }
+}

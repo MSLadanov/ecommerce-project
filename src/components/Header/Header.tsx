@@ -1,41 +1,30 @@
 import { ReactElement, useState } from "react";
 import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
-import { useNotify } from "@hooks/useNotify";
-import { Notify } from "@components/ui/Notify";
+import logo from "@assets/logo.png";
 import { Button } from "@components/ui/Button";
+import "./style.scss";
 
 export const Header = (): ReactElement => {
-  const [modalVisibility, setModalVisibility] = useState<true | false>(false);
-  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-    useNotify({
-      delay: 3000,
-    });
+  const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
+    false
+  );
   return (
-    <div>
-      header
-      <Button onClickAction={() => setModalVisibility(true)}>Modal</Button>
-      <Button onClickAction={() => toggleNotify("success", "welcome")}>
-        Notify success
-      </Button>
-      <Button onClickAction={() => toggleNotify("warning", "warning")}>
-        Notify warning
-      </Button>
-      <Button onClickAction={() => toggleNotify("error", "error")}>
-        Notify error
-      </Button>
+    <header>
+      <div className="header__logo">
+        <img src={logo} alt="logo" />
+      </div>
+      <nav>
+        <Button onClickAction={() => setAuthModalVisibility(true)}>
+          Sign In
+        </Button>
+      </nav>
       <Modal
-        modalVisibility={modalVisibility}
-        closeModal={() => setModalVisibility(false)}
+        modalVisibility={authModalVisibility}
+        closeModal={() => setAuthModalVisibility(false)}
       >
         <AuthModal />
       </Modal>
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
-    </div>
+    </header>
   );
 };
