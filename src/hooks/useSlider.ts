@@ -23,7 +23,6 @@ export const useSlider = (
     }
   };
   const nextSlide = () => {
-    console.log(slidesCount)
     if (currentSlide.current === slidesCount) {
       currentSlide.current = 0;
       updateSlideClasses(currentSlide.current);

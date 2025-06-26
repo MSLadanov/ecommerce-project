@@ -1,28 +1,36 @@
-import { ReactElement } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import "./style.scss";
 
 type TInputTypes = "text" | "email" | "password" | "tel" | "number";
+
+type TValueTypes = string | number;
 
 interface IInputProps {
   id: string;
   type: TInputTypes;
   label: string;
-  changeHandler: (value: string | number) => void;
+  value: TValueTypes;
+  setValue: Dispatch<SetStateAction<string | number>>;
 }
 
 export const Input: React.FC<IInputProps> = ({
   id,
   type,
   label = "",
-  changeHandler,
+  value,
+  setValue,
 }): ReactElement => {
+  const handleChange = (changedValue: string) => {
+    setValue(changedValue);
+  };
   return (
     <div>
       <label htmlFor={id}>{label}</label>
       <input
         type={type}
         id={id}
-        onChange={(e) => changeHandler(e.target.value)}
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
       />
     </div>
   );
