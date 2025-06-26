@@ -11,7 +11,7 @@ export const Header = (): ReactElement => {
   return (
     <header>
       <div className="header__logo">
-        <p>W-Bozone</p>
+        <p>W-BOZONE</p>
       </div>
       <nav>
         <Button onClickAction={() => setAuthModalVisibility(true)}>
