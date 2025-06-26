@@ -3,12 +3,18 @@ import "./style.scss";
 
 interface IButtonProps {
   children: ReactNode;
-  onClickAction: () => void;
+  onClickAction?: () => void;
+  type?: "submit" | "reset" | "button";
 }
 
 export const Button: React.FC<IButtonProps> = ({
   children,
-  onClickAction,
+  onClickAction = () => {},
+  type = "button",
 }): ReactElement => {
-  return <button onClick={() => onClickAction()}>{children}</button>;
+  return (
+    <button type={type} onClick={() => onClickAction()}>
+      {children}
+    </button>
+  );
 };
