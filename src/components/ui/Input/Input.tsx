@@ -30,6 +30,7 @@ export const Input: React.FC<IInputProps> = ({
         type={type}
         id={id}
         value={value}
+        autoComplete=""
         onChange={(e) => handleChange(e.target.value)}
       />
     </div>

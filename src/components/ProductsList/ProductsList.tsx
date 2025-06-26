@@ -3,7 +3,7 @@ import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
 import { ReactElement } from "react";
 import { ProductCard } from "@components/ProductCard";
-import { Grid } from "../ui/Grid/Grid";
+import { Grid } from "@components/ui/Grid/Grid";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
