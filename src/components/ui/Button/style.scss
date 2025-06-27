@@ -7,27 +7,28 @@ button {
   color: white;
   font-family: "GT Eesti Pro Display Thin";
   cursor: pointer;
-  transition: all ease-in 0.5s;
-  
-  .wb {
-    background-color: $wb-base;
-    &:hover {
-      background-color: $wb-dark;
-    }
-  }
-  .ozon {
-    background-color: $ozon-blue;
-    &:hover {
-      background-color: lighten($ozon-blue, 10%);
-    }
-  }
+  transition: all ease-in 0.25s;
 }
 
 .horizontal {
+  justify-content: center;
   flex-direction: row;
 }
 .vertical {
   line-height: 2;
   align-items: center;
   flex-direction: column;
+}
+
+.wb {
+  background-color: $wb-base;
+  &:hover {
+    background-color: $wb-dark;
+  }
+}
+.ozon {
+  background-color: $ozon-blue;
+  &:hover {
+    background-color: lighten($ozon-blue, 10%);
+  }
 }

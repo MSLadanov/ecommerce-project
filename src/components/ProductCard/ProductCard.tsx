@@ -1,7 +1,8 @@
 import { IProduct } from "@/types/Products";
 import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
-import { FaDollarSign } from "react-icons/fa";
+import { FaCommentDollar, FaDollarSign, FaShoppingCart, FaStar } from "react-icons/fa";
+import { Button } from "../ui/Button";
 import "./style.scss";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
@@ -9,24 +10,30 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
 }): ReactElement => {
   return (
     <div className="product-card">
-      <Flex flexDirection="row" justifyContent="space-between">
-        <div className="product-card__category">
-        <p>{data.category}</p>
+      <div className="product-card__image">
+        <img src={data.images[0]} alt={data.title + " image"} />
       </div>
-        <div className="product-card__rate">
-          <p>{data.rating}</p>
-        </div>
+      <Flex flexDirection="row">
+        <p>{data.price}</p>
+        <FaDollarSign />
       </Flex>
       <div className="product-card__title">
         <p>{data.title}</p>
       </div>
-      <div className="product-card__image">
-        <img src={data.images[0]} alt={data.title + " image"} />
-      </div>
-      <div className="product-card__price">
-        <p>{data.price}</p>
-        <FaDollarSign />
-      </div>
+      <Flex flexDirection="row" justifyContent="space-between">
+        <div className="product-card__rate">
+          <FaStar />
+          <p>{data.rating}</p>
+        </div>
+        <div className="product-card__reviews">
+          <FaCommentDollar />
+          <p>{data.reviews.length} reviews</p>
+        </div>
+      </Flex>
+      <Button styleGuide="ozon">
+        <FaShoppingCart />
+        {data.availabilityStatus}
+      </Button>
     </div>
   );
 };

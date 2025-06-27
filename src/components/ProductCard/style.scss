@@ -1,9 +1,16 @@
 .product-card {
-  &__category {
-  }
+  font-family: "GT Eesti Pro Display Regular";
   &__title {
   }
+  &__rate{
+    display: flex;
+  }
+  &__reviews{
+    display: flex;
+  }
   &__image {
+    display: flex;
+    justify-self: center;
     height: 300px;
     width: 250px;
     img {
@@ -11,5 +18,9 @@
       object-fit: contain;
       width: 100%;
     }
+  }
+  button {
+    padding: 5%;
+    width: 100%;
   }
 }
