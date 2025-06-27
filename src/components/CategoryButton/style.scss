@@ -1,0 +1,26 @@
+@use "../../globals.scss" as *;
+
+.category__button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-family: "GT Eesti Pro Display Regular";
+  color: $wb-base;
+  transition: all ease-in 0.25s;
+  &:hover {
+    color: $wb-dark;
+  }
+  &__image {
+    align-self: center;
+    height: 50px;
+    width: 50px;
+    img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+  &__title {
+  }
+}

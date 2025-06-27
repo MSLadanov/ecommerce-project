@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { Grid } from "@components/ui/Grid";
-import { Link } from "react-router";
 import { useApi } from "@hooks/useApi";
 import { ICategoriesResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
+import { CategoryButton } from "@components/CategoryButton";
 import "./style.scss";
 
 export const ProductCategories = (): ReactElement => {
@@ -21,9 +21,7 @@ export const ProductCategories = (): ReactElement => {
   return (
     <Grid size="xs">
       {data.map((category, index) => (
-        <Link key={index} to={`?category=${category}`}>
-          {category}
-        </Link>
+        <CategoryButton key={index} category={category} />
       ))}
     </Grid>
   );

@@ -5,7 +5,8 @@ const API_ENDPOINTS = {
   CARTS: `${BASE_URL}/carts`,
   USERS: `${BASE_URL}/users`,
   AUTH: `${BASE_URL}/auth/login`,
-  CATEGORIES: `${BASE_URL}/products/category-list`
+  CATEGORIES: `${BASE_URL}/products/category-list`,
+  PRODUCTS_BY_CATEGORY:`${BASE_URL}/products/category`,
 };
 
 export default API_ENDPOINTS;
