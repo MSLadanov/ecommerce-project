@@ -1,20 +1,19 @@
 @use '../../globals.scss' as *;
 
 .product-card {
-  display: flex;
   font-family: "GT Eesti Pro Display Regular";
+  padding: 3%;
   &__title {
   }
   &__rate{
-    display: flex;
+    margin-right: 5%;
   }
   &__reviews{
-    display: flex;
+
   }
   &__title{
   }
   &__price{
-    display: flex;
     h4{
       color: gray;
       text-decoration: line-through;
@@ -24,8 +23,7 @@
     }
   }
   &__image {
-    display: flex;
-    justify-self: center;
+    align-self: center;
     height: 300px;
     width: 250px;
     img {
@@ -37,5 +35,6 @@
   button {
     padding: 5%;
     width: 100%;
+    font-family: "GT Eesti Pro Display Regular";
   }
 }

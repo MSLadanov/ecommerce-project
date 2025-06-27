@@ -2,7 +2,7 @@ import { IProduct } from "@/types/Products";
 import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
 import {
-  FaCommentDollar,
+  FaCommentDots,
   FaDollarSign,
   FaShoppingCart,
   FaStar,
@@ -19,10 +19,10 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
       flexDirection="column"
       justifyContent="space-between"
     >
-      <div className="product-card__image">
+      <Flex className="product-card__image" alignItems="align-center">
         <img src={data.images[0]} alt={data.title + " image"} />
-      </div>
-      <div className="product-card__price">
+      </Flex>
+      <Flex className="product-card__price">
         <h3>
           {data.price} <FaDollarSign />
         </h3>
@@ -30,20 +30,20 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
           {Math.round(data.price / (1 - data.discountPercentage / 100))}{" "}
           <FaDollarSign />
         </h4>
-      </div>
-      <div className="product-card__title">
+      </Flex>
+      <Flex className="product-card__title" flexDirection="column">
         <h3>{data.brand}</h3>
         <p>{data.title}</p>
-      </div>
-      <Flex flexDirection="row" justifyContent="space-between">
-        <div className="product-card__rate">
+      </Flex>
+      <Flex flexDirection="row">
+        <Flex className="product-card__rate">
           <FaStar />
           <p>{data.rating}</p>
-        </div>
-        <div className="product-card__reviews">
-          <FaCommentDollar />
+        </Flex>
+        <Flex className="product-card__reviews">
+          <FaCommentDots />
           <p>{data.reviews.length} reviews</p>
-        </div>
+        </Flex>
       </Flex>
       <Button styleGuide="ozon">
         <FaShoppingCart />
