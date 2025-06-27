@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
 import { Button } from "@components/ui/Button";
+import { GoSignIn } from "react-icons/go";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
@@ -14,7 +15,8 @@ export const Header = (): ReactElement => {
         <p>W-BOZONE</p>
       </div>
       <nav>
-        <Button onClickAction={() => setAuthModalVisibility(true)}>
+        <Button onClickAction={() => setAuthModalVisibility(true)} orientation='vertical'>
+          <GoSignIn />
           Sign In
         </Button>
       </nav>

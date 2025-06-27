@@ -5,17 +5,23 @@ interface IButtonProps {
   children: ReactNode;
   onClickAction?: () => void;
   type?: "submit" | "reset" | "button";
-  styleGuide: 'ozon' | 'wb' | ''
+  styleGuide?: "ozon" | "wb" | "";
+  orientation?: "vertical" | "horizontal";
 }
 
 export const Button: React.FC<IButtonProps> = ({
   children,
   onClickAction = () => {},
   type = "button",
-  styleGuide = ''
+  styleGuide = "",
+  orientation = "horizontal",
 }): ReactElement => {
   return (
-    <button type={type} className={styleGuide} onClick={() => onClickAction()}>
+    <button
+      type={type}
+      className={styleGuide + " " + orientation}
+      onClick={() => onClickAction()}
+    >
       {children}
     </button>
   );
