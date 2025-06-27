@@ -50,3 +50,5 @@ export interface IProductsResponse {
   skip: number;
   limit: number;
 }
+
+export type ICategoriesResponse = string[]

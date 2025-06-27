@@ -1,1 +1,1 @@
-export type TRequestEndpoint = 'PRODUCTS' | 'CARTS' | 'USERS' | 'AUTH'
+export type TRequestEndpoint = 'PRODUCTS' | 'CARTS' | 'USERS' | 'AUTH' | 'CATEGORIES'
