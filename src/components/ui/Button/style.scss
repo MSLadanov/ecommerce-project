@@ -8,6 +8,7 @@ button {
   font-family: "GT Eesti Pro Display Thin";
   cursor: pointer;
   transition: all ease-in 0.5s;
+  
   .wb {
     background-color: $wb-base;
     &:hover {
@@ -26,6 +27,7 @@ button {
   flex-direction: row;
 }
 .vertical {
+  line-height: 2;
   align-items: center;
   flex-direction: column;
 }

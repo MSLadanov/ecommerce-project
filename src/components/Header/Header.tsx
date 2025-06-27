@@ -4,6 +4,7 @@ import { AuthModal } from "@components/AuthModal";
 import { Button } from "@components/ui/Button";
 import { GoSignIn } from "react-icons/go";
 import "./style.scss";
+import { FaShoppingCart } from "react-icons/fa";
 
 export const Header = (): ReactElement => {
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
@@ -15,7 +16,14 @@ export const Header = (): ReactElement => {
         <p>W-BOZONE</p>
       </div>
       <nav>
-        <Button onClickAction={() => setAuthModalVisibility(true)} orientation='vertical'>
+        <Button orientation="vertical">
+          <FaShoppingCart />
+          Cart
+        </Button>
+        <Button
+          onClickAction={() => setAuthModalVisibility(true)}
+          orientation="vertical"
+        >
           <GoSignIn />
           Sign In
         </Button>
