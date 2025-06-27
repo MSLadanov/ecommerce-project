@@ -1,3 +1,5 @@
+@use '../../globals.scss' as *;
+
 .product-card {
   font-family: "GT Eesti Pro Display Regular";
   &__title {
@@ -7,6 +9,16 @@
   }
   &__reviews{
     display: flex;
+  }
+  &__price{
+    display: flex;
+    h4{
+      color: gray;
+      text-decoration: line-through;
+    }
+    h3{
+      color: $ozon-red;
+    }
   }
   &__image {
     display: flex;
