@@ -21,7 +21,7 @@ export const ProductCategories = (): ReactElement => {
   return (
     <Grid size="xs">
       {data.map((category, index) => (
-        <Link key={index} to={`?category?=${category}`}>
+        <Link key={index} to={`?category=${category}`}>
           {category}
         </Link>
       ))}
