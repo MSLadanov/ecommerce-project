@@ -5,9 +5,7 @@
     top: -100%;
     left: 50%;
     transform: translateX(-50%);
-    &::backdrop {
-      animation: backdropFade 0.5s ease-out forwards;
-    }
+    z-index: 1;
     &[open] {
       animation: modalSlide 0.5s ease-out forwards;
     }
@@ -23,15 +21,5 @@
     opacity: 1;
     top: 50%;
     transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes backdropFade {
-  0% {
-    background: transparent;
-  }
-  100% {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
   }
 }
