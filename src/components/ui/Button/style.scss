@@ -1,0 +1,20 @@
+@use '../../../globals.scss' as *;
+
+button{
+    background-color: transparent;
+    border-radius: 8px;
+    color: white;
+    font-family: 'GT Eesti Pro Display Regular';
+    .wb{
+        background-color: $wb-base;
+        &:hover{
+            background-color: $wb-dark;
+        }
+    }
+    .ozon{
+        background-color: $ozon-blue;
+        &:hover{
+            background-color: lighten($ozon-blue, 10%);
+        }
+    }
+}
