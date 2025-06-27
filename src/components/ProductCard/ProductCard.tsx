@@ -15,7 +15,7 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
 }): ReactElement => {
   return (
     <Flex
-      className="product-card"
+      className={data.availabilityStatus === 'Out of Stock' ? "product-card out-of-stock" :"product-card" }
       flexDirection="column"
       justifyContent="space-between"
     >
