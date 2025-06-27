@@ -1,29 +1,31 @@
-@use '../../../globals.scss' as *;
+@use "../../../globals.scss" as *;
 
-button{
-    display: flex;
-    background-color: transparent;
-    border-radius: 8px;
-    color: white;
-    font-family: 'GT Eesti Pro Display Regular';
-    cursor: pointer;
-    transition: all ease-in 0.5s;
-    .wb{
-        background-color: $wb-base;
-        &:hover{
-            background-color: $wb-dark;
-        }
+button {
+  display: flex;
+  background-color: transparent;
+  border-radius: 8px;
+  color: white;
+  font-family: "GT Eesti Pro Display Thin";
+  cursor: pointer;
+  transition: all ease-in 0.5s;
+  .wb {
+    background-color: $wb-base;
+    &:hover {
+      background-color: $wb-dark;
     }
-    .ozon{
-        background-color: $ozon-blue;
-        &:hover{
-            background-color: lighten($ozon-blue, 10%);
-        }
+  }
+  .ozon {
+    background-color: $ozon-blue;
+    &:hover {
+      background-color: lighten($ozon-blue, 10%);
     }
-    .horizontal{
-        flex-direction: row;
-    }
-    .vertical{
-        flex-direction: column;
-    }
+  }
+}
+
+.horizontal {
+  flex-direction: row;
+}
+.vertical {
+  align-items: center;
+  flex-direction: column;
 }
