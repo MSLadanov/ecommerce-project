@@ -24,17 +24,21 @@ interface IFlexProps {
     | "align-flex-end"
     | "align-baseline";
   wrap?: "wrap" | "nowrap" | "wrap-reverse";
+  className?: string;
 }
 
 export const Flex: React.FC<IFlexProps> = ({
   children,
-  flexDirection = 'row',
-  justifyContent = 'flex-start',
+  flexDirection = "row",
+  justifyContent = "flex-start",
   alignItems = "align-stretch",
   wrap = "nowrap",
+  className,
 }): ReactElement => {
   return (
-    <div className={`flex-container ${flexDirection} ${justifyContent} ${alignItems} ${wrap}`}>
+    <div
+      className={`${className} flex-container ${flexDirection} ${justifyContent} ${alignItems} ${wrap}`}
+    >
       {children}
     </div>
   );

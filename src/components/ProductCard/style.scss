@@ -1,6 +1,7 @@
 @use '../../globals.scss' as *;
 
 .product-card {
+  display: flex;
   font-family: "GT Eesti Pro Display Regular";
   &__title {
   }
@@ -9,6 +10,8 @@
   }
   &__reviews{
     display: flex;
+  }
+  &__title{
   }
   &__price{
     display: flex;

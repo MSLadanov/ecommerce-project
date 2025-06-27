@@ -14,7 +14,11 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
 }): ReactElement => {
   return (
-    <div className="product-card">
+    <Flex
+      className="product-card"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
       <div className="product-card__image">
         <img src={data.images[0]} alt={data.title + " image"} />
       </div>
@@ -28,6 +32,7 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
         </h4>
       </div>
       <div className="product-card__title">
+        <h3>{data.brand}</h3>
         <p>{data.title}</p>
       </div>
       <Flex flexDirection="row" justifyContent="space-between">
@@ -44,6 +49,6 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
         <FaShoppingCart />
         {data.availabilityStatus}
       </Button>
-    </div>
+    </Flex>
   );
 };
