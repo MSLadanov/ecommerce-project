@@ -1,12 +1,22 @@
+@use "../../globals.scss" as *;
+
 .discount__info {
   font-family: "GT Eesti Pro Display Regular";
-  h1{
+  background-color: $wb-base;
+  padding: 2%;
+  border-radius: 8px;
+  position: relative;
+  top:25%;
+  right: 25%;
+  h1 {
+    color: white;
+  }
+  h2 {
+    color: gray;
     text-decoration: line-through;
   }
-  h2{
-    
-  }
-  h3,h4 {
+  h3,
+  h4 {
     color: white;
   }
 }
