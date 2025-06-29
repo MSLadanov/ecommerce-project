@@ -5,12 +5,14 @@ import { Button } from "@components/ui/Button";
 import "./style.scss";
 
 interface IModalProps {
+  className: string;
   children: ReactNode;
   modalVisibility: boolean;
   closeModal: () => void;
 }
 
 export const Modal: React.FC<IModalProps> = ({
+  className,
   children,
   modalVisibility,
   closeModal,
@@ -26,7 +28,12 @@ export const Modal: React.FC<IModalProps> = ({
       }
     }, [ref]);
     return (
-      <dialog ref={ref} aria-modal="true" aria-labelledby="dialog-title">
+      <dialog
+        ref={ref}
+        aria-modal="true"
+        aria-labelledby="dialog-title"
+        className={className}
+      >
         {children}
         <Button
           onClickAction={() => {

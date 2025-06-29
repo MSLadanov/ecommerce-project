@@ -21,7 +21,7 @@ export const CategoryButton: React.FC<{ category: string }> = ({
     return <div>Error</div>;
   }
   return (
-    <Link className="category__button" to={`?category=${category}`}>
+    <Link className="category__button" to={`products?category=${category}`}>
       <div className="category__button__image">
         <img src={data.products[0].images[0]} alt={`${category} image`} />
       </div>

@@ -3,6 +3,11 @@
 .product-card {
   font-family: "GT Eesti Pro Display Regular";
   padding: 3%;
+  a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__title {
   }
   &__rate{
