@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<App />}>
               <Route index element={<Navigate to="/products" replace />} />
               <Route path="products" element={<ProductsPage />} />
-              <Route path="products/:id" element={<ProductPage />} />
+              <Route path="product" element={<ProductPage />} />
               <Route path="user/:id" element={<UserPage />} />
             </Route>
             <Route path="*" element={<ErrorPage />} />

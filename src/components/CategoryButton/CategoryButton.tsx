@@ -14,7 +14,6 @@ export const CategoryButton: React.FC<{ category: string }> = ({
     queryFn: () =>
       get<IProductsResponse>("PRODUCTS_BY_CATEGORY", `/${category}?limit=1`),
   });
-  console.log(category);
   if (isLoading) {
     return <div>Loading</div>;
   }

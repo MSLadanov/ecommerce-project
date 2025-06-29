@@ -9,19 +9,26 @@ import {
 } from "react-icons/fa";
 import { Button } from "../ui/Button";
 import "./style.scss";
+import { Link } from "react-router";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
 }): ReactElement => {
   return (
     <Flex
-      className={data.availabilityStatus === 'Out of Stock' ? "product-card out-of-stock" :"product-card" }
+      className={
+        data.availabilityStatus === "Out of Stock"
+          ? "product-card out-of-stock"
+          : "product-card"
+      }
       flexDirection="column"
       justifyContent="space-between"
     >
-      <Flex className="product-card__image" alignItems="align-center">
-        <img src={data.images[0]} alt={data.title + " image"} />
-      </Flex>
+      <Link to={`/product?id=${data.id}`}>
+        <Flex className="product-card__image" alignItems="align-center">
+          <img src={data.images[0]} alt={data.title + " image"} />
+        </Flex>
+      </Link>
       <Flex className="product-card__price">
         <h3>
           {data.price} <FaDollarSign />
