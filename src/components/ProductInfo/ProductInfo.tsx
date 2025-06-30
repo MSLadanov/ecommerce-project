@@ -26,8 +26,10 @@ export const ProductInfo = (): ReactElement => {
   }
   return (
     <Flex className="product-info">
-      <Flex className="product-info__images"></Flex>
-      <Flex className="product-info__description"></Flex>
+      <Flex className="product-info__details">
+        <Flex className="product-info__images"></Flex>
+        <Flex className="product-info__description"></Flex>
+      </Flex>
       <Flex className="product-info__reviews"></Flex>
     </Flex>
   );
