@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useApi } from "@hooks/useApi";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
+import { ProductReview } from "@components/ProductReview";
 import "./style.scss";
-import { ProductReview } from "../ProductReview";
 
 export const ProductInfo = (): ReactElement => {
   const [searchParams] = useSearchParams();
@@ -31,8 +31,14 @@ export const ProductInfo = (): ReactElement => {
         <Flex className="product-info__images">
           <img src={data.images[0]} alt={`${data.title} image`} />
         </Flex>
-        <Flex className="product-info__description">
-          <h1>{data.title}</h1>
+        <Flex
+          className="product-info__description"
+          flexDirection="column"
+          justifyContent="center"
+        >
+          <h1>{data.brand}</h1>
+          <h2>{data.title}</h2>
+          <p>{data.description}</p>
         </Flex>
       </Flex>
       <Flex className="product-info__reviews" flexDirection="column">
