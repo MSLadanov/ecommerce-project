@@ -39,6 +39,41 @@ export const ProductInfo = (): ReactElement => {
           <h1>{data.brand}</h1>
           <h2>{data.title}</h2>
           <p>{data.description}</p>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Weight</h3>
+            <h3>{data.weight}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Height</h3>
+            <h3>{data.dimensions.height}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Width</h3>
+            <h3>{data.dimensions.width}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Depth</h3>
+            <h3>{data.dimensions.depth}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Return policy</h3>
+            <h3>{data.returnPolicy}</h3>
+          </Flex>
         </Flex>
       </Flex>
       <Flex className="product-info__reviews" flexDirection="column">
