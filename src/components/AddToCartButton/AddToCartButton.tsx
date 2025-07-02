@@ -13,6 +13,5 @@ export const AddToCartButton: React.FC<IAddToCartButtonProps> = ({
   productData,
 }): ReactElement => {
   const { cart } = useCart((state: ICartState) => state);
-  console.log(cart);
-  return <div onClick={() => console.log(productData)}>{children}</div>;
+  return <div onClick={() => console.log(productData, cart)}>{children}</div>;
 };

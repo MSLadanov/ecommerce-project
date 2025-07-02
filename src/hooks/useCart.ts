@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 export interface ICartState {
   cart: IProduct[];
-  addToCart: () => void;
+  addToCart: (product: IProduct) => void;
 }
 
 export const useCart = create((set) => ({

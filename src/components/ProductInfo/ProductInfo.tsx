@@ -8,9 +8,11 @@ import { ProductReview } from "@components/ProductReview";
 import { FaShoppingCart } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { Button } from "@components/ui/Button";
+import { useCart, ICartState } from "@/hooks/useCart";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
+  const { addToCart } = useCart((state: ICartState) => state);
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
   const { get } = useApi();
@@ -42,7 +44,7 @@ export const ProductInfo = (): ReactElement => {
           <h2>{data.title}</h2>
           <p>{data.description}</p>
           <AddToCartButton productData={data}>
-            <Button styleGuide="ozon">
+            <Button styleGuide="ozon" onClickAction={() => addToCart(data)}>
               <FaShoppingCart />
               {data.availabilityStatus}
             </Button>
