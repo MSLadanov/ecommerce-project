@@ -7,6 +7,7 @@ import { ErrorPage } from "@routes/ErrorPage";
 import { UserPage } from "@routes/UserPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ProductsPage } from "@routes/ProductsPage";
+import { CartPage } from "@routes/CartPage";
 import "./index.css";
 import "./globals.scss";
 
@@ -15,17 +16,18 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<Navigate to="/products" replace />} />
-              <Route path="products" element={<ProductsPage />} />
-              <Route path="product" element={<ProductPage />} />
-              <Route path="user/:id" element={<UserPage />} />
-            </Route>
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Navigate to="/products" replace />} />
+            <Route path="products" element={<ProductsPage />} />
+            <Route path="product" element={<ProductPage />} />
+            <Route path="user/:id" element={<UserPage />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   </StrictMode>
 );

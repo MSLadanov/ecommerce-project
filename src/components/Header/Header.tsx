@@ -6,9 +6,11 @@ import { GoSignIn } from "react-icons/go";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretSquareDown } from "react-icons/fa";
 import { ProductCategories } from "@components/ProductCategories";
+import { useNavigate } from "react-router";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
+  const navigate = useNavigate()
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
     false
   );
@@ -28,7 +30,7 @@ export const Header = (): ReactElement => {
           <FaCaretSquareDown />
           Catalogue
         </Button>
-        <Button orientation="vertical">
+        <Button orientation="vertical" onClickAction={() => navigate('/cart')}>
           <FaShoppingCart />
           Cart
         </Button>
