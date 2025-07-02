@@ -1,0 +1,11 @@
+@use '../../globals.scss' as *;
+
+.in-cart-controls{
+    :first-child, :last-child{
+        background-color: rgb(238 247 255);
+        color: $ozon-blue;
+    }
+    *{
+        padding: 5%;
+    }
+}
