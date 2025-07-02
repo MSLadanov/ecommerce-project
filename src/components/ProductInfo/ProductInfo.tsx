@@ -18,7 +18,6 @@ export const ProductInfo = (): ReactElement => {
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-  console.log(data);
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -48,8 +47,9 @@ export const ProductInfo = (): ReactElement => {
               {data.availabilityStatus}
             </Button>
           </AddToCartButton>
-          {Object.entries(data.dimensions).map((item) => (
+          {Object.entries(data.dimensions).map((item, index) => (
             <Flex
+              key={index}
               className="product-info__properties"
               justifyContent="space-between"
             >
@@ -60,8 +60,8 @@ export const ProductInfo = (): ReactElement => {
         </Flex>
       </Flex>
       <Flex className="product-info__reviews" flexDirection="column">
-        {data.reviews.map((review) => (
-          <ProductReview review={review} />
+        {data.reviews.map((review, index) => (
+          <ProductReview review={review} key={index} />
         ))}
       </Flex>
     </Flex>

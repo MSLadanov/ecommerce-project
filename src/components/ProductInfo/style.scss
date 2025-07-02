@@ -1,0 +1,30 @@
+.product-info {
+  font-family: "GT Eesti Pro Display Regular";
+  &__images {
+    align-self: center;
+    height: auto;
+    width: 50%;
+    img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+  &__description {
+    width: 50%;
+  }
+  &__properties {
+    h3 {
+      font-weight: lighter;
+      &:first-of-type {
+        min-width: 50%;
+        border-bottom: 1px solid gainsboro;
+      }
+    }
+  }
+  button {
+    padding: 5%;
+    width: 100%;
+    font-family: "GT Eesti Pro Display Regular";
+  }
+}

@@ -1,6 +1,13 @@
+import { IProduct } from "@/types/Products";
 import { create } from "zustand";
+
+export interface ICartState {
+  cart: IProduct[];
+  addToCart: () => void;
+}
 
 export const useCart = create((set) => ({
   cart: [],
-  addToCart: (product) => set((state) => ({ cart: [...state.cart, product] })),
+  addToCart: (product: IProduct) =>
+    set((state: ICartState) => ({ cart: [...state.cart, product] })),
 }));
