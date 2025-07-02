@@ -10,13 +10,13 @@ import {
 import { Button } from "@components/ui/Button";
 import { Link } from "react-router";
 import { AddToCartButton } from "@components/AddToCartButton";
-import { ICartState, useCart } from "@hooks/useCart";
+import { useCart } from "@hooks/useCart";
 import "./style.scss";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
 }): ReactElement => {
-  const { addToCart } = useCart((state: ICartState) => state);
+  const { addToCart } = useCart((state) => state);
   return (
     <Flex
       className={

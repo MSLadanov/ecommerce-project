@@ -7,6 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretSquareDown } from "react-icons/fa";
 import { ProductCategories } from "@components/ProductCategories";
 import { useNavigate } from "react-router";
+import { CartCountBadge } from "@components/CartCountBadge";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
@@ -31,6 +32,7 @@ export const Header = (): ReactElement => {
           Catalogue
         </Button>
         <Button orientation="vertical" onClickAction={() => navigate('/cart')}>
+          <CartCountBadge/>
           <FaShoppingCart />
           Cart
         </Button>

@@ -1,11 +1,11 @@
 import { ReactElement, ReactNode } from "react";
 import { IProduct } from "@/types/Products";
-import { useCart, ICartState } from "@hooks/useCart";
+import { useCart } from "@hooks/useCart";
 import { Flex } from "@components/ui/Flex";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { Button } from "@components/ui/Button";
 import "./style.scss";
-import { Button } from "../ui/Button";
 
 interface IAddToCartButtonProps {
   children: ReactNode;
@@ -19,9 +19,7 @@ interface IInCartControlsProps {
 const InCartControls: React.FC<IInCartControlsProps> = ({
   product,
 }): ReactElement => {
-  const { cart, addToCart, removeFromCart } = useCart(
-    (state: ICartState) => state
-  );
+  const { cart, addToCart, removeFromCart } = useCart((state) => state);
   const countSameIdItems = () => {
     return cart.reduce((acc, item) => {
       if (item.id === product.id) {
@@ -54,7 +52,7 @@ export const AddToCartButton: React.FC<IAddToCartButtonProps> = ({
   children,
   productData,
 }): ReactElement => {
-  const { cart } = useCart((state: ICartState) => state);
+  const { cart } = useCart((state) => state);
   if (cart.find((item) => item.id === productData.id)) {
     return <InCartControls product={productData} />;
   }
