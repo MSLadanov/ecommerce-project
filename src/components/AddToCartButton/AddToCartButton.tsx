@@ -19,7 +19,9 @@ interface IInCartControlsProps {
 const InCartControls: React.FC<IInCartControlsProps> = ({
   product,
 }): ReactElement => {
-  const { cart, addToCart } = useCart((state: ICartState) => state);
+  const { cart, addToCart, removeFromCart } = useCart(
+    (state: ICartState) => state
+  );
   const countSameIdItems = () => {
     return cart.reduce((acc, item) => {
       if (item.id === product.id) {
@@ -32,8 +34,8 @@ const InCartControls: React.FC<IInCartControlsProps> = ({
   return (
     <Flex justifyContent="space-between" className="in-cart-controls">
       <Flex justifyContent="center" alignItems="align-center">
-        <Button>
-            <FaMinus />
+        <Button onClickAction={() => removeFromCart(product)}>
+          <FaMinus />
         </Button>
       </Flex>
       <Flex justifyContent="center" alignItems="align-center">
@@ -41,7 +43,7 @@ const InCartControls: React.FC<IInCartControlsProps> = ({
       </Flex>
       <Flex justifyContent="center" alignItems="align-center">
         <Button onClickAction={() => addToCart(product)}>
-            <FaPlus />
+          <FaPlus />
         </Button>
       </Flex>
     </Flex>
