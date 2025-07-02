@@ -7,9 +7,10 @@ import {
   FaShoppingCart,
   FaStar,
 } from "react-icons/fa";
-import { Button } from "../ui/Button";
-import "./style.scss";
+import { Button } from "@components/ui/Button";
 import { Link } from "react-router";
+import { AddToCartButton } from "@components/AddToCartButton";
+import "./style.scss";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
@@ -52,10 +53,12 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
           <p>{data.reviews.length} reviews</p>
         </Flex>
       </Flex>
-      <Button styleGuide="ozon">
-        <FaShoppingCart />
-        {data.availabilityStatus}
-      </Button>
+      <AddToCartButton productData={data}>
+        <Button styleGuide="ozon">
+          <FaShoppingCart />
+          {data.availabilityStatus}
+        </Button>
+      </AddToCartButton>
     </Flex>
   );
 };

@@ -5,6 +5,9 @@ import { useApi } from "@hooks/useApi";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
 import { ProductReview } from "@components/ProductReview";
+import { FaShoppingCart } from "react-icons/fa";
+import { AddToCartButton } from "@components/AddToCartButton";
+import { Button } from "@components/ui/Button";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
@@ -39,41 +42,21 @@ export const ProductInfo = (): ReactElement => {
           <h1>{data.brand}</h1>
           <h2>{data.title}</h2>
           <p>{data.description}</p>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>Weight</h3>
-            <h3>{data.weight}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>Height</h3>
-            <h3>{data.dimensions.height}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>Width</h3>
-            <h3>{data.dimensions.width}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>Depth</h3>
-            <h3>{data.dimensions.depth}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>Return policy</h3>
-            <h3>{data.returnPolicy}</h3>
-          </Flex>
+          <AddToCartButton productData={data}>
+            <Button styleGuide="ozon">
+              <FaShoppingCart />
+              {data.availabilityStatus}
+            </Button>
+          </AddToCartButton>
+          {Object.entries(data.dimensions).map((item) => (
+            <Flex
+              className="product-info__properties"
+              justifyContent="space-between"
+            >
+              <h3>{item[0]}</h3>
+              <h3>{item[1]}</h3>
+            </Flex>
+          ))}
         </Flex>
       </Flex>
       <Flex className="product-info__reviews" flexDirection="column">

@@ -30,7 +30,7 @@ export const DiscountSlider = (): ReactElement => {
     <Flex justifyContent="center">
       <Slider autoSlide withControls={false}>
         {data.products.map((product: IProduct) => (
-          <Link to={`/product?id=${product.id}`}>
+          <Link key={product.id} to={`/product?id=${product.id}`}>
             <Slide key={product.id} image={product.images[0]}>
               <div className="discount__info">
                 <h3>{product.brand}</h3>
