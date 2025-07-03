@@ -3,12 +3,14 @@ import "./style.scss";
 
 interface IGridProps {
   children: ReactNode;
+  className: string;
   size: "xs" | "md" | "lg";
 }
 
 export const Grid: React.FC<IGridProps> = ({
   children,
+  className,
   size,
 }): ReactElement => {
-  return <div className={`grid-container ${size}`}>{children}</div>;
+  return <div className={`grid-container ${size} ${className}`}>{children}</div>;
 };

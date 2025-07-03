@@ -8,8 +8,9 @@ import { ProductReview } from "@components/ProductReview";
 import { FaShoppingCart } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { Button } from "@components/ui/Button";
-import { useCart} from "@hooks/useCart";
+import { useCart } from "@hooks/useCart";
 import "./style.scss";
+import { Grid } from "../ui/Grid";
 
 export const ProductInfo = (): ReactElement => {
   const { addToCart } = useCart((state) => state);
@@ -61,11 +62,11 @@ export const ProductInfo = (): ReactElement => {
           ))}
         </Flex>
       </Flex>
-      <Flex className="product-info__reviews" flexDirection="column">
+      <Grid className="product-info__reviews" size="xs">
         {data.reviews.map((review, index) => (
           <ProductReview review={review} key={index} />
         ))}
-      </Flex>
+      </Grid>
     </Flex>
   );
 };
