@@ -49,7 +49,7 @@ export const Header = (): ReactElement => {
         modalVisibility={authModalVisibility}
         closeModal={() => setAuthModalVisibility(false)}
       >
-        <AuthModal />
+        <AuthModal closeModal={() => setAuthModalVisibility(false)} />
       </Modal>
       <Modal
         className="catalogue__modal"

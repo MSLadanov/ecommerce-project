@@ -6,13 +6,29 @@ import "./style.scss";
 
 type TModalType = "signIn" | "signUp";
 
-export const AuthModal = (): ReactElement => {
+interface IAuthModalProps {
+  closeModal: () => void;
+}
+
+export const AuthModal: React.FC<IAuthModalProps> = ({
+  closeModal,
+}): ReactElement => {
   const [authModalType, setAuthModalType] = useState<TModalType>("signIn");
   const handleModalTypeChange = (modalType: TModalType) => {
     setAuthModalType(modalType);
   };
   if (authModalType === "signIn") {
-    return <SignIn switchToSignUp={() => handleModalTypeChange("signUp")} />;
+    return (
+      <SignIn
+        switchToSignUp={() => handleModalTypeChange("signUp")}
+        closeModal={closeModal}
+      />
+    );
   }
-  return <SignUp switchToSignIn={() => handleModalTypeChange("signIn")} />;
+  return (
+    <SignUp
+      switchToSignIn={() => handleModalTypeChange("signIn")}
+      closeModal={closeModal}
+    />
+  );
 };

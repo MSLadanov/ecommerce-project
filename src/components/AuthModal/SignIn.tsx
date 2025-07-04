@@ -8,29 +8,34 @@ import { Notify } from "@components/ui/Notify";
 
 interface ISignInProps {
   switchToSignUp: () => void;
+  closeModal: () => void;
 }
 
 export const SignIn: React.FC<ISignInProps> = ({
   switchToSignUp,
+  closeModal
 }): ReactElement => {
-  const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const { post } = useApi();
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
-  const submitForm = (e: FormEvent<HTMLFormElement>) => {
+  const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ email, password });
-    post<TSignInResponse>("AUTH", { email, password }, toggleNotify);
+    console.log({ username, password });
+    const data = await post<TSignInResponse>("AUTH", { username, password }, toggleNotify);
+    if(data){
+      closeModal()
+    }
   };
   return (
     <form onSubmit={(e) => submitForm(e)}>
       <Input
-        id="email"
+        id="username"
         type="text"
-        label="email"
-        value={email}
-        setValue={setEmail}
+        label="username"
+        value={username}
+        setValue={setUserName}
       />
       <Input
         id="password"

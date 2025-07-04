@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 
 interface ISignUpProps {
   switchToSignIn: () => void;
+  closeModal: () => void
 }
 
 export const SignUp: React.FC<ISignUpProps> = ({
