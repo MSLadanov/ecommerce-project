@@ -8,6 +8,9 @@ interface ICartItem {
 }
 
 export const CartItem: React.FC<ICartItem> = ({ product }): ReactElement => {
-    console.log(product)
-  return <Flex className="cart-item">{product.brand}</Flex>;
+  return (
+    <Flex className="cart-item">
+      <h1>{product.brand ? product.brand : "" + " " + product.title}</h1>
+    </Flex>
+  );
 };
