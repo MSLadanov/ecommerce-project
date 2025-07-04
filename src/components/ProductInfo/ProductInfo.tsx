@@ -5,7 +5,7 @@ import { useApi } from "@hooks/useApi";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
 import { ProductReview } from "@components/ProductReview";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaDollarSign, FaShoppingCart, FaStar } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { Button } from "@components/ui/Button";
 import { useCart } from "@hooks/useCart";
@@ -43,6 +43,19 @@ export const ProductInfo = (): ReactElement => {
         >
           <h1>{data.brand}</h1>
           <h2>{data.title}</h2>
+          <Flex className="product-card__price">
+            <h3>
+              {data.price} <FaDollarSign />
+            </h3>
+            <h4>
+              {Math.round(data.price / (1 - data.discountPercentage / 100))}{" "}
+              <FaDollarSign />
+            </h4>
+          </Flex>
+          <h3>
+            <FaStar />
+            {data.rating}
+          </h3>
           <p>{data.description}</p>
           <AddToCartButton productData={data}>
             <Button styleGuide="ozon" onClickAction={() => addToCart(data)}>
