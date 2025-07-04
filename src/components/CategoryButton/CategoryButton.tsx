@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { ReactElement } from "react";
 import { useApi } from "@/hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
@@ -21,13 +20,13 @@ export const CategoryButton: React.FC<{ category: string }> = ({
     return <div>Error</div>;
   }
   return (
-    <Link className="category__button" to={`products?category=${category}`}>
+    <a className="category__button" href={`products?category=${category}`}>
       <div className="category__button__image">
         <img src={data.products[0].images[0]} alt={`${category} image`} />
       </div>
       <div className="category__button__title">
         <h3>{category.split("-").join(" ")}</h3>
       </div>
-    </Link>
+    </a>
   );
 };

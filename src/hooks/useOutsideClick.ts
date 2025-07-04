@@ -1,49 +1,33 @@
 import { useEffect, useRef } from "react";
 
-export const useOutsideClick = <T extends HTMLDialogElement>(
+export const useOutsideClick = <T extends HTMLElement = HTMLDialogElement>(
   callback: () => void,
   isOpened: boolean,
-  isInsideClickClosing: boolean
+  isInsideClickClosing: boolean = false
 ) => {
   const ref = useRef<T>(null);
   useEffect(() => {
-    if (typeof callback !== "function") return;
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (
-        ref.current &&
-        document.contains(ref.current) &&
-        ref.current === event.target &&
-        isOpened
-      ) {
+    if (!isOpened || typeof callback !== "function") return;
+    const handleClick = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || !document.contains(ref.current)) {
+        return;
+      }
+      const target = event.target as Node;
+      if (ref.current === event.target) {
+        callback();
+        return;
+      }
+      if (isInsideClickClosing && !ref.current.contains(target)) {
         callback();
       }
     };
-    const handleClickInside = (event: MouseEvent | TouchEvent) => {
-      if (
-        ref.current &&
-        document.contains(ref.current) &&
-        ref.current !== event.target
-      ) {
-        console.log("inside");
-      }
-    };
-    document.addEventListener("mouseup", handleClickOutside);
-    document.addEventListener("touchend", handleClickOutside, {
-      passive: true,
-    });
-    if (isInsideClickClosing) {
-      document.addEventListener("mouseup", handleClickInside);
-      document.addEventListener("touchend", handleClickInside);
-    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("touchstart", handleClick, { passive: true });
     return () => {
-      document.removeEventListener("mouseup", handleClickOutside);
-      document.removeEventListener("touchend", handleClickOutside);
-      if (isInsideClickClosing) {
-        document.removeEventListener("mouseup", handleClickInside);
-        document.removeEventListener("touchend", handleClickInside);
-      }
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("touchstart", handleClick);
     };
-  }, [callback, isInsideClickClosing, isOpened]);
+  }, [callback, isOpened, isInsideClickClosing]);
 
   return ref;
 };

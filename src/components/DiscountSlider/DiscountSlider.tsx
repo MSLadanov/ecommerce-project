@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Slide } from "../ui/Slide";
 import { Flex } from "../ui/Flex";
 import { FaDollarSign } from "react-icons/fa";
-import { Link } from "react-router";
 import "./style.scss";
 
 export const DiscountSlider = (): ReactElement => {
@@ -30,7 +29,7 @@ export const DiscountSlider = (): ReactElement => {
     <Flex justifyContent="center">
       <Slider autoSlide withControls={false}>
         {data.products.map((product: IProduct) => (
-          <Link key={product.id} to={`/product?id=${product.id}`}>
+          <a key={product.id} href={`/product?id=${product.id}`}>
             <Slide key={product.id} image={product.images[0]}>
               <div className="discount__info">
                 <h3>{product.brand}</h3>
@@ -48,7 +47,7 @@ export const DiscountSlider = (): ReactElement => {
                 </Flex>
               </div>
             </Slide>
-          </Link>
+          </a>
         ))}
       </Slider>
     </Flex>
