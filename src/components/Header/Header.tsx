@@ -55,6 +55,7 @@ export const Header = (): ReactElement => {
         className="catalogue__modal"
         modalVisibility={catalogueModalVisibility}
         closeModal={() => setCatalogueModalVisibility(false)}
+        isInsideClickClosing={true}
       >
         <ProductCategories />
       </Modal>

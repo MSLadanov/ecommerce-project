@@ -19,7 +19,7 @@ export const ProductCategories = (): ReactElement => {
     return <div>Error</div>;
   }
   return (
-    <Grid size="xs">
+    <Grid size="xs" className={'categories'}>
       {data.map((category, index) => (
         <CategoryButton key={index} category={category} />
       ))}

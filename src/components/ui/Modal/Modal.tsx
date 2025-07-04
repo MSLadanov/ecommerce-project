@@ -9,6 +9,7 @@ interface IModalProps {
   children: ReactNode;
   modalVisibility: boolean;
   closeModal: () => void;
+  isInsideClickClosing?: boolean;
 }
 
 export const Modal: React.FC<IModalProps> = ({
@@ -16,12 +17,17 @@ export const Modal: React.FC<IModalProps> = ({
   children,
   modalVisibility,
   closeModal,
+  isInsideClickClosing = false,
 }) => {
   function Modal() {
-    const ref = useOutsideClick<HTMLDialogElement>(() => {
-      ref.current.close();
-      closeModal();
-    }, modalVisibility);
+    const ref = useOutsideClick<HTMLDialogElement>(
+      () => {
+        ref.current.close();
+        closeModal();
+      },
+      modalVisibility,
+      isInsideClickClosing
+    );
     useEffect(() => {
       if (ref.current && modalVisibility) {
         ref.current.showModal();
@@ -33,6 +39,7 @@ export const Modal: React.FC<IModalProps> = ({
         aria-modal="true"
         aria-labelledby="dialog-title"
         className={className}
+        onClick={() => isInsideClickClosing && ref.current.close()}
       >
         {children}
         <Button
