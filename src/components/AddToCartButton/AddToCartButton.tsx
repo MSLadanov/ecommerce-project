@@ -56,5 +56,5 @@ export const AddToCartButton: React.FC<IAddToCartButtonProps> = ({
   if (cart.find((item) => item.id === productData.id)) {
     return <InCartControls product={productData} />;
   }
-  return <div onClick={() => console.log(productData, cart)}>{children}</div>;
+  return <div>{children}</div>;
 };

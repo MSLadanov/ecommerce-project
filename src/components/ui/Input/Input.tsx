@@ -11,6 +11,7 @@ interface IInputProps {
   label: string;
   value: TValueTypes;
   setValue: Dispatch<SetStateAction<string | number>>;
+  required?: boolean;
 }
 
 export const Input: React.FC<IInputProps> = ({
@@ -19,6 +20,7 @@ export const Input: React.FC<IInputProps> = ({
   label = "",
   value,
   setValue,
+  required = false,
 }): ReactElement => {
   const handleChange = (changedValue: string) => {
     setValue(changedValue);
@@ -31,6 +33,7 @@ export const Input: React.FC<IInputProps> = ({
         id={id}
         value={value}
         autoComplete=""
+        required={required}
         onChange={(e) => handleChange(e.target.value)}
       />
     </div>

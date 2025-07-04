@@ -22,7 +22,6 @@ export const SignIn: React.FC<ISignInProps> = ({
     useNotify({ delay: 3000 });
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ username, password });
     const data = await post<TSignInResponse>("AUTH", { username, password }, toggleNotify);
     if(data){
       closeModal()
@@ -36,6 +35,7 @@ export const SignIn: React.FC<ISignInProps> = ({
         label="username"
         value={username}
         setValue={setUserName}
+        required
       />
       <Input
         id="password"
@@ -43,6 +43,7 @@ export const SignIn: React.FC<ISignInProps> = ({
         label="password"
         value={password}
         setValue={setPassword}
+        required
       />
       <Button type="submit">Sign In</Button>
       <p onClick={() => switchToSignUp()}>Sign Up</p>

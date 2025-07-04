@@ -18,8 +18,7 @@ export const useApi = () => {
         );
         return request.data;
       } catch (error) {
-        console.log(error)
-        notifyToggler('error', error.message);
+        notifyToggler("error", error.response.data.message);
       }
     },
     async update() {},
