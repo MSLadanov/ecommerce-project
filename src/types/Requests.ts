@@ -5,4 +5,5 @@ export type TRequestEndpoint =
   | "AUTH"
   | "AUTH_ME"
   | "CATEGORIES"
-  | "PRODUCTS_BY_CATEGORY";
+  | "PRODUCTS_BY_CATEGORY"
+  | "CARTS_BY_USER";

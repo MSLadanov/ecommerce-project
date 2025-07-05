@@ -8,6 +8,7 @@ const API_ENDPOINTS = {
   AUTH_ME: `${BASE_URL}/auth/me`,
   CATEGORIES: `${BASE_URL}/products/category-list`,
   PRODUCTS_BY_CATEGORY: `${BASE_URL}/products/category`,
+  CARTS_BY_USER: `${BASE_URL}/carts/user`,
 };
 
 export default API_ENDPOINTS;
