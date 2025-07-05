@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { FaTelegram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import "./style.scss";
 
-const Footer = (): ReactElement => {
+export const Footer = (): ReactElement => {
   return (
     <footer className="footer">
       <div className="footer__container">
