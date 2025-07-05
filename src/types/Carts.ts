@@ -1,4 +1,4 @@
-interface IProduct {
+export interface IProduct {
   id: number;
   title: string;
   price: number;
@@ -9,7 +9,7 @@ interface IProduct {
   thumbnail: string;
 }
 
-interface ICart {
+export interface ICart {
   id: number;
   products: IProduct[];
   total: number;

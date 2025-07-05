@@ -1,4 +1,4 @@
-import { IProduct } from "@/types/Products";
+import { IProduct } from "@/types/Carts";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
