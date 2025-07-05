@@ -20,7 +20,9 @@ export const CartItem: React.FC<ICartItem> = ({
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
         <Flex className="cart-item__image">
-          <img src={product.images[0]} />
+          <a href={`/product?id=${product.id}`}>
+            <img src={product.images[0]} />
+          </a>
         </Flex>
         <Flex flexDirection="column">
           <h1>{product.brand ? product.brand : "" + " " + product.title}</h1>
