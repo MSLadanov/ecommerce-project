@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { useApi } from "@/hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
+import { Loader } from "@components/Loader";
 import "./style.scss";
 
 export const CategoryButton: React.FC<{ category: string }> = ({
@@ -14,7 +15,7 @@ export const CategoryButton: React.FC<{ category: string }> = ({
       get<IProductsResponse>("PRODUCTS_BY_CATEGORY", `/${category}?limit=1`),
   });
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader/>;
   }
   if (isError) {
     return <div>Error</div>;

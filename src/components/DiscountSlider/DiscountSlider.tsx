@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Slide } from "../ui/Slide";
 import { Flex } from "../ui/Flex";
 import { FaDollarSign } from "react-icons/fa";
+import { Loader } from "@components/Loader";
 import "./style.scss";
 
 export const DiscountSlider = (): ReactElement => {
@@ -19,7 +20,7 @@ export const DiscountSlider = (): ReactElement => {
       ),
   });
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error</div>;

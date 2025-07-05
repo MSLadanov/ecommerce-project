@@ -4,6 +4,7 @@ import { useApi } from "@hooks/useApi";
 import { ICategoriesResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
 import { CategoryButton } from "@components/CategoryButton";
+import { Loader } from "@components/Loader";
 import "./style.scss";
 
 export const ProductCategories = (): ReactElement => {
@@ -13,13 +14,13 @@ export const ProductCategories = (): ReactElement => {
     queryFn: () => get<ICategoriesResponse>("CATEGORIES"),
   });
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error</div>;
   }
   return (
-    <Grid size="xs" className={'categories'}>
+    <Grid size="xs" className={"categories"}>
       {data.map((category, index) => (
         <CategoryButton key={index} category={category} />
       ))}

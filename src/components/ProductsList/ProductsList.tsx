@@ -5,6 +5,7 @@ import { ReactElement, useEffect } from "react";
 import { ProductCard } from "@components/ProductCard";
 import { Grid } from "@components/ui/Grid/Grid";
 import { useSearchParams } from "react-router";
+import { Loader } from "@components/Loader";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
@@ -12,19 +13,23 @@ export const ProductsList = (): ReactElement => {
   const category = searchParams.get("category");
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["products"],
-    queryFn: () => get<IProductsResponse>("PRODUCTS", category ? `/category/${category}` : ""),
+    queryFn: () =>
+      get<IProductsResponse>(
+        "PRODUCTS",
+        category ? `/category/${category}` : ""
+      ),
   });
   useEffect(() => {
-    refetch()
-  },[refetch, searchParams])
+    refetch();
+  }, [refetch, searchParams]);
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error</div>;
   }
   return (
-    <Grid size="xs">
+    <Grid className="product-list" size="xs">
       {data.products.map((product: IProduct) => (
         <ProductCard key={product.id} data={product} />
       ))}

@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ICart, ICartResponse } from "@/types/Carts";
 import { Flex } from "@components/ui/Flex";
 import { CartItem } from "@components/CartItem";
+import { Loader } from "@components/Loader";
 import "./style.scss";
 
 interface IPreviousOrderedCartsProps {
@@ -39,7 +40,7 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
     queryFn: () => get<ICartResponse>("CARTS_BY_USER", `/${userData.id}`),
   });
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error</div>;
@@ -60,7 +61,7 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
 export const AllUserCarts = (): ReactElement => {
   const { userData, isLoading, isError } = useAuth();
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>{isError}</div>;

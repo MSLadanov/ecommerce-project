@@ -10,6 +10,7 @@ import { AddToCartButton } from "@components/AddToCartButton";
 import { Button } from "@components/ui/Button";
 import { useCart } from "@hooks/useCart";
 import { Grid } from "@components/ui/Grid";
+import { Loader } from "@components/Loader";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
@@ -25,7 +26,7 @@ export const ProductInfo = (): ReactElement => {
     refetch();
   }, [refetch, searchParams]);
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader/> ;
   }
   if (isError) {
     return <div>Error</div>;
