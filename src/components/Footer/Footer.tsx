@@ -72,13 +72,13 @@ export const Footer = (): ReactElement => {
               <li>
                 <div className="footer__socials">
                   <a href="#">
-                    <FaTelegram size={"2em"} />
+                    <FaTelegram size={"2em"} color="#7c1af8"/>
                   </a>
                   <a href="#">
-                    <FaFacebook size={"2em"} />
+                    <FaFacebook size={"2em"} color="#7c1af8" />
                   </a>
                   <a href="#">
-                    <FaWhatsapp size={"2em"} />
+                    <FaWhatsapp size={"2em"} color="#7c1af8"/>
                   </a>
                 </div>
               </li>
