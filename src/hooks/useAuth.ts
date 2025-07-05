@@ -15,7 +15,6 @@ export const useAuth = () => {
         method: "GET",
         headers: {
           Authorization: `Bearer ${cookie.authToken}`,
-          credentials: "include",
         },
       });
       setIsLoading(false);

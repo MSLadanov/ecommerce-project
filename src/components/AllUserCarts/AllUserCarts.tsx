@@ -5,7 +5,7 @@ import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
 import { ICart, ICartResponse } from "@/types/Carts";
 import { Flex } from "@components/ui/Flex";
-import { CartItem } from "../CartItem";
+import { CartItem } from "@components/CartItem";
 import "./style.scss";
 
 interface IPreviousOrderedCartsProps {
@@ -18,7 +18,7 @@ interface IPreviousOrderedCartProps {
 
 const PreviousOrderedCart: React.FC<IPreviousOrderedCartProps> = ({ cart }) => {
   return (
-    <div>
+    <Flex className="previous-ordered__cart" flexDirection="column">
       {cart.products.map((product) => (
         <CartItem
           key={product.cart_id}
@@ -26,7 +26,7 @@ const PreviousOrderedCart: React.FC<IPreviousOrderedCartProps> = ({ cart }) => {
           isCurrentCart={false}
         />
       ))}
-    </div>
+    </Flex>
   );
 };
 
@@ -48,7 +48,8 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
     return <div>No previous carts</div>;
   }
   return (
-    <Flex>
+    <Flex className="previous-ordered" flexDirection="column">
+      <h1>Delivered:</h1>
       {data.carts.map((cart) => (
         <PreviousOrderedCart key={cart.id} cart={cart} />
       ))}

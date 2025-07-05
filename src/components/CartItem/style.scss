@@ -2,6 +2,9 @@
 
 .cart-item {
   font-family: "GT Eesti Pro Display Regular";
+  background-color: rgba(167, 58, 253, 0.12);
+  border-radius: 12px;
+  border: 1px solid #a73afd;
   &__price {
     h4 {
       color: gray;
