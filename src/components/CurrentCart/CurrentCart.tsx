@@ -9,7 +9,7 @@ export const CurrentCart = (): ReactElement => {
   return (
     <Flex className="current-cart" flexDirection="column">
       {cart.map((item) => (
-        <CartItem key={item.id} product={item} />
+        <CartItem key={item.id} product={item} isCurrentCart={true} />
       ))}
     </Flex>
   );

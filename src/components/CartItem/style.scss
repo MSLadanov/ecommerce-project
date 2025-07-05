@@ -1,0 +1,36 @@
+@use "../../globals.scss" as *;
+
+.cart-item {
+  font-family: "GT Eesti Pro Display Regular";
+  &__price {
+    h4 {
+      color: gray;
+      text-decoration: line-through;
+    }
+    h3 {
+      color: $ozon-red;
+    }
+  }
+  &__image {
+    align-self: center;
+    height: 140px;
+    width: 120px;
+    img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+  &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
