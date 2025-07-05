@@ -7,6 +7,7 @@ export interface IProduct {
   discountPercentage: number;
   discountedTotal: number;
   thumbnail: string;
+  cart_id: string;
 }
 
 export interface ICart {

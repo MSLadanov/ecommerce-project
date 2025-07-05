@@ -20,7 +20,11 @@ const PreviousOrderedCart: React.FC<IPreviousOrderedCartProps> = ({ cart }) => {
   return (
     <div>
       {cart.products.map((product) => (
-        <CartItem product={product} isCurrentCart={false} />
+        <CartItem
+          key={product.cart_id}
+          product={product}
+          isCurrentCart={false}
+        />
       ))}
     </div>
   );

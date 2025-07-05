@@ -1,6 +1,7 @@
 import { IProduct } from "@/types/Carts";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { v4 as uuidv4 } from "uuid";
 
 export interface ICartState {
   cart: IProduct[];
@@ -13,10 +14,14 @@ export const useCart = create<ICartState>()(
     (set) => ({
       cart: [],
       addToCart: (product: IProduct) =>
-        set((state: ICartState) => ({ cart: [...state.cart, product] })),
+        set((state: ICartState) => ({
+          cart: [...state.cart, { ...product, cart_id: uuidv4() }],
+        })),
       removeFromCart: (product: IProduct) =>
         set((state: ICartState) => {
-          const index = state.cart.findIndex((item) => item.id === product.id);
+          const index = state.cart.findIndex(
+            (item) => item.cart_id === product.cart_id
+          );
           if (index === -1) return { cart: state.cart };
           return {
             cart: [
