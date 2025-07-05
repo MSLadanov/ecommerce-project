@@ -5,6 +5,7 @@ import { useApi } from "@hooks/useApi";
 import { TSignInResponse } from "@/types/Auth";
 import { useNotify } from "@/hooks/useNotify";
 import { Notify } from "@components/ui/Notify";
+import { useCookies } from "react-cookie";
 
 interface ISignInProps {
   switchToSignUp: () => void;
@@ -13,8 +14,9 @@ interface ISignInProps {
 
 export const SignIn: React.FC<ISignInProps> = ({
   switchToSignUp,
-  closeModal
+  closeModal,
 }): ReactElement => {
+  const [, setCookie] = useCookies(["authToken"]);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const { post } = useApi();
@@ -22,9 +24,14 @@ export const SignIn: React.FC<ISignInProps> = ({
     useNotify({ delay: 3000 });
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = await post<TSignInResponse>("AUTH", { username, password }, toggleNotify);
-    if(data){
-      closeModal()
+    const data = await post<TSignInResponse>(
+      "AUTH",
+      { username, password },
+      toggleNotify
+    );
+    if (data) {
+      setCookie("authToken", data.accessToken);
+      closeModal();
     }
   };
   return (
