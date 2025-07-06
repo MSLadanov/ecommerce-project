@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
               <Route index element={<Navigate to="/products" replace />} />
               <Route path="products" element={<ProductsPage />} />
               <Route path="product" element={<ProductPage />} />
-              <Route path="user/:id" element={<UserPage />} />
+              <Route path="user" element={<UserPage />} />
               <Route path="cart" element={<CartPage />} />
             </Route>
             <Route path="*" element={<ErrorPage />} />
