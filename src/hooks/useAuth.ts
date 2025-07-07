@@ -28,14 +28,16 @@ export const useAuth = () => {
       setUserData(user);
       setIsAuth(true);
     } catch (error) {
+      setIsAuth(false);
       setIsError(error.response.data.message);
     } finally {
+      setIsAuth(false);
       setIsLoading(false);
     }
   };
   useEffect(() => {
     checkUserAuth();
-  }, []);
+  }, [isAuth]);
 
   return { userData, isLoading, isError, clearAuth, isAuth };
 };

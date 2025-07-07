@@ -10,9 +10,11 @@ import { FaUserCircle } from "react-icons/fa";
 import { ProductCategories } from "@components/ProductCategories";
 import { useNavigate } from "react-router";
 import { CartCountBadge } from "@components/CartCountBadge";
+import { useAuth } from "@hooks/useAuth";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
+  const { isAuth, clearAuth } = useAuth();
   const navigate = useNavigate();
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
     false
@@ -38,21 +40,29 @@ export const Header = (): ReactElement => {
           <FaShoppingCart />
           Cart
         </Button>
-        <Button orientation="vertical" onClickAction={() => navigate("/user")}>
-          <FaUserCircle />
-          Account
-        </Button>
-        <Button
-          onClickAction={() => setAuthModalVisibility(true)}
-          orientation="vertical"
-        >
-          <GoSignIn />
-          Sign In
-        </Button>
-        <Button onClickAction={() => {}} orientation="vertical">
-          <GoSignOut />
-          Sign Out
-        </Button>
+        {isAuth ? (
+          <>
+            <Button
+              orientation="vertical"
+              onClickAction={() => navigate("/user")}
+            >
+              <FaUserCircle />
+              Account
+            </Button>
+            <Button onClickAction={() => clearAuth()} orientation="vertical">
+              <GoSignOut />
+              Sign Out
+            </Button>
+          </>
+        ) : (
+          <Button
+            onClickAction={() => setAuthModalVisibility(true)}
+            orientation="vertical"
+          >
+            <GoSignIn />
+            Sign In
+          </Button>
+        )}
       </nav>
       <Modal
         className="auth__modal"
