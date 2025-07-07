@@ -4,7 +4,7 @@ import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
 import { IProductsResponse } from "@/types/Products";
 import { Loader } from "@components/Loader";
-import { FaDollarSign } from "react-icons/fa";
+import { FaDollarSign, FaStar } from "react-icons/fa";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
 import "./style.scss";
@@ -15,10 +15,14 @@ const MostRatedCard: React.FC<Partial<IProduct>> = ({
   brand,
   title,
   price,
-  discountPercentage,
+  rating
 }): ReactElement => {
   return (
-    <Flex className="most-rated-card" flexDirection="row" alignItems="align-center">
+    <Flex
+      className="most-rated-card"
+      flexDirection="row"
+      alignItems="align-center"
+    >
       <a href={`/product?id=${id}`}>
         <Flex className="most-rated-card__image" alignItems="align-center">
           <img src={images[0]} alt={title + " image"} />
@@ -31,10 +35,9 @@ const MostRatedCard: React.FC<Partial<IProduct>> = ({
           <h1>
             {price} <FaDollarSign />
           </h1>
-          <h2>
-            {Math.round(price / (1 - discountPercentage / 100))}{" "}
-            <FaDollarSign />
-          </h2>
+        </Flex>
+        <Flex>
+            <FaStar color="yellow"/>
         </Flex>
       </div>
     </Flex>
