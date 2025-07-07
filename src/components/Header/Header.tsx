@@ -3,15 +3,17 @@ import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
 import { Button } from "@components/ui/Button";
 import { GoSignIn } from "react-icons/go";
+import { GoSignOut } from "react-icons/go";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretSquareDown } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { ProductCategories } from "@components/ProductCategories";
 import { useNavigate } from "react-router";
 import { CartCountBadge } from "@components/CartCountBadge";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
     false
   );
@@ -31,10 +33,14 @@ export const Header = (): ReactElement => {
           <FaCaretSquareDown />
           Catalogue
         </Button>
-        <Button orientation="vertical" onClickAction={() => navigate('/cart')}>
-          <CartCountBadge/>
+        <Button orientation="vertical" onClickAction={() => navigate("/cart")}>
+          <CartCountBadge />
           <FaShoppingCart />
           Cart
+        </Button>
+        <Button orientation="vertical" onClickAction={() => navigate("/user")}>
+          <FaUserCircle />
+          Account
         </Button>
         <Button
           onClickAction={() => setAuthModalVisibility(true)}
@@ -42,6 +48,10 @@ export const Header = (): ReactElement => {
         >
           <GoSignIn />
           Sign In
+        </Button>
+        <Button onClickAction={() => {}} orientation="vertical">
+          <GoSignOut />
+          Sign Out
         </Button>
       </nav>
       <Modal
