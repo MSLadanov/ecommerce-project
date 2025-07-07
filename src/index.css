@@ -1,16 +1,16 @@
 * {
-	padding: 0px;
-	margin: 0px;
-	border: none;
+  padding: 0px;
+  margin: 0px;
+  border: none;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-main{
-	min-height: 100vh;
-	padding-top: 90px;
+main {
+  min-height: 100vh;
+  padding: 100px 2% 2% 2%;
 }
