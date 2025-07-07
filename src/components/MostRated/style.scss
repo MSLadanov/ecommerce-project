@@ -1,42 +1,51 @@
 @use "../../globals.scss" as *;
 
-.most-rated-card {
-  font-family: "GT Eesti Pro Display Regular";
-  background-color: white;
-  border-radius: 16px;
+.most-rated {
   padding: 2%;
-  &__image {
+  @include laptop{
     align-self: center;
-    height: auto;
-    width: 100px;
-    img {
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      width: 100%;
-    }
   }
-  &__rating{
-    color: white;
-  }
-  &__info {
-    background-color: $ozon-blue;
+  &-card {
+    font-family: "GT Eesti Pro Display Regular";
+    background-color: white;
+    border-radius: 16px;
     padding: 2%;
-    border-radius: 8px;
-    h1 {
-      font-size: 1rem;
+    height: 110px;
+    width: 255px;
+    &__image {
+      align-self: center;
+      height: auto;
+      width: 100px;
+      img {
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    &__rating {
       color: white;
-      text-decoration: none;
     }
-    h2 {
-      font-size: 0.8rem;
-      color: gray;
-      text-decoration: line-through;
+    &__info {
+      width: 50%;
+      background-color: $ozon-blue;
+      padding: 2%;
+      border-radius: 8px;
+      h1 {
+        font-size: 1rem;
+        color: white;
+        text-decoration: none;
+      }
+      h2 {
+        font-size: 0.8rem;
+        color: gray;
+        text-decoration: line-through;
+      }
+      h3,
+      h4 {
+        color: white;
+      }
     }
-    h3,
-    h4 {
-      color: white;
+    &__price {
     }
-  }
-  &__price {
   }
 }
