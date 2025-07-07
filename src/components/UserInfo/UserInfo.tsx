@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useAuth } from "@hooks/useAuth";
-import { Loader } from "../Loader";
+import { Loader } from "@components/Loader";
+import { Flex } from "@components/ui/Flex";
 import "./style.scss";
 
 export const UserInfo = (): ReactElement => {
@@ -11,5 +12,5 @@ export const UserInfo = (): ReactElement => {
   if (isError) {
     return <div>Error</div>;
   }
-  return <div className="user-info">{userData.address.address}</div>;
+  return <Flex className="user-info">{userData.address.address}</Flex>;
 };
