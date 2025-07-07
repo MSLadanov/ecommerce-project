@@ -1,0 +1,17 @@
+@use "../../globals.scss" as *;
+.user-info {
+  font-family: "GT Eesti Pro Display Regular";
+  @include desktop {
+  }
+  @include laptop {
+  }
+  @include tablet {
+  }
+  @include fablet {
+  }
+  @include mobile {
+    background-color: pink;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
