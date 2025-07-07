@@ -1,0 +1,37 @@
+@use "../../globals.scss" as *;
+
+.most-rated-card {
+  font-family: "GT Eesti Pro Display Regular";
+  background-color: white;
+  border-radius: 16px;
+  padding: 2%;
+  &__image {
+    align-self: center;
+    height: auto;
+    width: 150px;
+    img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+  &__info {
+    background-color: $ozon-blue;
+    padding: 2%;
+    border-radius: 8px;
+    h1 {
+      color: white;
+      text-decoration: none;
+    }
+    h2 {
+      color: gray;
+      text-decoration: line-through;
+    }
+    h3,
+    h4 {
+      color: white;
+    }
+  }
+  &__price {
+  }
+}
