@@ -1,9 +1,13 @@
 @use "../../globals.scss" as *;
 
 .most-rated {
-  padding: 2%;
+  width: 50%;
+  padding: 2%;    
+  justify-items: center;
   @include laptop{
+    align-items: center;
     align-self: center;
+    width: 100%;
   }
   &-card {
     font-family: "GT Eesti Pro Display Regular";
@@ -12,10 +16,17 @@
     padding: 2%;
     height: 110px;
     width: 255px;
+    @include fablet{
+      width: 100%;
+      height: 150px;
+  }
     &__image {
       align-self: center;
       height: auto;
       width: 100px;
+      @include fablet{
+      width: 150px;
+  }
       img {
         aspect-ratio: 1/1;
         object-fit: contain;

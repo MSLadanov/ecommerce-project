@@ -1,13 +1,9 @@
 @use '../../../globals.scss' as *;
 .slider {
-  scale: 0.6;
-  @include mobile{
-    scale: 0.5;
-  }
   &__frame {
     display: flex;
-    height: 300px;
-    width: 600px;
+    height: auto;
+    width: 100%;
     overflow: hidden;
   }
 
