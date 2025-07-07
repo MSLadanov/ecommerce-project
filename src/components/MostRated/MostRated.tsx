@@ -36,8 +36,9 @@ const MostRatedCard: React.FC<Partial<IProduct>> = ({
             {price} <FaDollarSign />
           </h1>
         </Flex>
-        <Flex>
+        <Flex className="most-rated-card__rating" alignItems="align-center">
             <FaStar color="yellow"/>
+            <p>{rating}</p>
         </Flex>
       </div>
     </Flex>
@@ -67,6 +68,7 @@ export const MostRated = (): ReactElement => {
           title={product.title}
           price={product.price}
           discountPercentage={product.discountPercentage}
+          rating={product.rating}
         />
       ))}
     </Grid>

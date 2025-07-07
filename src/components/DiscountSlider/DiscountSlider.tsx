@@ -28,7 +28,7 @@ export const DiscountSlider = (): ReactElement => {
   }
 
   return (
-    <Flex className="discount-slider" justifyContent="center">
+    <Flex className="discount-slider" justifyContent="space-between">
       <Slider autoSlide withControls={false}>
         {data.products.map((product: IProduct) => (
           <a key={product.id} href={`/product?id=${product.id}`}>
