@@ -7,6 +7,7 @@ import { Slide } from "../ui/Slide";
 import { Flex } from "../ui/Flex";
 import { FaDollarSign } from "react-icons/fa";
 import { Loader } from "@components/Loader";
+import { MostRated } from "@components/MostRated";
 import "./style.scss";
 
 export const DiscountSlider = (): ReactElement => {
@@ -51,6 +52,7 @@ export const DiscountSlider = (): ReactElement => {
           </a>
         ))}
       </Slider>
+      <MostRated/>
     </Flex>
   );
 };
