@@ -1,6 +1,7 @@
 @use "../../globals.scss" as *;
 .user-info {
   font-family: "GT Eesti Pro Display Regular";
+  align-items: center !important;
   @include desktop {
   }
   @include laptop {
@@ -10,8 +11,12 @@
   @include fablet {
   }
   @include mobile {
-    background-color: pink;
     flex-direction: column !important;
     align-items: center !important;
+  }
+  &__image{
+    img{
+        border-radius: 50%;
+    }
   }
 }

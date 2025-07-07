@@ -10,7 +10,7 @@ export const UserInfo = (): ReactElement => {
     return <Loader />;
   }
   if (isError) {
-    return <div>Error</div>;
+    return <div>{isError}</div>;
   }
   return (
     <Flex className="user-info" flexDirection="row" justifyContent="center">
