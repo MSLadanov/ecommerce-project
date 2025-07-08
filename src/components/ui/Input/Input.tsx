@@ -8,7 +8,7 @@ type TValueTypes = string | number;
 interface IInputProps {
   id: string;
   type: TInputTypes;
-  label: string;
+  label?: string;
   value: TValueTypes;
   setValue: Dispatch<SetStateAction<string | number>>;
   required?: boolean;
