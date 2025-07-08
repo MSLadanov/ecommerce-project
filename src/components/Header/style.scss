@@ -5,7 +5,7 @@ header {
   padding: 2% 3%;
   justify-content: space-between;
   align-items: center;
-  background: $wb-base; 
+  background: $wb-base;
   background: $wb-background;
   background-blend-mode: multiply;
   position: fixed;
@@ -15,7 +15,7 @@ header {
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   .header {
-    &__logo-search{
+    &__logo-search {
       display: flex;
       width: 65%;
     }
@@ -23,22 +23,38 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, rgb(0, 91, 255) 27%, rgb(243, 14, 81) 81%);
+      background: linear-gradient(
+        135deg,
+        rgb(0, 91, 255) 27%,
+        rgb(243, 14, 81) 81%
+      );
       border-radius: 12px;
-      color:white;
+      color: white;
       font-family: "GT Eesti Pro Display Bold";
       height: 40px;
       width: 120px;
       border: 3px solid white;
-      @include fablet{
+      @include fablet {
         display: none;
       }
     }
   }
-  nav{
+  nav {
     display: flex;
     width: 25%;
     align-content: center;
     justify-content: space-between;
+  }
+  button {
+    margin: 0% 2%;
+    @include fablet {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+      p {
+        font-size: 0;
+      }
+    }
   }
 }

@@ -1,3 +1,5 @@
+@use '../../../globals.scss' as *;
+
 #modal-root {
   dialog {
     &.auth__modal {
@@ -15,7 +17,11 @@
       }
     }
     &.catalogue__modal {
+      top: 90px;
       width: 0%;
+      border-bottom-right-radius: 12px;
+      scrollbar-color: $wb-base transparent;
+      scrollbar-width: 15px;
       &[open] {
         animation: catalogueSlide 0.5s ease-out forwards;
       }

@@ -38,12 +38,12 @@ export const Header = (): ReactElement => {
           onClickAction={() => setCatalogueModalVisibility(true)}
         >
           <FaCaretSquareDown />
-          Catalogue
+          <p>Catalogue</p>
         </Button>
         <Button orientation="vertical" onClickAction={() => navigate("/cart")}>
           <CartCountBadge />
           <FaShoppingCart />
-          Cart
+          <p>Cart</p>
         </Button>
         {isAuth ? (
           <>
@@ -52,11 +52,12 @@ export const Header = (): ReactElement => {
               onClickAction={() => navigate("/user")}
             >
               <FaUserCircle />
-              Account
+              <p>Account</p>
+              
             </Button>
             <Button onClickAction={() => clearAuth()} orientation="vertical">
               <GoSignOut />
-              Sign Out
+              <p>Sign Out</p>
             </Button>
           </>
         ) : (
@@ -65,7 +66,7 @@ export const Header = (): ReactElement => {
             orientation="vertical"
           >
             <GoSignIn />
-            Sign In
+            <p>Sign In</p>
           </Button>
         )}
       </nav>
