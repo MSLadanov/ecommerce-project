@@ -1,0 +1,62 @@
+@use "../../globals.scss" as *;
+
+.most-rated {
+  width: 50%;
+  padding: 2%;    
+  justify-items: center;
+  @include laptop{
+    align-items: center;
+    align-self: center;
+    width: 100%;
+  }
+  &-card {
+    font-family: "GT Eesti Pro Display Regular";
+    background-color: white;
+    border-radius: 16px;
+    padding: 2%;
+    height: 110px;
+    width: 255px;
+    @include fablet{
+      width: 100%;
+      height: 150px;
+  }
+    &__image {
+      align-self: center;
+      height: auto;
+      width: 100px;
+      @include fablet{
+      width: 150px;
+  }
+      img {
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    &__rating {
+      color: white;
+    }
+    &__info {
+      width: 50%;
+      background-color: $ozon-blue;
+      padding: 2%;
+      border-radius: 8px;
+      h1 {
+        font-size: 1rem;
+        color: white;
+        text-decoration: none;
+      }
+      h2 {
+        font-size: 0.8rem;
+        color: gray;
+        text-decoration: line-through;
+      }
+      h3,
+      h4 {
+        color: white;
+      }
+    }
+    &__price {
+    }
+  }
+}
