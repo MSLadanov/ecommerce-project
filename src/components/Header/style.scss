@@ -17,7 +17,7 @@ header {
   .header {
     &__logo-search{
       display: flex;
-      width: 80%;
+      width: 65%;
     }
     &__logo {
       display: flex;
@@ -30,10 +30,15 @@ header {
       height: 40px;
       width: 120px;
       border: 3px solid white;
+      @include fablet{
+        display: none;
+      }
     }
   }
   nav{
     display: flex;
+    width: 25%;
     align-content: center;
+    justify-content: space-between;
   }
 }
