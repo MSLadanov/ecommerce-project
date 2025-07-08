@@ -28,7 +28,7 @@
   padding: 2%;
   border-radius: 8px;
   position: relative;
-  top: 25%;
+  top: 20%;
   right: 10%;
   scale: 1.5;
   @include laptop{
@@ -38,6 +38,10 @@
   @include tablet{
     scale: 1;
     right: 45%;
+  }
+  @include fablet{
+    scale: 1.5;
+    right: 5%;
   }
   @include mobile{
     scale: 0.8;
