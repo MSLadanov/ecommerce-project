@@ -2,7 +2,7 @@ import { IProduct } from "@/types/Products";
 import { ReactElement } from "react";
 import { FaDollarSign, FaStar } from "react-icons/fa";
 import { Flex } from "@components/ui/Flex";
-import './style.scss'
+import "./style.scss";
 
 export const ProductBadge: React.FC<Partial<IProduct>> = ({
   id,
@@ -31,10 +31,12 @@ export const ProductBadge: React.FC<Partial<IProduct>> = ({
             {price} <FaDollarSign />
           </h1>
         </Flex>
-        <Flex className="most-rated-card__rating" alignItems="align-center">
-          <FaStar color="yellow" />
-          <p>{rating}</p>
-        </Flex>
+        {rating && (
+          <Flex className="most-rated-card__rating" alignItems="align-center">
+            <FaStar color="yellow" />
+            <p>{rating}</p>
+          </Flex>
+        )}
       </div>
     </Flex>
   );

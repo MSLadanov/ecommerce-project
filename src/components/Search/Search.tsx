@@ -1,12 +1,12 @@
 import { Input } from "@components/ui/Input";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { useSearch } from "@hooks/useSearch";
 import { Flex } from "@components/ui/Flex";
 import { useApi } from "@hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "@components/Loader";
-import { ProductBadge } from "../ProductBadge";
+import { ProductBadge } from "@components/ProductBadge";
 import "./style.scss";
 
 interface ISearchResultsProps {
@@ -17,11 +17,14 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
   searchQuery,
 }): ReactElement => {
   const { get } = useApi();
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["sale-products"],
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["search-products"],
     queryFn: () =>
       get<IProductsResponse>("PRODUCTS", `/search?q=${searchQuery}`),
   });
+  useEffect(() => {
+    refetch()
+  },[refetch, searchQuery])
   if (isLoading) {
     return <Loader />;
   }
@@ -31,7 +34,7 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
   return (
     <div className="search-results">
       {data.products.map((product) => (
-        <ProductBadge key={product.id} images={product.images} />
+        <ProductBadge key={product.id} id={product.id} images={product.images} title={product.title} price={product.price} />
       ))}
     </div>
   );

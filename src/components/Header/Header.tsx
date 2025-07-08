@@ -26,7 +26,7 @@ export const Header = (): ReactElement => {
   return (
     <header>
       <div className="header__logo-search">
-        <div className="header__logo">
+        <div className="header__logo" onClick={() => navigate("/products")}>
           <p>W-BOZONE</p>
         </div>
         <Search />
