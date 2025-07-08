@@ -11,6 +11,7 @@ import { ProductCategories } from "@components/ProductCategories";
 import { useNavigate } from "react-router";
 import { CartCountBadge } from "@components/CartCountBadge";
 import { useAuth } from "@hooks/useAuth";
+import { Search } from "@components/Search";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
@@ -24,9 +25,13 @@ export const Header = (): ReactElement => {
   >(false);
   return (
     <header>
-      <div className="header__logo">
-        <p>W-BOZONE</p>
+      <div className="header__logo-search">
+        <div className="header__logo">
+          <p>W-BOZONE</p>
+        </div>
+        <Search />
       </div>
+
       <nav>
         <Button
           orientation="vertical"

@@ -15,6 +15,10 @@ header {
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   .header {
+    &__logo-search{
+      display: flex;
+      width: 80%;
+    }
     &__logo {
       display: flex;
       justify-content: center;

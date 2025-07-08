@@ -12,6 +12,7 @@ interface IInputProps {
   value: TValueTypes;
   setValue: Dispatch<SetStateAction<string | number>>;
   required?: boolean;
+  className?: string
 }
 
 export const Input: React.FC<IInputProps> = ({
@@ -21,12 +22,13 @@ export const Input: React.FC<IInputProps> = ({
   value,
   setValue,
   required = false,
+  className = ''
 }): ReactElement => {
   const handleChange = (changedValue: string) => {
     setValue(changedValue);
   };
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id}>{label}</label>
       <input
         type={type}

@@ -5,5 +5,5 @@ import "./style.scss";
 
 export const Search = (): ReactElement => {
   const { search, setSearch } = useSearch((state) => state);
-  return <Input id="search" type="text" value={search} setValue={setSearch} />;
+  return <Input className="search-bar" id="search" type="text" value={search} setValue={setSearch} />;
 };
