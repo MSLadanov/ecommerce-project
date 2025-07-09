@@ -7,10 +7,11 @@ $slide-offsets: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
   align-items: center;
   flex-shrink: 0;
   height: 300px;
-  width: 600px;
+  width: 100%;
   position: relative;
   @each $offset in $slide-offsets {
     &.offset-#{$offset} {
+      padding: 5%;
       text-decoration: none;
       transform: translateX(-100% * $offset);
       transition: all ease-in 1s;
@@ -19,6 +20,7 @@ $slide-offsets: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
   &__image {
     height: 100%;
     width: auto;
+    position: absolute;
     img {
       height: 100%;
       width: auto;

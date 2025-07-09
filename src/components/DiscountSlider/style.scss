@@ -6,7 +6,7 @@
   border-radius: 16px;
   background-repeat: repeat;
   padding: 2%;
-  @include laptop{
+  @include laptop {
     flex-direction: column !important;
   }
   .slider {
@@ -16,9 +16,9 @@
     background-color: white;
     padding: 1%;
     border-radius: 16px;
-    @include fablet{
-    width: 95%;
-  }
+    @include fablet {
+      width: 95%;
+    }
   }
 }
 
@@ -29,30 +29,63 @@
   border-radius: 8px;
   position: relative;
   top: 20%;
-  right: 10%;
-  scale: 1.5;
-  @include laptop{
-    scale: 1;
-    right: 25%;
+  left: 25%;
+  @include laptop {
+    h4 {
+      font-size: 0.8rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    left: 25%;
   }
-  @include tablet{
-    scale: 1;
-    right: 45%;
+  @include tablet {
+    h4 {
+      font-size: 0.8rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    h1 {
+      font-size: 1.3rem;
+    }
+    min-width: 180px;
+    left: 15%;
   }
-  @include fablet{
-    scale: 1.5;
-    right: 5%;
+  @include fablet {
+    left: 20%;
   }
-  @include mobile{
-    scale: 0.8;
-    right: 50%;
+  @include mobile {
+    left: 20%;
+    min-width: 130px;
+    h4 {
+      font-size: 0.8rem;
+    }
+    h3 {
+      font-size: 0.8rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 1.1rem;
+    }
   }
   h1 {
     color: white;
     text-decoration: none;
   }
   h2 {
-    color: gray;
+    color: $ozon-red;
     text-decoration: line-through;
   }
   h3,
