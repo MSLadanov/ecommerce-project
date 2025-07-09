@@ -23,18 +23,35 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
       get<IProductsResponse>("PRODUCTS", `/search?q=${searchQuery}`),
   });
   useEffect(() => {
-    refetch()
-  },[refetch, searchQuery])
+    refetch();
+  }, [refetch, searchQuery]);
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="search-results">
+        <Loader />
+      </div>
+    );
   }
   if (isError) {
     return <div>Error</div>;
   }
+  if (data.products.length === 0) {
+    return (
+      <div className="search-results">
+        <p>No results</p>
+      </div>
+    );
+  }
   return (
     <div className="search-results">
       {data.products.map((product) => (
-        <ProductBadge key={product.id} id={product.id} images={product.images} title={product.title} price={product.price} />
+        <ProductBadge
+          key={product.id}
+          id={product.id}
+          images={product.images}
+          title={product.title}
+          price={product.price}
+        />
       ))}
     </div>
   );
@@ -51,7 +68,6 @@ export const Search = (): ReactElement => {
         value={search}
         setValue={setSearch}
       />
-
       {!!search.length && <SearchResults searchQuery={search} />}
     </Flex>
   );

@@ -1,6 +1,7 @@
 @use "../../globals.scss" as *;
 
 .search-box {
+  font-family: "GT Eesti Pro Display Regular";
   position: relative;
   width: 100%;
   .search-bar {
@@ -32,17 +33,33 @@
     border-bottom: 1px solid $wb-base;
     border-left: 1px solid $wb-base;
     border-right: 1px solid $wb-base;
+    overflow: scroll;
+
     .most-rated-card {
       justify-content: space-around;
       width: 100%;
+      @include mobile {
+        justify-content: flex-start;
+      }
       &__info {
         display: flex;
         justify-content: space-between;
         background-color: transparent;
+        width: 70%;
+        h4{
+          @include mobile {
+          width: 50%;
+        }
+        }
         h1,
         h3,
         h4 {
           color: black;
+        }
+      }
+      &__image {
+        @include mobile {
+          width: 75px;
         }
       }
     }
