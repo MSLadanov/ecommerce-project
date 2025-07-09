@@ -20,7 +20,7 @@ export const DiscountSlider = (): ReactElement => {
         "?limit=10&sortBy=discountPercentage&order=desc"
       ),
   });
-  if (isLoading) {
+  if (isLoading ) {
     return <Loader />;
   }
   if (isError) {
@@ -31,7 +31,7 @@ export const DiscountSlider = (): ReactElement => {
     <Flex className="discount-slider" justifyContent="space-between">
       <Slider autoSlide withControls={false}>
         {data.products.map((product: IProduct) => (
-          <a key={product.id} href={`/product?id=${product.id}`}>
+          <a className="discount-slider__link" key={product.id} href={`/product?id=${product.id}`}>
             <Slide key={product.id} image={product.images[0]}>
               <div className="discount__info">
                 <h3>{product.brand}</h3>
