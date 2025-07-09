@@ -52,7 +52,7 @@ export const DiscountSlider = (): ReactElement => {
           </a>
         ))}
       </Slider>
-      <MostRated/>
+      <MostRated />
     </Flex>
   );
 };
