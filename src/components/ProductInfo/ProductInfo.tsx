@@ -19,7 +19,14 @@ const ProductImages: React.FC<{ images: string[]; title: string }> = ({
 }): ReactElement => {
   return (
     <Flex className="product-info__images">
-      <img src={images[0]} alt={`${title} image`} />
+      <Flex className="product-info__images__controls" flexDirection="column">
+        {images.map((image) => (
+          <img src={image} title={title} />
+        ))}
+      </Flex>
+      <Flex className="product-info__images__main">
+        <img src={images[0]} alt={`${title} image`} />
+      </Flex>
     </Flex>
   );
 };

@@ -1,24 +1,50 @@
-@use '../../globals.scss' as *;
+@use "../../globals.scss" as *;
 .product-info {
   font-family: "GT Eesti Pro Display Regular";
   &__images {
-    align-self: center;
-    height: auto;
-    width: 50%;
-    img {
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      width: 100%;
+    @include tablet {
+      flex-direction: column-reverse !important;
+    }
+    &__main {
+      align-self: center;
+      height: auto;
+      width: 50%;
+      @include tablet {
+        width: 100%;
+      }
+      img {
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    &__controls {
+      align-self: center;
+      height: auto;
+      width: 20%;
+      @include tablet {
+        width: 100%;
+        align-self: normal;
+        flex-direction: row !important;
+      }
+      img {
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        width: 100%;
+        @include tablet {
+          width: 25%;
+        }
+      }
     }
   }
-  &__details{
-    @include tablet{
+  &__details {
+    @include tablet {
       flex-direction: column !important;
     }
   }
   &__description {
     width: 50%;
-    @include tablet{
+    @include tablet {
       width: 100%;
     }
   }
