@@ -20,7 +20,7 @@ export const useCart = create<ICartState>()(
       removeFromCart: (product: IProduct) =>
         set((state: ICartState) => {
           const index = state.cart.findIndex(
-            (item) => item.cart_id === product.cart_id
+            (item) => item.id === product.id
           );
           if (index === -1) return { cart: state.cart };
           return {
