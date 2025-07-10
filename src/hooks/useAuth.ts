@@ -2,17 +2,20 @@ import { useCookies } from "react-cookie";
 import { useApi } from "./useApi";
 import { useEffect, useState } from "react";
 import { IUser } from "@/types/Users";
+import { useNavigate } from "react-router";
 
 export const useAuth = () => {
+  const navigate = useNavigate()
   const [cookie, , removeCookie] = useCookies(["authToken"]);
   const { get } = useApi();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(cookie.authToken);
   const [userData, setUserData] = useState<IUser>(null);
   const clearAuth = () => {
     if (cookie) {
       removeCookie("authToken");
+      navigate("/products")
     }
   };
   const checkUserAuth = async () => {
@@ -31,13 +34,12 @@ export const useAuth = () => {
       setIsAuth(false);
       setIsError(error.response.data.message);
     } finally {
-      setIsAuth(false);
       setIsLoading(false);
     }
   };
   useEffect(() => {
     checkUserAuth();
-  }, [isAuth]);
+  }, [isAuth, cookie.authToken]);
 
   return { userData, isLoading, isError, clearAuth, isAuth };
 };
