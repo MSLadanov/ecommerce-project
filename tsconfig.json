@@ -2,14 +2,18 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "module": "ES2022",
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "lib": ["ES2022", "dom"],
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@routes/*": ["src/routes/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@types/*": ["src/types/*"],
-    },
+      "@types/*": ["src/types/*"]
+    }
   },
   "include": ["src"],
   "references": []
