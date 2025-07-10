@@ -6,6 +6,7 @@
     "target": "ES2022",
     "moduleResolution": "node",
     "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
