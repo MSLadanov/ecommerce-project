@@ -13,6 +13,17 @@ import { Grid } from "@components/ui/Grid";
 import { Loader } from "@components/Loader";
 import "./style.scss";
 
+const ProductImages: React.FC<{ images: string[]; title: string }> = ({
+  images,
+  title,
+}): ReactElement => {
+  return (
+    <Flex className="product-info__images">
+      <img src={images[0]} alt={`${title} image`} />
+    </Flex>
+  );
+};
+
 export const ProductInfo = (): ReactElement => {
   const { addToCart } = useCart((state) => state);
   const [searchParams] = useSearchParams();
@@ -26,7 +37,7 @@ export const ProductInfo = (): ReactElement => {
     refetch();
   }, [refetch, searchParams]);
   if (isLoading) {
-    return <Loader/> ;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error</div>;
@@ -34,9 +45,7 @@ export const ProductInfo = (): ReactElement => {
   return (
     <Flex className="product-info" flexDirection="column">
       <Flex className="product-info__details">
-        <Flex className="product-info__images">
-          <img src={data.images[0]} alt={`${data.title} image`} />
-        </Flex>
+        <ProductImages images={data.images} title={data.title} />
         <Flex
           className="product-info__description"
           flexDirection="column"
