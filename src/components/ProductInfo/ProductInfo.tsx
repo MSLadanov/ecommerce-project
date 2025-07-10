@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useApi } from "@hooks/useApi";
@@ -17,15 +17,20 @@ const ProductImages: React.FC<{ images: string[]; title: string }> = ({
   images,
   title,
 }): ReactElement => {
+  const [currentImage, setCurrentImage] = useState(images[0]);
   return (
     <Flex className="product-info__images">
       <Flex className="product-info__images__controls" flexDirection="column">
         {images.map((image) => (
-          <img src={image} title={title} />
+          <img
+            src={image}
+            title={title}
+            onClick={() => setCurrentImage(image)}
+          />
         ))}
       </Flex>
       <Flex className="product-info__images__main">
-        <img src={images[0]} alt={`${title} image`} />
+        <img src={currentImage} alt={`${title} image`} />
       </Flex>
     </Flex>
   );
