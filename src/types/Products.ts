@@ -42,6 +42,10 @@ export interface IProduct {
   meta: IMeta;
   thumbnail: string;
   images: string[];
+  quantity: number;
+  total: number;
+  discountedTotal: number;
+  cart_id: string;
 }
 
 export interface IProductsResponse {
@@ -51,4 +55,4 @@ export interface IProductsResponse {
   limit: number;
 }
 
-export type ICategoriesResponse = string[]
+export type ICategoriesResponse = string[];
