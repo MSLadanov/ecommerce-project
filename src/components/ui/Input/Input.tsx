@@ -12,7 +12,9 @@ interface IInputProps {
   value: TValueTypes;
   setValue: Dispatch<SetStateAction<string | number>>;
   required?: boolean;
-  className?: string
+  className?: string;
+  onFocusAction?: () => void;
+  onBlurAction?: () => void;
 }
 
 export const Input: React.FC<IInputProps> = ({
@@ -22,7 +24,9 @@ export const Input: React.FC<IInputProps> = ({
   value,
   setValue,
   required = false,
-  className = ''
+  className = "",
+  onFocusAction,
+  onBlurAction
 }): ReactElement => {
   const handleChange = (changedValue: string) => {
     setValue(changedValue);
@@ -37,6 +41,8 @@ export const Input: React.FC<IInputProps> = ({
         autoComplete=""
         required={required}
         onChange={(e) => handleChange(e.target.value)}
+        onFocus={() => onFocusAction()}
+        onBlur={() => onBlurAction()}
       />
     </div>
   );

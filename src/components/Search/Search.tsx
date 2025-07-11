@@ -1,5 +1,5 @@
 import { Input } from "@components/ui/Input";
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearch } from "@hooks/useSearch";
 import { Flex } from "@components/ui/Flex";
 import { useApi } from "@hooks/useApi";
@@ -59,6 +59,7 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
 
 export const Search = (): ReactElement => {
   const { search, setSearch } = useSearch((state) => state);
+  const [isFocused, setIsFocused] = useState(false)
   return (
     <Flex className="search-box" flexDirection="column">
       <Input
@@ -67,6 +68,8 @@ export const Search = (): ReactElement => {
         type="text"
         value={search}
         setValue={setSearch}
+        onFocusAction={() => setIsFocused(true)}
+        onBlurAction={() => setIsFocused(false)}
       />
       {!!search.length && <SearchResults searchQuery={search} />}
     </Flex>
