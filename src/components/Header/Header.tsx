@@ -17,6 +17,7 @@ import "./style.scss";
 export const Header = (): ReactElement => {
   const { isAuth, clearAuth } = useAuth();
   const navigate = useNavigate();
+  const [isFocused, setIsFocused] = useState(false);
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
     false
   );
@@ -25,11 +26,18 @@ export const Header = (): ReactElement => {
   >(false);
   return (
     <header>
-      <div className="header__logo-search">
+      <div
+        className={
+          isFocused ? `header__logo-search focused` : `header__logo-search`
+        }
+      >
         <div className="header__logo" onClick={() => navigate("/products")}>
           <p>W-BOZONE</p>
         </div>
-        <Search />
+        <Search
+          onFocusAction={() => setIsFocused(true)}
+          onBlurAction={() => setIsFocused(false)}
+        />
       </div>
 
       <nav>
@@ -53,7 +61,6 @@ export const Header = (): ReactElement => {
             >
               <FaUserCircle />
               <p>Account</p>
-              
             </Button>
             <Button onClickAction={() => clearAuth()} orientation="vertical">
               <GoSignOut />

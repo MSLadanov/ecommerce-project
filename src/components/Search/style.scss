@@ -4,20 +4,10 @@
   font-family: "GT Eesti Pro Display Regular";
   position: relative;
   width: 100%;
-  &.focused {
-    @include mobile {
-      width: 168%;
-    }
-  }
   .search-bar {
     display: flex;
     width: 100%;
     transition: width ease-out 0.5s;
-    &.focused {
-      @include mobile {
-        width: 168%;
-      }
-    }
     input {
       font-family: "GT Eesti Pro Display Thin";
       border-radius: 8px;
@@ -43,11 +33,6 @@
     border-left: 1px solid $wb-base;
     border-right: 1px solid $wb-base;
     overflow: scroll;
-    &.focused {
-      @include mobile {
-        width: 168%;
-      }
-    }
     p {
       padding: 5%;
     }
