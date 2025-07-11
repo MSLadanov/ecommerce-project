@@ -4,14 +4,24 @@
   font-family: "GT Eesti Pro Display Regular";
   position: relative;
   width: 100%;
+  &.focused {
+    @include mobile {
+      width: 168%;
+    }
+  }
   .search-bar {
     display: flex;
     width: 100%;
+    transition: width ease-out 0.5s;
+    &.focused {
+      @include mobile {
+        width: 168%;
+      }
+    }
     input {
       font-family: "GT Eesti Pro Display Thin";
       border-radius: 8px;
       width: 100%;
-      margin-left: 3%;
       height: 40px;
       padding: 2%;
       outline: none;
@@ -23,10 +33,9 @@
   }
 
   .search-results {
-    width: 97%;
+    width: 100%;
     background-color: white;
     position: absolute;
-    margin-left: 3%;
     top: 34px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -34,7 +43,12 @@
     border-left: 1px solid $wb-base;
     border-right: 1px solid $wb-base;
     overflow: scroll;
-    p{
+    &.focused {
+      @include mobile {
+        width: 168%;
+      }
+    }
+    p {
       padding: 5%;
     }
     .most-rated-card {
@@ -48,10 +62,10 @@
         justify-content: space-between;
         background-color: transparent;
         width: 70%;
-        h4{
+        h4 {
           @include mobile {
-          width: 50%;
-        }
+            width: 50%;
+          }
         }
         h1,
         h3,

@@ -11,10 +11,12 @@ import "./style.scss";
 
 interface ISearchResultsProps {
   searchQuery: string;
+  isSearchFocused: boolean;
 }
 
 const SearchResults: React.FC<ISearchResultsProps> = ({
   searchQuery,
+  isSearchFocused,
 }): ReactElement => {
   const { get } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
@@ -27,7 +29,11 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
   }, [refetch, searchQuery]);
   if (isLoading) {
     return (
-      <div className="search-results">
+      <div
+        className={
+          isSearchFocused ? `search-results focused` : `search-results`
+        }
+      >
         <Loader />
       </div>
     );
@@ -37,13 +43,19 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
   }
   if (data.products.length === 0) {
     return (
-      <div className="search-results">
+      <div
+        className={
+          isSearchFocused ? `search-results focused` : `search-results`
+        }
+      >
         <p>No results</p>
       </div>
     );
   }
   return (
-    <div className="search-results">
+    <div
+      className={isSearchFocused ? `search-results focused` : `search-results`}
+    >
       {data.products.map((product) => (
         <ProductBadge
           key={product.id}
@@ -59,11 +71,14 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
 
 export const Search = (): ReactElement => {
   const { search, setSearch } = useSearch((state) => state);
-  const [isFocused, setIsFocused] = useState(false)
+  const [isFocused, setIsFocused] = useState(false);
   return (
-    <Flex className="search-box" flexDirection="column">
+    <Flex
+      className={isFocused ? `search-box focused` : `search-box`}
+      flexDirection="column"
+    >
       <Input
-        className="search-bar"
+        className={isFocused ? `search-bar focused` : `search-bar`}
         id="search"
         type="text"
         value={search}
@@ -71,7 +86,9 @@ export const Search = (): ReactElement => {
         onFocusAction={() => setIsFocused(true)}
         onBlurAction={() => setIsFocused(false)}
       />
-      {!!search.length && <SearchResults searchQuery={search} />}
+      {!!search.length && (
+        <SearchResults searchQuery={search} isSearchFocused={isFocused} />
+      )}
     </Flex>
   );
 };
