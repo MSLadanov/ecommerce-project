@@ -18,6 +18,10 @@ header {
     &__logo-search {
       display: flex;
       width: 65%;
+      transition: width ease-in 0.5s;
+      @include mobile {
+        width: 100%;
+      }
     }
     &__logo {
       display: flex;
@@ -47,8 +51,15 @@ header {
     width: 30%;
     align-content: center;
     justify-content: space-between;
+    transition: width ease-in 0.5s;
     @include mobile {
       width: 45%;
+    }
+    &.hide{
+      @include mobile {
+      opacity: 0;
+      width: 0%;
+    }
     }
   }
   button {

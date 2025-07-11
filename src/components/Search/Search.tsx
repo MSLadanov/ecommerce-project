@@ -1,6 +1,5 @@
 import { Input } from "@components/ui/Input";
 import { ReactElement, useEffect } from "react";
-import { useSearch } from "@hooks/useSearch";
 import { Flex } from "@components/ui/Flex";
 import { useApi } from "@hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
@@ -58,15 +57,18 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
 };
 
 interface ISearchProps {
+  search: string;
+  setSearch: (searchQuery: string) => void;
   onFocusAction: () => void;
   onBlurAction: () => void;
 }
 
 export const Search: React.FC<ISearchProps> = ({
+  search,
+  setSearch,
   onFocusAction,
   onBlurAction,
 }): ReactElement => {
-  const { search, setSearch } = useSearch((state) => state);
   return (
     <Flex className="search-box" flexDirection="column">
       <Input

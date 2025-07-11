@@ -12,12 +12,14 @@ import { useNavigate } from "react-router";
 import { CartCountBadge } from "@components/CartCountBadge";
 import { useAuth } from "@hooks/useAuth";
 import { Search } from "@components/Search";
+import { useSearch } from "@hooks/useSearch";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
   const { isAuth, clearAuth } = useAuth();
   const navigate = useNavigate();
-  const [isFocused, setIsFocused] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const { search, setSearch } = useSearch((state) => state);
   const [authModalVisibility, setAuthModalVisibility] = useState<true | false>(
     false
   );
@@ -28,19 +30,23 @@ export const Header = (): ReactElement => {
     <header>
       <div
         className={
-          isFocused ? `header__logo-search focused` : `header__logo-search`
+          isSearchFocused
+            ? `header__logo-search focused`
+            : `header__logo-search`
         }
       >
         <div className="header__logo" onClick={() => navigate("/products")}>
           <p>W-BOZONE</p>
         </div>
         <Search
-          onFocusAction={() => setIsFocused(true)}
-          onBlurAction={() => setIsFocused(false)}
+          search={search}
+          setSearch={setSearch}
+          onFocusAction={() => setIsSearchFocused(true)}
+          onBlurAction={() => !search && setIsSearchFocused(false)}
         />
       </div>
 
-      <nav>
+      <nav className={isSearchFocused ? "hide" : ""}>
         <Button
           orientation="vertical"
           onClickAction={() => setCatalogueModalVisibility(true)}
