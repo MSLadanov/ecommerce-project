@@ -1,6 +1,10 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import './style.scss'
 
-export const Select = () : ReactElement => {
-    return <select></select>
+interface ISelectProps {
+    children: ReactNode[]
+}
+
+export const Select : React.FC<ISelectProps> = ({children}) : ReactElement => {
+    return <select>{children}</select>
 }
