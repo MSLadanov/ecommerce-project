@@ -1,12 +1,12 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import { Select } from "@components/ui/Select";
 
 interface ISortProps {
-    options: string
+    children: ReactNode[]
 }
 
-export const Sort : React.FC<ISortProps> = ({options}) : ReactElement => {
+export const Sort : React.FC<ISortProps> = ({children}) : ReactElement => {
     return <Select>
-        {options}
+        {children}
     </Select> 
 }
