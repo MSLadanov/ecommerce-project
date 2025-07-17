@@ -3,15 +3,13 @@ import { Select } from "@components/ui/Select";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions, orderOptions } from "./options";
 
-interface ISortProps {
-
-}
+interface ISortProps {}
 
 type TSortType = "" | "rating" | "price";
 
 export const Sort: React.FC<ISortProps> = (): ReactElement => {
   const [sortBy, setSortBy] = useState<TSortType>("");
-  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [order, setOrder] = useState("asc");
   useEffect(() => {
     console.log(sortBy, order);
   }, [sortBy, order]);
@@ -22,11 +20,7 @@ export const Sort: React.FC<ISortProps> = (): ReactElement => {
         options={sortOptions}
         onChangeAction={setSortBy}
       />
-      <Select
-        name="order"
-        options={orderOptions}
-        onChangeAction={setOrder}
-      />
+      <Select name="order" options={orderOptions} onChangeAction={setOrder} />
     </Flex>
   );
 };
