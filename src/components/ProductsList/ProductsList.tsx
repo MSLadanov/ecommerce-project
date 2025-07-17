@@ -1,6 +1,6 @@
 import { IProduct, IProductsResponse } from "@/types/Products";
 import { useApi } from "@hooks/useApi";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactElement, useEffect } from "react";
 import { ProductCard } from "@components/ProductCard";
 import { Grid } from "@components/ui/Grid/Grid";
@@ -9,6 +9,10 @@ import { Loader } from "@components/Loader";
 import { Sort } from "@components/Sort";
 
 export const ProductsList = (): ReactElement => {
+  const { data: products, mutate } = useMutation<IProductsResponse>({
+    mutationKey: ["products"],
+    mutationFn: () => products.products.sort((a, b) => a.price - b.price),
+  });
   const { get } = useApi();
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
@@ -31,7 +35,7 @@ export const ProductsList = (): ReactElement => {
   }
   return (
     <>
-      <Sort />
+      <Sort sortFn={mutate} />
       <Grid className="product-list" size="xs">
         {data.products.map((product: IProduct) => (
           <ProductCard key={product.id} data={product} />

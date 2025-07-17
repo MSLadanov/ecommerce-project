@@ -3,7 +3,9 @@ import { Select } from "@components/ui/Select";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions, orderOptions } from "./options";
 
-interface ISortProps {}
+interface ISortProps {
+  sortFn: () => void
+}
 
 type TSortType = "" | "rating" | "price";
 
