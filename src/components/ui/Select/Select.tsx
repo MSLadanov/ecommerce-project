@@ -5,20 +5,21 @@ interface IOption {
   id: number;
   value: string;
   title: string;
-  selected: boolean;
+  selected?: boolean;
+  disabled?: boolean;
 }
 
 interface ISelectProps {
   name: string;
   options: IOption[];
-  required: boolean;
+  required?: boolean;
   onChangeAction: (value: string) => void;
 }
 
 export const Select: React.FC<ISelectProps> = ({
   name,
   options,
-  required,
+  required = false,
   onChangeAction,
 }): ReactElement => {
   return (
@@ -28,7 +29,12 @@ export const Select: React.FC<ISelectProps> = ({
       onChange={(e) => onChangeAction(e.target.value)}
     >
       {options.map((option) => (
-        <option key={option.id} value={option.value} selected={option.selected}>
+        <option
+          key={option.id}
+          value={option.value}
+          selected={option.selected}
+          disabled={option.disabled}
+        >
           {option.title}
         </option>
       ))}
