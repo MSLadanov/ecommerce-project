@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import "./style.scss";
 
 interface IOption {
@@ -13,7 +13,7 @@ interface ISelectProps {
   name: string;
   options: IOption[];
   required?: boolean;
-  onChangeAction: (value: string) => void;
+  onChangeAction: Dispatch<SetStateAction<string | number>>;
 }
 
 export const Select: React.FC<ISelectProps> = ({
