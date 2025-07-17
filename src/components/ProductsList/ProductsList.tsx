@@ -9,9 +9,14 @@ import { Loader } from "@components/Loader";
 import { Sort } from "@components/Sort";
 
 export const ProductsList = (): ReactElement => {
-  const { data: products, mutate } = useMutation<IProductsResponse>({
+  const { data: sortedData, mutate } = useMutation<IProductsResponse>({
     mutationKey: ["products"],
-    mutationFn: () => products.products.sort((a, b) => a.price - b.price),
+    mutationFn: () => {
+      return {
+        ...sortedData,
+        products: sortedData.products.sort((a, b) => a.price - b.price),
+      };
+    },
   });
   const { get } = useApi();
   const [searchParams] = useSearchParams();
