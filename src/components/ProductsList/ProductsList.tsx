@@ -6,6 +6,7 @@ import { ProductCard } from "@components/ProductCard";
 import { Grid } from "@components/ui/Grid/Grid";
 import { useSearchParams } from "react-router";
 import { Loader } from "@components/Loader";
+import { Sort } from "@components/Sort";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
@@ -29,10 +30,13 @@ export const ProductsList = (): ReactElement => {
     return <div>Error</div>;
   }
   return (
-    <Grid className="product-list" size="xs">
-      {data.products.map((product: IProduct) => (
-        <ProductCard key={product.id} data={product} />
-      ))}
-    </Grid>
+    <>
+      <Sort />
+      <Grid className="product-list" size="xs">
+        {data.products.map((product: IProduct) => (
+          <ProductCard key={product.id} data={product} />
+        ))}
+      </Grid>
+    </>
   );
 };

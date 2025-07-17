@@ -1,12 +1,20 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, useState } from "react";
 import { Select } from "@components/ui/Select";
+import { Flex } from "@components/ui/Flex";
 
 interface ISortProps {
-    children: ReactNode[]
+  setSortBy: () => void;
 }
 
-export const Sort : React.FC<ISortProps> = ({children}) : ReactElement => {
-    return <Select>
-        {children}
-    </Select> 
-}
+type TSortType = "" | "rating" | "price";
+
+export const Sort: React.FC<ISortProps> = (): ReactElement => {
+  const [sortBy, setSortBy] = useState<TSortType>("");
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  return (
+    <Flex>
+      <Select />
+      <Select />
+    </Flex>
+  );
+};
