@@ -4,7 +4,7 @@ import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
 
 interface ISortProps {
-  sortFn: () => void
+  sortFn: (sortType: string) => void
 }
 
 export const Sort: React.FC<ISortProps> = ({sortFn}): ReactElement => {
