@@ -8,13 +8,13 @@ export const orderOptions = [
   },
   {
     id: 2,
-    value: "Desc",
+    value: "desc",
     title: "Desc",
     selected: false,
   },
   {
     id: 3,
-    value: "Asc",
+    value: "dsc",
     title: "Asc",
     selected: false,
   },
