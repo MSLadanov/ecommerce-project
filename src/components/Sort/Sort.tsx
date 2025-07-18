@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Select } from "@components/ui/Select";
+import { Button } from "@components/ui/Button";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
 import { useNavigate, useLocation } from "react-router";
@@ -17,13 +18,30 @@ export const Sort = (): ReactElement => {
       search: searchParams.toString(),
     });
   };
+
+  const resetSorting = () => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.delete("sortBy");
+    searchParams.delete("order");
+    navigate({
+      pathname: location.pathname,
+      search: searchParams.toString(),
+    });
+  };
+
   return (
-    <Flex justifyContent="flex-end">
+    <Flex className="sort-box" >
       <Select
         name="sort-type"
         options={sortOptions}
         onChangeAction={sortProducts}
       />
+      <Button
+        onClickAction={resetSorting}
+        disabled={!location.search.includes("sortBy")}
+      >
+        Reset
+      </Button>
     </Flex>
   );
 };

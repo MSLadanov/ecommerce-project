@@ -27,7 +27,11 @@ export const Select: React.FC<ISelectProps> = ({
       name={name}
       required={required}
       onChange={(e) => onChangeAction(e.target.value)}
+      defaultValue={"Select"}
     >
+      <option selected disabled>
+        Select
+      </option>
       {options.map((option) => (
         <option
           key={option.id}

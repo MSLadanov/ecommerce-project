@@ -7,6 +7,7 @@ interface IButtonProps {
   type?: "submit" | "reset" | "button";
   styleGuide?: "ozon" | "wb" | "";
   orientation?: "vertical" | "horizontal";
+  disabled?: boolean;
 }
 
 export const Button: React.FC<IButtonProps> = ({
@@ -15,12 +16,14 @@ export const Button: React.FC<IButtonProps> = ({
   type = "button",
   styleGuide = "",
   orientation = "horizontal",
+  disabled = false,
 }): ReactElement => {
   return (
     <button
       type={type}
       className={styleGuide + " " + orientation}
       onClick={() => onClickAction()}
+      disabled={disabled}
     >
       {children}
     </button>

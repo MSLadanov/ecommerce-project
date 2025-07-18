@@ -1,37 +1,30 @@
 export const sortOptions = [
   {
     id: 1,
-    value: "----",
-    title: "Sort by...",
-    selected: true,
-    disabled: true,
-  },
-  {
-    id: 2,
     value: "price desc",
     title: "Costly",
     selected: false,
   },
   {
-    id: 3,
+    id: 2,
     value: "price asc",
     title: "Cheaper",
     selected: false,
   },
   {
-    id: 4,
+    id: 3,
     value: "rating asc",
     title: "Popular",
     selected: false,
   },
   {
-    id: 5,
+    id: 4,
     value: "reviews asc",
     title: "Reviewed",
     selected: false,
   },
   {
-    id: 6,
+    id: 5,
     value: "discountPercentage asc",
     title: "Discount",
     selected: false,
