@@ -2,16 +2,19 @@ import { ReactElement } from "react";
 import { Select } from "@components/ui/Select";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
-import { useNavigate } from "react-router";
-import { useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 export const Sort = (): ReactElement => {
   const location = useLocation();
   const navigate = useNavigate();
   const sortProducts = (sortOption: string) => {
-    navigate(
-      `${location.pathname + location.search}?sortBy=${sortOption}&order=asc`
-    );
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("sortBy", sortOption);
+    searchParams.set("order", "asc");
+    navigate({
+      pathname: location.pathname,
+      search: searchParams.toString(),
+    });
   };
   return (
     <Flex justifyContent="flex-end">
