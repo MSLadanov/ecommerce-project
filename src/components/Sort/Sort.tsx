@@ -7,10 +7,11 @@ import { useNavigate, useLocation } from "react-router";
 export const Sort = (): ReactElement => {
   const location = useLocation();
   const navigate = useNavigate();
-  const sortProducts = (sortOption: string) => {
+  const sortProducts = (options: string) => {
     const searchParams = new URLSearchParams(location.search);
-    searchParams.set("sortBy", sortOption);
-    searchParams.set("order", "asc");
+    const [sort, order] = options.split(" ");
+    searchParams.set("sortBy", sort);
+    searchParams.set("order", order);
     navigate({
       pathname: location.pathname,
       search: searchParams.toString(),

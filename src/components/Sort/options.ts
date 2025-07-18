@@ -1,48 +1,39 @@
-export const orderOptions = [
-  {
-    id: 1,
-    value: "----",
-    title: "----",
-    selected: true,
-    disabled: true,
-  },
-  {
-    id: 2,
-    value: "desc",
-    title: "Desc",
-    selected: false,
-  },
-  {
-    id: 3,
-    value: "dsc",
-    title: "Asc",
-    selected: false,
-  },
-];
 export const sortOptions = [
   {
     id: 1,
     value: "----",
-    title: "----",
+    title: "Sort by...",
     selected: true,
     disabled: true,
   },
   {
     id: 2,
-    value: "price",
-    title: "Price",
+    value: "price desc",
+    title: "Costly",
     selected: false,
   },
   {
     id: 3,
-    value: "rating",
-    title: "Rating",
+    value: "price asc",
+    title: "Cheaper",
     selected: false,
   },
   {
     id: 4,
-    value: "reviews",
-    title: "Reviews",
+    value: "rating asc",
+    title: "Popular",
+    selected: false,
+  },
+  {
+    id: 5,
+    value: "reviews asc",
+    title: "Reviewed",
+    selected: false,
+  },
+  {
+    id: 6,
+    value: "discountPercentage asc",
+    title: "Discount",
     selected: false,
   },
 ];

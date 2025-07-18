@@ -13,7 +13,7 @@ interface ISelectProps {
   name: string;
   options: IOption[];
   required?: boolean;
-  onChangeAction: Dispatch<SetStateAction<string | number>>;
+  onChangeAction: Dispatch<SetStateAction<string | number | object>>;
 }
 
 export const Select: React.FC<ISelectProps> = ({
