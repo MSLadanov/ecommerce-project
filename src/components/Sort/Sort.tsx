@@ -4,17 +4,13 @@ import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
 
 interface ISortProps {
-  sortFn: (sortType: string) => void
+  sortFn: () => void;
 }
 
-export const Sort: React.FC<ISortProps> = ({sortFn}): ReactElement => {
+export const Sort: React.FC<ISortProps> = ({ sortFn }): ReactElement => {
   return (
     <Flex justifyContent="flex-end">
-      <Select
-        name="sort-type"
-        options={sortOptions}
-        onChangeAction={sortFn}
-      />
+      <Select name="sort-type" options={sortOptions} onChangeAction={sortFn} />
     </Flex>
   );
 };

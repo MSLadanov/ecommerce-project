@@ -1,6 +1,6 @@
 import { IProduct, IProductsResponse } from "@/types/Products";
 import { useApi } from "@hooks/useApi";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactElement, useEffect } from "react";
 import { ProductCard } from "@components/ProductCard";
 import { Grid } from "@components/ui/Grid/Grid";
@@ -25,6 +25,10 @@ export const ProductsList = (): ReactElement => {
     queryKey: ["products"],
     queryFn: () => get<IProductsResponse>("PRODUCTS", queryParam),
   });
+  const { mutate } = useMutation({
+    mutationKey: ["products"],
+    mutationFn: () => get<IProductsResponse>("PRODUCTS", queryParam),
+  });
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -36,7 +40,7 @@ export const ProductsList = (): ReactElement => {
   }
   return (
     <>
-      <Sort sortFn={() => {}} />
+      <Sort sortFn={mutate} />
       <Grid className="product-list" size="xs">
         {data.products.map((product: IProduct) => (
           <ProductCard key={product.id} data={product} />
