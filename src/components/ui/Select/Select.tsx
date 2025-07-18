@@ -16,32 +16,17 @@ interface ISelectProps {
   onChangeAction: Dispatch<SetStateAction<string | number | object>>;
 }
 
-export const Select: React.FC<ISelectProps> = ({
-  name,
-  options,
-  required = false,
-  onChangeAction,
-}): ReactElement => {
+export const Select: React.FC<ISelectProps> = ({ options, onChangeAction }): ReactElement => {
   return (
-    <select
-      name={name}
-      required={required}
-      onChange={(e) => onChangeAction(e.target.value)}
-      defaultValue={"Select"}
-    >
-      <option selected disabled>
-        Select
-      </option>
-      {options.map((option) => (
-        <option
-          key={option.id}
-          value={option.value}
-          selected={option.selected}
-          disabled={option.disabled}
-        >
-          {option.title}
-        </option>
-      ))}
-    </select>
+    <div className="select-box">
+      <div className="select-button"></div>
+      <div className="select-options">
+        {options.map((option) => (
+          <div className="select-option" key={option.id} onClick={() => onChangeAction(option.value)}>
+            {option.title}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
