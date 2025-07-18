@@ -14,8 +14,13 @@ export const ProductsList = (): ReactElement => {
   const category = searchParams.get("category");
   const sortBy = searchParams.get("sortBy");
   const order = searchParams.get("order");
-  console.log(sortBy, order)
-  const queryParam = category ? `/category/${category}` : "";
+  const queryParam = category
+    ? sortBy
+      ? `/category/${category}?sortBy=${sortBy}&order=${order}`
+      : `/category/${category}`
+    : sortBy
+    ? `?sortBy=${sortBy}&order=${order}`
+    : "";
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["products"],
     queryFn: () => get<IProductsResponse>("PRODUCTS", queryParam),
