@@ -1,18 +1,21 @@
 .select{
     &-box{
         font-family: "GT Eesti Pro Display Regular";
+        position: relative;
     }
     &-button{
 
     }
     &-options{
+        position: absolute;
+        z-index: 2;
         height: 0%;
         overflow: hidden;
         opacity: 0;
         transition: all 0.5s;
         &.open{
             opacity: 1;
-            height: 100%;
+            height: auto;
         }
     }
     &-option{
