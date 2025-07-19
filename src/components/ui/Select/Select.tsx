@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import "./style.scss";
 
 interface IOption {
@@ -13,15 +13,18 @@ interface ISelectProps {
   text: string;
   options: IOption[];
   required?: boolean;
+  selectedOption: string;
+  setSelectedOption: Dispatch<SetStateAction<string>>;
   onChangeAction: Dispatch<SetStateAction<string | number | object>>;
 }
 
 export const Select: React.FC<ISelectProps> = ({
   text,
   options,
+  selectedOption,
+  setSelectedOption,
   onChangeAction,
 }): ReactElement => {
-  const [selectedOption, setSelectedOption] = useState(null);
   return (
     <div className="select-box">
       <div className="select-button">
