@@ -1,4 +1,5 @@
-import { Dispatch, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction, useState } from "react";
+import { useOutsideClick } from "@hooks/useOutsideClick";
 import "./style.scss";
 
 interface IOption {
@@ -25,12 +26,20 @@ export const Select: React.FC<ISelectProps> = ({
   setSelectedOption,
   onChangeAction,
 }): ReactElement => {
+  const [openSelect, setOpenSelect] = useState(false);
+  const ref = useOutsideClick<HTMLDivElement>(
+    () => setOpenSelect(false),
+    openSelect
+  );
   return (
     <div className="select-box">
-      <div className="select-button">
+      <div className="select-button" onClick={() => setOpenSelect(true)}>
         {!selectedOption ? text : selectedOption}
       </div>
-      <div className="select-options">
+      <div
+        ref={ref}
+        className={openSelect ? "select-options open" : "select-options"}
+      >
         {options.map((option) => (
           <div
             className="select-option"
@@ -38,6 +47,7 @@ export const Select: React.FC<ISelectProps> = ({
             onClick={() => {
               onChangeAction(option.value);
               setSelectedOption(option.title);
+              setOpenSelect(false);
             }}
           >
             {option.title}
