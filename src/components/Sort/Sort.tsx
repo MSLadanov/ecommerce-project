@@ -32,7 +32,7 @@ export const Sort = (): ReactElement => {
   return (
     <Flex className="sort-box" >
       <Select
-        name="sort-type"
+        text="Sort by..."
         options={sortOptions}
         onChangeAction={sortProducts}
       />
