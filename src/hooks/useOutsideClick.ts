@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useOutsideClick = <T extends HTMLElement = HTMLDialogElement>(
+export const useOutsideClick = <T extends HTMLElement = HTMLDialogElement | HTMLDivElement>(
   callback: () => void,
   isOpened: boolean,
   isInsideClickClosing: boolean = false

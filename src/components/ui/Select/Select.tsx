@@ -1,5 +1,12 @@
-import { Dispatch, ReactElement, SetStateAction, useState } from "react";
-import { useOutsideClick } from "@hooks/useOutsideClick";
+import {
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import "./style.scss";
 
 interface IOption {
@@ -27,33 +34,47 @@ export const Select: React.FC<ISelectProps> = ({
   onChangeAction,
 }): ReactElement => {
   const [openSelect, setOpenSelect] = useState(false);
-  const ref = useOutsideClick<HTMLDivElement>(
-    () => setOpenSelect(false),
-    openSelect
-  );
+  const selectRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setOpenSelect(false);
+      }
+    };
+    if (openSelect) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openSelect]);
+
   return (
-    <div className="select-box">
-      <div className="select-button" onClick={() => setOpenSelect(true)}>
+    <div className="select-box" ref={selectRef}>
+      <div className="select-button" onClick={() => setOpenSelect(!openSelect)}>
         {!selectedOption ? text : selectedOption}
+        {openSelect ? <FaArrowUp /> : <FaArrowDown />}
       </div>
-      <div
-        ref={ref}
-        className={openSelect ? "select-options open" : "select-options"}
-      >
-        {options.map((option) => (
-          <div
-            className="select-option"
-            key={option.id}
-            onClick={() => {
-              onChangeAction(option.value);
-              setSelectedOption(option.title);
-              setOpenSelect(false);
-            }}
-          >
-            {option.title}
-          </div>
-        ))}
-      </div>
+      {openSelect && (
+        <div className="select-options open">
+          {options.map((option) => (
+            <div
+              className="select-option"
+              key={option.id}
+              onClick={() => {
+                onChangeAction(option.value);
+                setSelectedOption(option.title);
+                setOpenSelect(false);
+              }}
+            >
+              {option.title}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
