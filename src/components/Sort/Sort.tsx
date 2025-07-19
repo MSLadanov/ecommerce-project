@@ -4,12 +4,13 @@ import { Button } from "@components/ui/Button";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
 import { useSort } from "@hooks/useSort";
+import './style.scss'
 
 export const Sort = (): ReactElement => {
   const [selectedOption, setSelectedOption] = useState("");
   const { sortProducts, resetSorting } = useSort(() => setSelectedOption(""));
   return (
-    <Flex className="sort-box">
+    <Flex className="sort-box" justifyContent="end">
       <Select
         text="Sort by..."
         options={sortOptions}
