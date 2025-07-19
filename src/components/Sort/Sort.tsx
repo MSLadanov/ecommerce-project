@@ -3,32 +3,11 @@ import { Select } from "@components/ui/Select";
 import { Button } from "@components/ui/Button";
 import { Flex } from "@components/ui/Flex";
 import { sortOptions } from "./options";
-import { useNavigate, useLocation } from "react-router";
+import { useSort } from "@hooks/useSort";
 
 export const Sort = (): ReactElement => {
   const [selectedOption, setSelectedOption] = useState("");
-  const location = useLocation();
-  const navigate = useNavigate();
-  const sortProducts = (options: string) => {
-    const searchParams = new URLSearchParams(location.search);
-    const [sort, order] = options.split(" ");
-    searchParams.set("sortBy", sort);
-    searchParams.set("order", order);
-    navigate({
-      pathname: location.pathname,
-      search: searchParams.toString(),
-    });
-  };
-  const resetSorting = () => {
-    const searchParams = new URLSearchParams(location.search);
-    searchParams.delete("sortBy");
-    searchParams.delete("order");
-    navigate({
-      pathname: location.pathname,
-      search: searchParams.toString(),
-    });
-    setSelectedOption("");
-  };
+  const { sortProducts, resetSorting } = useSort(() => setSelectedOption(""));
   return (
     <Flex className="sort-box">
       <Select
