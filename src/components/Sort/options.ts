@@ -13,7 +13,7 @@ export const sortOptions = [
   },
   {
     id: 3,
-    value: "rating asc",
+    value: "rating desc",
     title: "Popular",
     selected: false,
   },
@@ -25,7 +25,7 @@ export const sortOptions = [
   },
   {
     id: 5,
-    value: "discountPercentage asc",
+    value: "discountPercentage desc",
     title: "Discount",
     selected: false,
   },
