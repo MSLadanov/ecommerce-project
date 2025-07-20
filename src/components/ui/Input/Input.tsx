@@ -32,7 +32,7 @@ export const Input: React.FC<IInputProps> = ({
     setValue(changedValue);
   };
   return (
-    <div className={className}>
+    <div className={'input-field ' + className}>
       <label htmlFor={id}>{label}</label>
       <input
         type={type}

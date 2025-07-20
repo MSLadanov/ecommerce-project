@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useOutsideClick } from "@hooks/useOutsideClick";
-import { Button } from "@components/ui/Button";
+// import { Button } from "@components/ui/Button";
 import "./style.scss";
 
 interface IModalProps {
@@ -42,7 +42,7 @@ export const Modal: React.FC<IModalProps> = ({
         onClick={() => isInsideClickClosing && ref.current.close()}
       >
         {children}
-        <Button
+        {/* <Button
           onClickAction={() => {
             ref.current.close();
             closeModal();
@@ -50,7 +50,7 @@ export const Modal: React.FC<IModalProps> = ({
           aria-label="Close Modal"
         >
           Close Me
-        </Button>
+        </Button> */}
       </dialog>
     );
   }

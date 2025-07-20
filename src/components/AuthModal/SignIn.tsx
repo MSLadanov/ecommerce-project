@@ -35,11 +35,11 @@ export const SignIn: React.FC<ISignInProps> = ({
     }
   };
   return (
-    <form onSubmit={(e) => submitForm(e)}>
+    <form className="sign-in-form" onSubmit={(e) => submitForm(e)}>
       <Input
         id="username"
         type="text"
-        label="username"
+        label="Username:"
         value={username}
         setValue={setUserName}
         required
@@ -47,13 +47,13 @@ export const SignIn: React.FC<ISignInProps> = ({
       <Input
         id="password"
         type="password"
-        label="password"
+        label="Password:"
         value={password}
         setValue={setPassword}
         required
       />
       <Button type="submit">Sign In</Button>
-      <p onClick={() => switchToSignUp()}>Sign Up</p>
+      <Button onClickAction={() => switchToSignUp()}>Sign Up</Button>
       <Notify
         ref={notifyRef}
         notifyVisibility={isNotifyShowed}

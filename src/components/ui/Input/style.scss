@@ -1,1 +1,33 @@
+@use "../../../globals.scss" as *;
 
+.input-field {
+  position: relative;
+  width: 100%;
+  label {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 10%;
+    font-size: 12px;
+  }
+  input {
+    &[type="text"],
+    &[type="password"],
+    &[type="email"],
+    &[type="tel"],
+    &[type="number"] {
+      margin: 20% 0%;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      outline: none;
+      padding: 5% 10%;
+      background-color: #f1f1f5;
+      transition: all ease-in 0.1s;
+      &:focus {
+        border: 1px solid $wb-base;
+        background-color: transparent;
+      }
+    }
+  }
+}
