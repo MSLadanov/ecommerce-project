@@ -27,7 +27,7 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
       flexDirection="column"
       justifyContent="space-between"
     >
-      <FavouriteButton/>
+      <FavouriteButton product={data} />
       <a href={`/product?id=${data.id}`}>
         <Flex className="product-card__image" alignItems="align-center">
           <img src={data.images[0]} alt={data.title + " image"} />
