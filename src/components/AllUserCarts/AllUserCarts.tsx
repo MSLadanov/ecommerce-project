@@ -7,6 +7,7 @@ import { ICart, ICartResponse } from "@/types/Carts";
 import { Flex } from "@components/ui/Flex";
 import { CartItem } from "@components/CartItem";
 import { Loader } from "@components/Loader";
+import { EmptyOrders } from "@components/EmptyOrders";
 import "./style.scss";
 
 interface IPreviousOrderedCartsProps {
@@ -46,7 +47,7 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
     return <div>Error</div>;
   }
   if (!data.carts.length) {
-    return <div>No previous carts</div>;
+    return <EmptyOrders />;
   }
   return (
     <Flex className="previous-ordered" flexDirection="column">

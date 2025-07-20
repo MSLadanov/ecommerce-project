@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { CartItem } from "@components/CartItem";
 import { useCart } from "@hooks/useCart";
 import { Flex } from "@components/ui/Flex";
-import { EmptyCart } from "../EmptyCart";
+import { EmptyCart } from "@components/EmptyCart";
 import "./style.scss";
 
 export const CurrentCart = (): ReactElement => {
