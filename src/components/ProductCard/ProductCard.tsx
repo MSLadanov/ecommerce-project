@@ -6,12 +6,12 @@ import {
   FaDollarSign,
   FaShoppingCart,
   FaStar,
-  FaRegHeart,
 } from "react-icons/fa";
 import { Button } from "@components/ui/Button";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useCart } from "@hooks/useCart";
 import "./style.scss";
+import { FavouriteButton } from "../FavouriteButton";
 
 export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
@@ -27,9 +27,7 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
       flexDirection="column"
       justifyContent="space-between"
     >
-      <div className="product-card__fav-button">
-        <FaRegHeart size={"2rem"} />
-      </div>
+      <FavouriteButton/>
       <a href={`/product?id=${data.id}`}>
         <Flex className="product-card__image" alignItems="align-center">
           <img src={data.images[0]} alt={data.title + " image"} />
