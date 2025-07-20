@@ -12,6 +12,7 @@
     transition: all ease-in 0.25s;
     color: #acacb3;
     &.focused {
+      font-size: 14px;
       top: -5%;
       left: 5%;
       color: black;

@@ -52,8 +52,8 @@ export const SignIn: React.FC<ISignInProps> = ({
         setValue={setPassword}
         required
       />
-      <Button type="submit">Sign In</Button>
-      <Button onClickAction={() => switchToSignUp()}>Sign Up</Button>
+      <Button styleGuide="ozon" type="submit">Sign In</Button>
+      {/* <Button onClickAction={() => switchToSignUp()}>Sign Up</Button> */}
       <Notify
         ref={notifyRef}
         notifyVisibility={isNotifyShowed}

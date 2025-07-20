@@ -2,10 +2,14 @@ import { ReactElement } from "react";
 import { CartItem } from "@components/CartItem";
 import { useCart } from "@hooks/useCart";
 import { Flex } from "@components/ui/Flex";
+import { EmptyCart } from "../EmptyCart";
 import "./style.scss";
 
 export const CurrentCart = (): ReactElement => {
   const { cart } = useCart((state) => state);
+  if (cart.length === 0) {
+    return <EmptyCart />;
+  }
   return (
     <Flex className="current-cart" flexDirection="column">
       {cart.map((item) => (
