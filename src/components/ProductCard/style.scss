@@ -5,6 +5,11 @@
   padding: 3%;
   background-color: white;
   border-radius: 16px;
+  position: relative;
+  &__fav-button{
+    display: inline;
+    position: absolute;
+  }
   a{
     display: flex;
     justify-content: center;
