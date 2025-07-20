@@ -6,9 +6,16 @@
   label {
     position: absolute;
     width: 100%;
-    top: 40%;
+    top: 35%;
     left: 10%;
     font-size: 12px;
+    transition: all ease-in 0.25s;
+    color: #acacb3;
+    &.focused {
+      top: -5%;
+      left: 5%;
+      color: black;
+    }
   }
   input {
     &[type="text"],
@@ -16,7 +23,7 @@
     &[type="email"],
     &[type="tel"],
     &[type="number"] {
-      margin: 20% 0%;
+      margin: 10% 0%;
       width: 100%;
       border: 1px solid transparent;
       border-radius: 12px;

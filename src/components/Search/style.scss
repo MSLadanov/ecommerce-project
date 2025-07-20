@@ -9,6 +9,8 @@
     width: 100%;
     transition: width ease-out 0.5s;
     input {
+      margin: 0%;
+      background-color: white;
       font-family: "GT Eesti Pro Display Thin";
       border-radius: 8px;
       width: 100%;
@@ -19,6 +21,9 @@
       border-top: 1px solid $wb-base;
       border-left: 1px solid $wb-base;
       border-right: 1px solid $wb-base;
+      &:focus {
+        background-color: white;
+      }
     }
   }
 

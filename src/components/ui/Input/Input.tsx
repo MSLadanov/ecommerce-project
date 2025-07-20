@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import "./style.scss";
 
 type TInputTypes = "text" | "email" | "password" | "tel" | "number";
@@ -26,14 +26,17 @@ export const Input: React.FC<IInputProps> = ({
   required = false,
   className = "",
   onFocusAction,
-  onBlurAction
+  onBlurAction,
 }): ReactElement => {
+  const [isOnFocused, setIsOnFocused] = useState(false);
   const handleChange = (changedValue: string) => {
     setValue(changedValue);
   };
   return (
-    <div className={'input-field ' + className}>
-      <label htmlFor={id}>{label}</label>
+    <div className={`input-field ${isOnFocused ? "focused " : ""}` + className}>
+      <label className={`${isOnFocused ? "focused" : ""}`} htmlFor={id}>
+        {label}
+      </label>
       <input
         type={type}
         id={id}
@@ -41,8 +44,14 @@ export const Input: React.FC<IInputProps> = ({
         autoComplete=""
         required={required}
         onChange={(e) => handleChange(e.target.value)}
-        onFocus={() => onFocusAction()}
-        onBlur={() => onBlurAction()}
+        onFocus={() => {
+          setIsOnFocused(true);
+          onFocusAction();
+        }}
+        onBlur={() => {
+          setIsOnFocused(false);
+          onBlurAction();
+        }}
       />
     </div>
   );
