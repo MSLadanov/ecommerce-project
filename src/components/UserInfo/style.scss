@@ -15,7 +15,15 @@
     align-items: center !important;
   }
   &__bio {
+    @include mobile {
+        width: 100%;
+      }
     div {
+      background-color: #eeeef2;
+      border-radius: 12px;
+      border: 1px solid #a73afd;
+      margin: 5% 0%;
+      padding: 5%;
       @include mobile {
         justify-content: center !important;
       }
@@ -24,6 +32,7 @@
   &__image {
     img {
       border-radius: 50%;
+      border: 1px solid #a73afd;
     }
   }
 }

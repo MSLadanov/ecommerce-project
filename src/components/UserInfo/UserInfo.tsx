@@ -19,7 +19,7 @@ export const UserInfo = (): ReactElement => {
       </Flex>
       <Flex className="user-info__bio" flexDirection="column">
         <Flex>{userData?.firstName}</Flex>
-        <Flex>{userData?.maidenName}</Flex>
+        {userData?.maidenName && <Flex>{userData?.maidenName}</Flex>}
         <Flex>{userData?.lastName}</Flex>
         <Flex>{userData?.email}</Flex>
         <Flex>{userData?.phone}</Flex>

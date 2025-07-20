@@ -8,6 +8,7 @@ import { Flex } from "@components/ui/Flex";
 import { CartItem } from "@components/CartItem";
 import { Loader } from "@components/Loader";
 import { EmptyOrders } from "@components/EmptyOrders";
+import { CollapseBox } from "@components/ui/CollapseBox";
 import "./style.scss";
 
 interface IPreviousOrderedCartsProps {
@@ -51,7 +52,6 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
   }
   return (
     <Flex className="previous-ordered" flexDirection="column">
-      <h1>Delivered:</h1>
       {data.carts.map((cart) => (
         <PreviousOrderedCart key={cart.id} cart={cart} />
       ))}
@@ -67,5 +67,9 @@ export const AllUserCarts = (): ReactElement => {
   if (isError) {
     return <div>{isError}</div>;
   }
-  return <PreviousOrderedCarts userData={userData} />;
+  return (
+    <CollapseBox title="Order History">
+      <PreviousOrderedCarts userData={userData} />
+    </CollapseBox>
+  );
 };

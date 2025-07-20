@@ -1,0 +1,62 @@
+.collapse-box {
+  background-color: #eeeef2;
+  border-radius: 12px;
+  border: 1px solid #a73afd;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+
+  font-family: "GT Eesti Pro Display Regular";
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(167, 58, 253, 0);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(167, 58, 253, 0);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    flex-grow: 1;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a73afd;
+    transition: transform 0.2s ease;
+    font-size: 1.2rem;
+  }
+
+  &__content {
+    transition: height 0.3s ease;
+    background-color: #fff;
+  }
+
+  &__inner {
+    padding: 1.5rem;
+  }
+
+  &--icon-left {
+    .collapse-box__header {
+      gap: 0.8rem;
+    }
+  }
+
+  &--icon-right {
+    .collapse-box__header {
+      gap: 0.8rem;
+    }
+  }
+}
