@@ -27,8 +27,8 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
       flexDirection="column"
       justifyContent="space-between"
     >
-      <div className="product-cart__fav-button">
-        <FaRegHeart color="black" size={"2rem"} />
+      <div className="product-card__fav-button">
+        <FaRegHeart size={"2rem"} />
       </div>
       <a href={`/product?id=${data.id}`}>
         <Flex className="product-card__image" alignItems="align-center">

@@ -1,4 +1,4 @@
-@use '../../globals.scss' as *;
+@use "../../globals.scss" as *;
 
 .product-card {
   font-family: "GT Eesti Pro Display Regular";
@@ -6,31 +6,38 @@
   background-color: white;
   border-radius: 16px;
   position: relative;
-  &__fav-button{
-    display: inline;
+  &__fav-button {
     position: absolute;
+    padding: 2%;
+    right: 5%;
+    top: 5%;
+    cursor: pointer;
+    color: black;
+    transition: all ease-in 0.1s;
+    &:hover{
+      color: red;
+    }
   }
-  a{
+  a {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   &__title {
   }
-  &__rate{
+  &__rate {
     margin-right: 5%;
   }
-  &__reviews{
-
+  &__reviews {
   }
-  &__title{
+  &__title {
   }
-  &__price{
-    h4{
+  &__price {
+    h4 {
       color: gray;
       text-decoration: line-through;
     }
-    h3{
+    h3 {
       color: $ozon-red;
     }
   }
@@ -49,7 +56,7 @@
     width: 100%;
     font-family: "GT Eesti Pro Display Regular";
   }
-  &.out-of-stock{
+  &.out-of-stock {
     opacity: 0.4;
   }
 }
