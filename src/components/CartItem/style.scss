@@ -5,6 +5,7 @@
   background-color: rgba(167, 58, 253, 0.12);
   border-radius: 12px;
   border: 1px solid #a73afd;
+  margin: 2% 0%;
   &__price {
     h4 {
       color: gray;
@@ -12,6 +13,14 @@
     }
     h3 {
       color: $ozon-red;
+    }
+  }
+  &__description{
+    width: 50%;
+    h1{
+      @include mobile{
+        font-size: 1.2rem;
+      }
     }
   }
   &__image {
@@ -28,6 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0px 25px;
     button {
       display: flex;
       justify-content: center;

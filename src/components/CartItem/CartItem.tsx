@@ -24,7 +24,7 @@ export const CartItem: React.FC<ICartItem> = ({
             <img src={product.thumbnail} />
           </a>
         </Flex>
-        <Flex flexDirection="column">
+        <Flex className="cart-item__description" flexDirection="column">
           <h1>{product.title}</h1>
           <Flex className="cart-item__price">
             <h3>
