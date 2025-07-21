@@ -10,8 +10,9 @@ button {
   cursor: pointer;
   position: relative;
   transition: all ease-in 0.25s;
-  @include mobile {
-    font-size: 18px;
+  font-size: 18px;
+  &:disabled {
+    opacity: 0.4;
   }
 }
 

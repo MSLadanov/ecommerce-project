@@ -57,7 +57,7 @@ export const ProductCard: React.FC<{ data: IProduct }> = ({
         </Flex>
       </Flex>
       <AddToCartButton productData={data}>
-        <Button styleGuide="ozon" onClickAction={() => addToCart(data)}>
+        <Button styleGuide="ozon" disabled={data.availabilityStatus === "Out of Stock"} onClickAction={() => addToCart(data)}>
           <FaShoppingCart />
           {data.availabilityStatus}
         </Button>

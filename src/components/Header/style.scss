@@ -64,7 +64,7 @@ header {
   }
   button {
     margin: 0% 2%;
-    @include fablet {
+    @include tablet {
       svg {
         width: 30px;
         height: 30px;

@@ -80,7 +80,7 @@ export const ProductInfo = (): ReactElement => {
           </h3>
           <p>{data.description}</p>
           <AddToCartButton productData={data}>
-            <Button styleGuide="ozon" onClickAction={() => addToCart(data)}>
+            <Button styleGuide="ozon" disabled={data.availabilityStatus === "Out of Stock"} onClickAction={() => addToCart(data)}>
               <FaShoppingCart />
               {data.availabilityStatus}
             </Button>
