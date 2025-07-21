@@ -32,6 +32,10 @@
       padding: 5% 10%;
       background-color: #f1f1f5;
       transition: all ease-in 0.1s;
+      font-size: 24px;
+      @include mobile{
+        font-size: 16px;
+      }
       &:focus {
         border: 1px solid $wb-base;
         background-color: transparent;
