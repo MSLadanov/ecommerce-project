@@ -20,7 +20,8 @@
     &.catalogue__modal {
       top: 90px;
       width: 0%;
-      height: 80%;
+      height: auto;
+      padding: 5%;
       border-bottom-right-radius: 12px;
       scrollbar-color: $wb-base transparent;
       scrollbar-width: 15px;
