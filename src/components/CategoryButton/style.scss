@@ -8,6 +8,7 @@
   font-family: "GT Eesti Pro Display Regular";
   color: $wb-base;
   transition: all ease-in 0.25s;
+  border: none;
   &:hover {
     color: $wb-dark;
   }
