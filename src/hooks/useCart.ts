@@ -9,6 +9,7 @@ export interface ICartState {
   removeFromCart: (product: IProduct) => void;
   getSum: () => string;
   getSumWithoutDiscounts: () => string;
+  clearCart: () => void;
 }
 
 export const useCart = create<ICartState>()(
@@ -42,6 +43,7 @@ export const useCart = create<ICartState>()(
             0
           )
           .toFixed(2),
+      clearCart: () => set(() => ({ cart: [] })),
     }),
     { name: "cart-storage" }
   )

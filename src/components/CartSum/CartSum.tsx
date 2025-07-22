@@ -8,10 +8,16 @@ import { useNotify } from "@hooks/useNotify";
 import "./style.scss";
 
 export const CartSum = (): ReactElement => {
-  const { cart, getSum, getSumWithoutDiscounts } = useCart((state) => state);
+  const { cart, getSum, getSumWithoutDiscounts, clearCart } = useCart(
+    (state) => state
+  );
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
   const { isAuth } = useAuth();
+  const placeAnOrder = () => {
+    toggleNotify("success", "You have successfully placed your order");
+    setTimeout(() => clearCart(), 3000);
+  };
   return (
     <Flex flexDirection="column" className="cart-summary">
       <Flex flexDirection="column" className="cart-summary__content">
@@ -29,11 +35,12 @@ export const CartSum = (): ReactElement => {
         </Flex>
         <Button
           onClickAction={() =>
-            !isAuth &&
-            toggleNotify(
-              "warning",
-              "You must log in or register to place an order."
-            )
+            isAuth
+              ? placeAnOrder()
+              : toggleNotify(
+                  "warning",
+                  "You must log in or register to place an order."
+                )
           }
           styleGuide="wb"
         >

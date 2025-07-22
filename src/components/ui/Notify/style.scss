@@ -1,33 +1,67 @@
 @use '../../../globals.scss' as *;
+@use 'sass:color';
 
 #notify-root {
-  .notify{
-    width: 250px;
-    height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: none;
+  font-family: "GT Eesti Pro Display Regular";
+  .notify {
+    width: 280px;
+    min-height: 60px;
+    padding: 15px 20px;
     color: white;
-    position: fixed;
-    bottom: -100%;
+    position: relative;
     right: 10%;
-    &__error{
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    
+    svg {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    &__error {
       background-color: $notification-error;
+      border-left: 4px solid color.adjust($notification-error, $lightness: -15%);
     }
-    &__warning{
+    
+    &__warning {
       background-color: $notification-warning;
+      border-left: 4px solid color.adjust($notification-warning, $lightness: -15%);
+      color: #333;
     }
-    &__success{
+    
+    &__success {
       background-color: $notification-success;
+      border-left: 4px solid color.adjust($notification-success, $lightness: -15%);
     }
   }
-  .visible{
+  
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
     animation: notifySlide 0.5s ease-out forwards;
   }
 }
 
 @keyframes notifySlide {
-  0%{
-    bottom: -100%
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  100%{
-    bottom: 20%;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
