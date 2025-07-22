@@ -3,6 +3,7 @@ import { CartItem } from "@components/CartItem";
 import { useCart } from "@hooks/useCart";
 import { Flex } from "@components/ui/Flex";
 import { EmptyCart } from "@components/EmptyCart";
+import { CartSum } from "@components/CartSum";
 import "./style.scss";
 
 export const CurrentCart = (): ReactElement => {
@@ -11,10 +12,13 @@ export const CurrentCart = (): ReactElement => {
     return <EmptyCart />;
   }
   return (
-    <Flex className="current-cart" flexDirection="column">
-      {cart.map((item) => (
-        <CartItem key={item.cart_id} product={item} isCurrentCart={true} />
-      ))}
+    <Flex>
+      <Flex className="current-cart" flexDirection="column">
+        {cart.map((item) => (
+          <CartItem key={item.cart_id} product={item} isCurrentCart={true} />
+        ))}
+      </Flex>
+      <CartSum />
     </Flex>
   );
 };
