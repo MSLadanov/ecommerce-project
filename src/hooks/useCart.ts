@@ -7,11 +7,13 @@ export interface ICartState {
   cart: IProduct[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (product: IProduct) => void;
+  getSum: () => string;
+  getSumWithoutDiscounts: () => string;
 }
 
 export const useCart = create<ICartState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cart: [],
       addToCart: (product: IProduct) =>
         set((state: ICartState) => ({
@@ -19,9 +21,7 @@ export const useCart = create<ICartState>()(
         })),
       removeFromCart: (product: IProduct) =>
         set((state: ICartState) => {
-          const index = state.cart.findIndex(
-            (item) => item.id === product.id
-          );
+          const index = state.cart.findIndex((item) => item.id === product.id);
           if (index === -1) return { cart: state.cart };
           return {
             cart: [
@@ -30,6 +30,18 @@ export const useCart = create<ICartState>()(
             ],
           };
         }),
+      getSum: () =>
+        get()
+          .cart.reduce((acc, curr) => acc + curr.price, 0)
+          .toFixed(2),
+      getSumWithoutDiscounts: () =>
+        get()
+          .cart.reduce(
+            (acc, curr) =>
+              acc + curr.price / (1 - curr.discountPercentage / 100),
+            0
+          )
+          .toFixed(2),
     }),
     { name: "cart-storage" }
   )

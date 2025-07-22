@@ -1,0 +1,7 @@
+@use '../../globals.scss' as *;
+
+.cart{
+    @include tablet{
+        flex-direction: column !important;
+    }
+}
