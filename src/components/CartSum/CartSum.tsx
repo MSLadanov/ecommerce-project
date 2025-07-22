@@ -2,18 +2,50 @@ import { ReactElement } from "react";
 import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
 import { Flex } from "@components/ui/Flex";
+import { useAuth } from "@hooks/useAuth";
+import { Notify } from "@components/ui/Notify";
+import { useNotify } from "@hooks/useNotify";
 import "./style.scss";
 
 export const CartSum = (): ReactElement => {
   const { cart, getSum, getSumWithoutDiscounts } = useCart((state) => state);
+  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
+    useNotify({ delay: 3000 });
+  const { isAuth } = useAuth();
   return (
     <Flex flexDirection="column" className="cart-summary">
       <Flex flexDirection="column" className="cart-summary__content">
-        <p>{cart.length}</p>
-        <p>{getSum()}</p>
-        <p>{getSumWithoutDiscounts()}</p>
+        <Flex className="cart-summary__row" justifyContent="space-between">
+          <p>Cart items, {cart.length} pc(s)</p>
+          <p>{getSumWithoutDiscounts()}</p>
+        </Flex>
+        <Flex className="cart-summary__row" justifyContent="space-between">
+          <p>Your discount</p>
+          <p>{-(+getSumWithoutDiscounts() - +getSum()).toFixed(2)}</p>
+        </Flex>
+        <Flex className="cart-summary__row" justifyContent="space-between">
+          <h3>Total</h3>
+          <h3>{getSum()}</h3>
+        </Flex>
+        <Button
+          onClickAction={() =>
+            !isAuth &&
+            toggleNotify(
+              "warning",
+              "You must log in or register to place an order."
+            )
+          }
+          styleGuide="wb"
+        >
+          Place an order
+        </Button>
       </Flex>
-      <Button styleGuide="wb">Make Order</Button>
+      <Notify
+        ref={notifyRef}
+        notifyVisibility={isNotifyShowed}
+        notifyType={notifyType}
+        notifyText={notifyText}
+      />
     </Flex>
   );
 };

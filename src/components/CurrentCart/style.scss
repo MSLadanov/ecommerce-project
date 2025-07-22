@@ -4,4 +4,10 @@
     @include tablet{
         flex-direction: column !important;
     }
+    .current-cart{
+        width: 60%;
+        @include tablet{
+            width: 100%;
+        }
+    }
 }

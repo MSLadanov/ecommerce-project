@@ -1,0 +1,16 @@
+.cart-summary {
+  font-family: "GT Eesti Pro Display Regular";
+  min-width: 35%;
+  &__row{
+    margin: 2% 0%;
+  }
+  &__content {
+    border-radius: 12px;
+    padding: 5%;
+    background-color: white;
+  }
+  button {
+    margin-top: 2%;
+    padding: 3%;
+  }
+}
