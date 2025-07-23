@@ -4,8 +4,8 @@ import { useCart } from "@hooks/useCart";
 import { Flex } from "@components/ui/Flex";
 import { EmptyCart } from "@components/EmptyCart";
 import { CartSum } from "@components/CartSum";
-import "./style.scss";
 import { IProduct } from "@/types/Products";
+import "./style.scss";
 
 export const CurrentCart = (): ReactElement => {
   const { cart } = useCart((state) => state);
