@@ -9,6 +9,7 @@ import { CartItem } from "@components/CartItem";
 import { Loader } from "@components/Loader";
 import { EmptyOrders } from "@components/EmptyOrders";
 import { CollapseBox } from "@components/ui/CollapseBox";
+import { IProduct } from "@/types/Products";
 import "./style.scss";
 
 interface IPreviousOrderedCartsProps {
@@ -22,7 +23,7 @@ interface IPreviousOrderedCartProps {
 const PreviousOrderedCart: React.FC<IPreviousOrderedCartProps> = ({ cart }) => {
   return (
     <Flex className="previous-ordered__cart" flexDirection="column">
-      {cart.products.map((product) => (
+      {cart.products.map((product : IProduct) => (
         <CartItem
           key={product.cart_id}
           product={product}
