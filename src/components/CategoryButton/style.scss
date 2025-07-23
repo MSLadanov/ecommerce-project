@@ -9,7 +9,9 @@
   color: $wb-base;
   transition: all ease-in 0.25s;
   border: none;
+  border-bottom: 1px solid gray;
   outline: none;
+  padding-bottom: 3%;
   &:hover {
     color: $wb-dark;
   }
