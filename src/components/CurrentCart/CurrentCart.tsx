@@ -5,6 +5,7 @@ import { Flex } from "@components/ui/Flex";
 import { EmptyCart } from "@components/EmptyCart";
 import { CartSum } from "@components/CartSum";
 import "./style.scss";
+import { IProduct } from "@/types/Products";
 
 export const CurrentCart = (): ReactElement => {
   const { cart } = useCart((state) => state);
@@ -14,7 +15,7 @@ export const CurrentCart = (): ReactElement => {
   return (
     <Flex className="cart" justifyContent="space-between">
       <Flex className="current-cart" flexDirection="column">
-        {[...new Map(cart.map((item) => [item.id, item])).values()].map(
+        {[...new Map(cart.map((item : IProduct) => [item.id, item])).values()].map(
           (item) => (
             <CartItem key={item.cart_id} product={item} isCurrentCart={true} />
           )
