@@ -1,9 +1,10 @@
-import { IProduct } from "@/types/Carts";
+import { IProduct } from "@/types/Products";
 import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
 import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
-import { FaDollarSign, FaTrash } from "react-icons/fa";
+import { FaDollarSign, FaShoppingCart, FaTrash } from "react-icons/fa";
+import { AddToCartButton } from "@components/AddToCartButton";
 import "./style.scss";
 
 interface ICartItem {
@@ -15,7 +16,7 @@ export const CartItem: React.FC<ICartItem> = ({
   product,
   isCurrentCart,
 }): ReactElement => {
-  const { removeFromCart } = useCart((state) => state);
+  const { removeFromCart, addToCart } = useCart((state) => state);
   return (
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
@@ -41,6 +42,16 @@ export const CartItem: React.FC<ICartItem> = ({
       </Flex>
       {isCurrentCart && (
         <div className="cart-item__controls">
+          <AddToCartButton productData={product}>
+            <Button
+              styleGuide="ozon"
+              disabled={product.availabilityStatus === "Out of Stock"}
+              onClickAction={() => addToCart(product)}
+            >
+              <FaShoppingCart />
+              {product.availabilityStatus}
+            </Button>
+          </AddToCartButton>
           <Button onClickAction={() => removeFromCart(product)} styleGuide="wb">
             <FaTrash />
           </Button>

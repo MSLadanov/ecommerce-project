@@ -31,7 +31,7 @@ const InCartControls: React.FC<IInCartControlsProps> = ({
   };
   return (
     <Flex justifyContent="space-between" className="in-cart-controls">
-      <Flex justifyContent="center" alignItems="align-center">
+      <Flex className="in-cart-controls__buttons" justifyContent="center" alignItems="align-center">
         <Button onClickAction={() => removeFromCart(product)}>
           <FaMinus />
         </Button>

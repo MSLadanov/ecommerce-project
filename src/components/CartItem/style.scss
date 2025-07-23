@@ -15,10 +15,10 @@
       color: $ozon-red;
     }
   }
-  &__description{
+  &__description {
     width: 50%;
-    h1{
-      @include mobile{
+    h1 {
+      @include mobile {
         font-size: 1.2rem;
       }
     }
@@ -35,9 +35,26 @@
   }
   &__controls {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin: 0px 25px;
+    width: 30%;
+    @include fablet {
+      margin: 0px 10px 0px 0px;
+      width: 30%;
+      justify-content: space-between;
+      }
+    .in-cart-controls{
+      div{
+        height: 32px;
+        width: 32px;
+      }
+      width: 50%;
+      @include fablet {
+        flex-direction: column-reverse;
+        margin: 1%;
+      }
+    }
     button {
       display: flex;
       justify-content: center;
