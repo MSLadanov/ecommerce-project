@@ -7,6 +7,7 @@ import { Grid } from "@components/ui/Grid/Grid";
 import { useSearchParams } from "react-router";
 import { Loader } from "@components/Loader";
 import { Sort } from "@components/Sort";
+import { useAuth } from "@hooks/useAuth";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
@@ -14,6 +15,7 @@ export const ProductsList = (): ReactElement => {
   const category = searchParams.get("category");
   const sortBy = searchParams.get("sortBy");
   const order = searchParams.get("order");
+  const { isAuth } = useAuth()
   const queryParam = category
     ? sortBy
       ? `/category/${category}?sortBy=${sortBy}&order=${order}`
@@ -39,7 +41,7 @@ export const ProductsList = (): ReactElement => {
       <Sort />
       <Grid className="product-list" size="xs">
         {data.products.map((product: IProduct) => (
-          <ProductCard key={product.id} data={product} />
+          <ProductCard key={product.id} data={product} isAuth={isAuth} />
         ))}
       </Grid>
     </>

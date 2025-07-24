@@ -10,7 +10,7 @@ export const useAuth = () => {
   const { get } = useApi();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isAuth, setIsAuth] = useState(cookie.authToken);
+  const [isAuth, setIsAuth] = useState(false);
   const [userData, setUserData] = useState<IUser>(null);
   const clearAuth = () => {
     if (cookie) {
