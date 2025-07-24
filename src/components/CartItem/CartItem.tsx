@@ -16,7 +16,7 @@ export const CartItem: React.FC<ICartItem> = ({
   product,
   isCurrentCart,
 }): ReactElement => {
-  const { removeFromCart, addToCart } = useCart((state) => state);
+  const { removeAllProductsById, addToCart } = useCart((state) => state);
   return (
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
@@ -52,7 +52,7 @@ export const CartItem: React.FC<ICartItem> = ({
               {product.availabilityStatus}
             </Button>
           </AddToCartButton>
-          <Button onClickAction={() => removeFromCart(product)} styleGuide="wb">
+          <Button onClickAction={() => removeAllProductsById(product)} styleGuide="wb">
             <FaTrash />
           </Button>
         </div>
