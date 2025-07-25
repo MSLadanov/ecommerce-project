@@ -89,6 +89,13 @@ export const ProductInfo = (): ReactElement => {
               {data.availabilityStatus}
             </Button>
           </AddToCartButton>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>SKU</h3>
+            <h3>{data.sku}</h3>
+          </Flex>
           {Object.entries(data.dimensions).map((item, index) => (
             <Flex
               key={index}
@@ -103,15 +110,22 @@ export const ProductInfo = (): ReactElement => {
             className="product-info__properties"
             justifyContent="space-between"
           >
-            <h3>Warranty</h3>
+            <h3>warranty</h3>
             <h3>{data.warrantyInformation}</h3>
           </Flex>
           <Flex
             className="product-info__properties"
             justifyContent="space-between"
           >
-            <h3>Shipping</h3>
+            <h3>shipping</h3>
             <h3>{data.shippingInformation}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>return</h3>
+            <h3>{data.returnPolicy}</h3>
           </Flex>
         </Flex>
       </Flex>

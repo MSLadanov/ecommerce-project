@@ -16,6 +16,9 @@
     color: $wb-dark;
   }
   &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     align-self: center;
     height: 50px;
     width: 50px;

@@ -35,31 +35,73 @@
     }
   }
   &__details {
-    p{
+    p {
       font-family: "GT Eesti Pro Display Thin";
+      font-size: 24px;
+      margin: 5% 0%;
+      @include tablet {
+        font-size: 18px;
+      }
     }
     @include tablet {
       flex-direction: column !important;
     }
   }
   &__description {
-    width: 100%;
+    width: 80%;
     @include tablet {
       width: 100%;
     }
+    h1 {
+      font-size: 48px;
+      @include tablet {
+        font-size: 36px;
+      }
+    }
+    h2 {
+      font-size: 36px;
+      @include tablet {
+        font-size: 24px;
+      }
+    }
+    h3,
+    h4 {
+      font-size: 24px;
+      @include tablet {
+        font-size: 18px;
+      }
+    }
   }
   &__properties {
+    padding: 2%;
+    @include tablet {
+      padding: 5%;
+    }
     h3 {
+      padding-bottom: 2%;
       font-weight: lighter;
+      @include tablet {
+        font-size: 18px;
+      }
       &:first-of-type {
         min-width: 50%;
         border-bottom: 1px solid gainsboro;
       }
     }
   }
+  &__reviews{
+    margin: 5% 0%;
+      @include tablet {
+        margin: 3% 0%;
+      }
+  }
   button {
+    margin: 5% 0%;
     padding: 5%;
     width: 100%;
     font-family: "GT Eesti Pro Display Regular";
+    @include tablet {
+        margin: 3% 0%;
+      }
   }
 }
