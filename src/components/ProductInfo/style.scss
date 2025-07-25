@@ -35,6 +35,9 @@
     }
   }
   &__details {
+    p{
+      font-family: "GT Eesti Pro Display Thin";
+    }
     @include tablet {
       flex-direction: column !important;
     }

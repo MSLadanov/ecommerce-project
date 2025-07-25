@@ -80,7 +80,11 @@ export const ProductInfo = (): ReactElement => {
           </h3>
           <p>{data.description}</p>
           <AddToCartButton productData={data}>
-            <Button styleGuide="ozon" disabled={data.availabilityStatus === "Out of Stock"} onClickAction={() => addToCart(data)}>
+            <Button
+              styleGuide="ozon"
+              disabled={data.availabilityStatus === "Out of Stock"}
+              onClickAction={() => addToCart(data)}
+            >
               <FaShoppingCart />
               {data.availabilityStatus}
             </Button>
@@ -95,6 +99,20 @@ export const ProductInfo = (): ReactElement => {
               <h3>{item[1]}</h3>
             </Flex>
           ))}
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Warranty</h3>
+            <h3>{data.warrantyInformation}</h3>
+          </Flex>
+          <Flex
+            className="product-info__properties"
+            justifyContent="space-between"
+          >
+            <h3>Shipping</h3>
+            <h3>{data.shippingInformation}</h3>
+          </Flex>
         </Flex>
       </Flex>
       <Grid className="product-info__reviews" size="md">
