@@ -1,6 +1,11 @@
 @use "../../globals.scss" as *;
 .product-info {
   font-family: "GT Eesti Pro Display Regular";
+  position: relative;
+  .fav-button-container{
+    right: 1%;
+    top: 1%;
+  }
   &__images {
     @include tablet {
       flex-direction: column-reverse !important;

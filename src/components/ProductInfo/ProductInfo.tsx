@@ -11,6 +11,11 @@ import { Button } from "@components/ui/Button";
 import { useCart } from "@hooks/useCart";
 import { Grid } from "@components/ui/Grid";
 import { Loader } from "@components/Loader";
+import { FavouriteButton } from "@components/FavouriteButton";
+import { useAuth } from "@hooks/useAuth";
+import { useFavourites } from "@hooks/useFavourites";
+import { useNotify } from "@hooks/useNotify";
+import { Notify } from "@components/ui/Notify";
 import "./style.scss";
 
 const ProductImages: React.FC<{ images: string[]; title: string }> = ({
@@ -21,8 +26,9 @@ const ProductImages: React.FC<{ images: string[]; title: string }> = ({
   return (
     <Flex className="product-info__images">
       <Flex className="product-info__images__controls" flexDirection="column">
-        {images.map((image) => (
+        {images.map((image, index) => (
           <img
+            key={index}
             src={image}
             title={title}
             onClick={() => setCurrentImage(image)}
@@ -45,6 +51,20 @@ export const ProductInfo = (): ReactElement => {
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
+  const { isAuth } = useAuth();
+    const { toggleFavourite } = useFavourites((state) => state);
+    const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
+      useNotify({ delay: 3000 });
+    const addToFavourites = (product: IProduct) => {
+      if (isAuth) {
+        toggleFavourite(product);
+      } else {
+        toggleNotify(
+          "warning",
+          "You must be logged in to add a product to your favorites."
+        );
+      }
+    };
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -56,6 +76,7 @@ export const ProductInfo = (): ReactElement => {
   }
   return (
     <Flex className="product-info" flexDirection="column">
+      <FavouriteButton product={data} addToFavourites={addToFavourites} />
       <Flex className="product-info__details">
         <ProductImages images={data.images} title={data.title} />
         <Flex
@@ -134,6 +155,12 @@ export const ProductInfo = (): ReactElement => {
           <ProductReview review={review} key={index} />
         ))}
       </Grid>
+      <Notify
+        ref={notifyRef}
+        notifyVisibility={isNotifyShowed}
+        notifyType={notifyType}
+        notifyText={notifyText}
+      />
     </Flex>
   );
 };
