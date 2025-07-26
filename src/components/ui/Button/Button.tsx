@@ -24,7 +24,6 @@ export const Button: React.FC<IButtonProps> = ({
       className={styleGuide + " " + orientation}
       onClick={() => {
         onClickAction()
-        console.log(typeof onClickAction)
       }}
       disabled={disabled}
     >

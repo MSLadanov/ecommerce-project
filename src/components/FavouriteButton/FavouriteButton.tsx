@@ -9,15 +9,17 @@ import "./style.scss";
 
 interface IFavouriteButtonProps {
   product: IProduct;
+  addToFavourites: (product: IProduct) => void
 }
 
 export const FavouriteButton: React.FC<IFavouriteButtonProps> = ({
   product,
+  addToFavourites
 }): ReactElement => {
-  const { toggleFavourite, isInFavourites } = useFavourites((state) => state);
+  const { isInFavourites } = useFavourites((state) => state);
   return (
     <Flex className="fav-button-container">
-      <Button onClickAction={() => toggleFavourite(product)}>
+      <Button onClickAction={() => addToFavourites(product)}>
         {isInFavourites(product.id) ? (
           <FaHeart color="red" size={"2rem"} />
         ) : (
