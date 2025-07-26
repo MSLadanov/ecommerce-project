@@ -13,9 +13,8 @@ import { useCart } from "@hooks/useCart";
 import "./style.scss";
 import { FavouriteButton } from "../FavouriteButton";
 
-export const ProductCard: React.FC<{ data: IProduct , isAuth: boolean }> = ({
+export const ProductCard: React.FC<{ data: IProduct }> = ({
   data,
-  isAuth
 }): ReactElement => {
   const { addToCart } = useCart((state) => state);
   return (
@@ -28,7 +27,7 @@ export const ProductCard: React.FC<{ data: IProduct , isAuth: boolean }> = ({
       flexDirection="column"
       justifyContent="space-between"
     >
-      <FavouriteButton product={data} isAuth={isAuth} />
+      <FavouriteButton product={data} />
       <a href={`/product?id=${data.id}`}>
         <Flex className="product-card__image" alignItems="align-center">
           <img src={data.images[0]} alt={data.title + " image"} />
