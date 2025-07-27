@@ -16,6 +16,8 @@ export const useAuth = () => {
     if (cookie) {
       removeCookie("authToken");
       navigate("/products")
+      window.localStorage.removeItem('cart-storage')
+      window.localStorage.removeItem('wishlist-storage')
     }
   };
   const checkUserAuth = async () => {

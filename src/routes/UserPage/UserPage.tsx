@@ -6,6 +6,7 @@ import { CartItem } from "@components/CartItem";
 import { useWishlist } from "@/hooks/useWishlist";
 import { IProduct } from "@/types/Products";
 import { Grid } from "@/components/ui/Grid";
+import { EmptyWishlist } from "@components/EmptyWishlist";
 
 export const UserPage = (): ReactElement => {
   const { wishlist } = useWishlist((state) => state);
@@ -18,6 +19,7 @@ export const UserPage = (): ReactElement => {
         <CollapseBox title="Payment Methods">Payment Methods</CollapseBox>
         <CollapseBox title="Returns & Refunds">Returns & Refunds</CollapseBox>
         <CollapseBox title="Wishlist">
+          {wishlist.length === 0 && <EmptyWishlist/>}
           {wishlist.map((item: IProduct) => (
             <CartItem product={item} isCurrentCart={false} isWishlist={true} />
           ))}
