@@ -20,39 +20,49 @@ export const DiscountSlider = (): ReactElement => {
         "?limit=10&sortBy=discountPercentage&order=desc"
       ),
   });
-  if (isLoading ) {
-    return <Loader />;
-  }
+  // if (isLoading ) {
+  //   return <Loader />;
+  // }
   if (isError) {
     return <div>Error</div>;
   }
 
   return (
     <Flex className="discount-slider" justifyContent="space-between">
-      <Slider autoSlide withControls={false}>
-        {data.products.map((product: IProduct) => (
-          <a className="discount-slider__link" key={product.id} href={`/product?id=${product.id}`}>
-            <Slide key={product.id} image={product.images[0]}>
-              <div className="discount__info">
-                <h3>{product.brand}</h3>
-                <h4>{product.title}</h4>
-                <Flex className="product-card__price">
-                  <h1>
-                    {product.price} <FaDollarSign />
-                  </h1>
-                  <h2>
-                    {Math.round(
-                      product.price / (1 - product.discountPercentage / 100)
-                    )}{" "}
-                    <FaDollarSign />
-                  </h2>
-                </Flex>
-              </div>
-            </Slide>
-          </a>
-        ))}
-      </Slider>
-      <MostRated />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Slider autoSlide withControls={false}>
+            {data.products.map((product: IProduct) => (
+              <a
+                className="discount-slider__link"
+                key={product.id}
+                href={`/product?id=${product.id}`}
+              >
+                <Slide key={product.id} image={product.images[0]}>
+                  <div className="discount__info">
+                    <h3>{product.brand}</h3>
+                    <h4>{product.title}</h4>
+                    <Flex className="product-card__price">
+                      <h1>
+                        {product.price} <FaDollarSign />
+                      </h1>
+                      <h2>
+                        {Math.round(
+                          product.price / (1 - product.discountPercentage / 100)
+                        )}{" "}
+                        <FaDollarSign />
+                      </h2>
+                    </Flex>
+                  </div>
+                </Slide>
+              </a>
+            ))}
+          </Slider>
+          <MostRated />
+        </>
+      )}
     </Flex>
   );
 };

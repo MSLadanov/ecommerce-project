@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { useAuth } from "@hooks/useAuth";
 import { IUser } from "@/types/Users";
 import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
@@ -61,14 +60,7 @@ const PreviousOrderedCarts: React.FC<IPreviousOrderedCartsProps> = ({
   );
 };
 
-export const AllUserCarts = (): ReactElement => {
-  const { userData, isLoading, isError } = useAuth();
-  if (isLoading) {
-    return <Loader />;
-  }
-  if (isError) {
-    return <div>{isError}</div>;
-  }
+export const AllUserCarts = ({userData}:{userData: IUser}): ReactElement => {
   return (
     <CollapseBox title="Order History">
       <PreviousOrderedCarts userData={userData} />

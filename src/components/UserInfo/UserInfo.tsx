@@ -1,21 +1,15 @@
 import { ReactElement } from "react";
-import { useAuth } from "@hooks/useAuth";
-import { Loader } from "@components/Loader";
 import { Flex } from "@components/ui/Flex";
+import { IUser } from "@/types/Users";
 import "./style.scss";
 
-export const UserInfo = (): ReactElement => {
-  const { userData, isLoading, isError } = useAuth();
-  if (isLoading) {
-    return <Loader />;
-  }
-  if (isError) {
-    return <div>{isError}</div>;
-  }
+export const UserInfo = ({ userData }: { userData: IUser }): ReactElement => {
   return (
     <Flex className="user-info" flexDirection="row" justifyContent="center">
       <Flex className="user-info__image">
-        <img src={userData?.image} alt={userData?.firstName + " avatar"} />
+        {userData && (
+          <img src={userData?.image} alt={userData?.firstName + " avatar"} />
+        )}
       </Flex>
       <Flex className="user-info__bio" flexDirection="column">
         <Flex>{userData?.firstName}</Flex>
