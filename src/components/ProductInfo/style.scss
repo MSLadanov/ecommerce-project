@@ -2,11 +2,12 @@
 .product-info {
   font-family: "GT Eesti Pro Display Regular";
   position: relative;
-  .fav-button-container{
-    right: 1%;
+  .fav-button-container {
+    right: 5%;
     top: 1%;
   }
   &__images {
+    position: relative;
     @include tablet {
       flex-direction: column-reverse !important;
     }
@@ -15,9 +16,16 @@
       height: auto;
       width: 100%;
       img {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 16px;
+        margin-bottom: 5%;
+        padding: 1%;
         aspect-ratio: 1/1;
         object-fit: contain;
+        width: 70%;
+        @include fablet {
         width: 100%;
+      }
       }
     }
     &__controls {
@@ -30,9 +38,16 @@
         flex-direction: row !important;
       }
       img {
+        background-color: rgba(0, 0, 0, 0.05);
+        margin: 1%;
+        padding: 1%;
+        border-radius: 16px;
         aspect-ratio: 1/1;
         object-fit: contain;
         width: 100%;
+        &:hover{
+          background-color: rgba(0, 0, 0, 0.1);
+        }
         @include tablet {
           width: 25%;
         }
@@ -94,11 +109,11 @@
       }
     }
   }
-  &__reviews{
+  &__reviews {
     margin: 5% 0%;
-      @include tablet {
-        margin: 3% 0%;
-      }
+    @include tablet {
+      margin: 3% 0%;
+    }
   }
   button {
     margin: 5% 0%;
@@ -106,7 +121,7 @@
     width: 100%;
     font-family: "GT Eesti Pro Display Regular";
     @include tablet {
-        margin: 3% 0%;
-      }
+      margin: 3% 0%;
+    }
   }
 }

@@ -18,26 +18,46 @@ import { useNotify } from "@hooks/useNotify";
 import { Notify } from "@components/ui/Notify";
 import "./style.scss";
 
-const ProductImages: React.FC<{ images: string[]; title: string }> = ({
-  images,
-  title,
+const ProductImages: React.FC<{ data: IProduct }> = ({
+  data,
 }): ReactElement => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const { isAuth } = useAuth();
+  const { toggleWishlist } = useWishlist((state) => state);
+  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
+    useNotify({ delay: 3000 });
+  const [currentImage, setCurrentImage] = useState(data.images[0]);
+  const addToWishlist = (product: IProduct) => {
+    if (isAuth) {
+      toggleWishlist(product);
+    } else {
+      toggleNotify(
+        "warning",
+        "You must be logged in to add a product to your wishlist."
+      );
+    }
+  };
   return (
     <Flex className="product-info__images">
       <Flex className="product-info__images__controls" flexDirection="column">
-        {images.map((image, index) => (
+        {data.images.map((image, index) => (
           <img
             key={index}
             src={image}
-            title={title}
+            title={data.title}
             onClick={() => setCurrentImage(image)}
           />
         ))}
       </Flex>
-      <Flex className="product-info__images__main">
-        <img src={currentImage} alt={`${title} image`} />
+      <Flex className="product-info__images__main" justifyContent="center">
+        <WishlistButton product={data} addToWishlist={addToWishlist} />
+        <img src={currentImage} alt={`${data.title} image`} />
       </Flex>
+      <Notify
+        ref={notifyRef}
+        notifyVisibility={isNotifyShowed}
+        notifyType={notifyType}
+        notifyText={notifyText}
+      />
     </Flex>
   );
 };
@@ -51,20 +71,7 @@ export const ProductInfo = (): ReactElement => {
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-  const { isAuth } = useAuth();
-    const { toggleWishlist } = useWishlist((state) => state);
-    const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-      useNotify({ delay: 3000 });
-    const addToWishlist = (product: IProduct) => {
-      if (isAuth) {
-        toggleWishlist(product);
-      } else {
-        toggleNotify(
-          "warning",
-          "You must be logged in to add a product to your favorites."
-        );
-      }
-    };
+
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -76,9 +83,8 @@ export const ProductInfo = (): ReactElement => {
   }
   return (
     <Flex className="product-info" flexDirection="column">
-      <WishlistButton product={data} addToWishlist={addToWishlist} />
       <Flex className="product-info__details">
-        <ProductImages images={data.images} title={data.title} />
+        <ProductImages data={data} />
         <Flex
           className="product-info__description"
           flexDirection="column"
@@ -155,12 +161,6 @@ export const ProductInfo = (): ReactElement => {
           <ProductReview review={review} key={index} />
         ))}
       </Grid>
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
     </Flex>
   );
 };
