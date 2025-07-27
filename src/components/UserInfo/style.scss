@@ -2,6 +2,7 @@
 .user-info {
   font-family: "GT Eesti Pro Display Regular";
   align-items: center !important;
+  margin-bottom: 5%;
   @include desktop {
   }
   @include laptop {
@@ -15,6 +16,7 @@
     align-items: center !important;
   }
   &__bio {
+    width: 50%;
     @include mobile {
         width: 100%;
       }
@@ -24,15 +26,25 @@
       border: 1px solid #a73afd;
       margin: 5% 0%;
       padding: 5%;
+      font-size: 24px;
       @include mobile {
+        width: 100%;
         justify-content: center !important;
       }
     }
   }
   &__image {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 50%;
     img {
+      width: 50%;
       border-radius: 50%;
       border: 1px solid #a73afd;
+      @include mobile {
+        width: 100%;
+      }
     }
   }
 }
