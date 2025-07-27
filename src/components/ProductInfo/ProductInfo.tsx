@@ -49,8 +49,10 @@ const ProductImages: React.FC<{ data: IProduct }> = ({
         ))}
       </Flex>
       <Flex className="product-info__images__main" justifyContent="center">
-        <WishlistButton product={data} addToWishlist={addToWishlist} />
-        <img src={currentImage} alt={`${data.title} image`} />
+        <div className="product-info__images__wrapper">
+          <WishlistButton product={data} addToWishlist={addToWishlist} />
+          <img src={currentImage} alt={`${data.title} image`} />
+        </div>
       </Flex>
       <Notify
         ref={notifyRef}

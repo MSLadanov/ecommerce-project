@@ -11,6 +11,13 @@
     @include tablet {
       flex-direction: column-reverse !important;
     }
+    &__wrapper{
+      position: relative;
+        width: 60%;
+        @include fablet {
+        width: 100%;
+      }
+      }
     &__main {
       align-self: center;
       height: auto;
@@ -22,10 +29,7 @@
         padding: 1%;
         aspect-ratio: 1/1;
         object-fit: contain;
-        width: 70%;
-        @include fablet {
         width: 100%;
-      }
       }
     }
     &__controls {
