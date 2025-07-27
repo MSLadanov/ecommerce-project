@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router";
 import { Loader } from "@components/Loader";
 import { Sort } from "@components/Sort";
 import { useAuth } from "@hooks/useAuth";
-import { useFavourites } from "@hooks/useFavourites";
+import { useWishlist } from "@/hooks/useWishlist";
 import { Notify } from "@components/ui/Notify";
 import { useNotify } from "@/hooks/useNotify";
 
@@ -19,12 +19,12 @@ export const ProductsList = (): ReactElement => {
   const sortBy = searchParams.get("sortBy");
   const order = searchParams.get("order");
   const { isAuth } = useAuth();
-  const { toggleFavourite } = useFavourites((state) => state);
+  const { toggleWishlist } = useWishlist((state) => state);
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
-  const addToFavourites = (product: IProduct) => {
+  const addToWishlist = (product: IProduct) => {
     if (isAuth) {
-      toggleFavourite(product);
+      toggleWishlist(product);
     } else {
       toggleNotify(
         "warning",
@@ -60,7 +60,7 @@ export const ProductsList = (): ReactElement => {
           <ProductCard
             key={product.id}
             data={product}
-            addToFavourites={addToFavourites}
+            addToWishlist={addToWishlist}
           />
         ))}
       </Grid>

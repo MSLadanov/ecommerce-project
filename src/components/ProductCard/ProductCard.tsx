@@ -10,12 +10,12 @@ import {
 import { Button } from "@components/ui/Button";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useCart } from "@hooks/useCart";
-import { FavouriteButton } from "@components/FavouriteButton";
+import { WishlistButton } from "@/components/WishlistButton";
 import "./style.scss";
 
-export const ProductCard: React.FC<{ data: IProduct, addToFavourites: (product: IProduct) => void }> = ({
+export const ProductCard: React.FC<{ data: IProduct, addToWishlist: (product: IProduct) => void }> = ({
   data,
-  addToFavourites
+  addToWishlist
 }): ReactElement => {
   const { addToCart } = useCart((state) => state);
   return (
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<{ data: IProduct, addToFavourites: (product: 
       flexDirection="column"
       justifyContent="space-between"
     >
-      <FavouriteButton product={data} addToFavourites={addToFavourites} />
+      <WishlistButton product={data} addToWishlist={addToWishlist} />
       <a href={`/product?id=${data.id}`}>
         <Flex className="product-card__image" alignItems="align-center">
           <img src={data.images[0]} alt={data.title + " image"} />

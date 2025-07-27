@@ -3,11 +3,11 @@ import { AllUserCarts } from "@components/AllUserCarts";
 import { ReactElement } from "react";
 import { CollapseBox } from "@components/ui/CollapseBox";
 import { CartItem } from "@components/CartItem";
-import { useFavourites } from "@hooks/useFavourites";
+import { useWishlist } from "@/hooks/useWishlist";
 import { IProduct } from "@/types/Products";
 
 export const UserPage = (): ReactElement => {
-  const { favourites } = useFavourites((state) => state);
+  const { wishlist } = useWishlist((state) => state);
   return (
     <main>
       <UserInfo />
@@ -16,7 +16,7 @@ export const UserPage = (): ReactElement => {
       <CollapseBox title="Payment Methods">Payment Methods</CollapseBox>
       <CollapseBox title="Returns & Refunds">Returns & Refunds</CollapseBox>
       <CollapseBox title="Wishlist">
-        {favourites.map((item: IProduct) => (
+        {wishlist.map((item: IProduct) => (
           <CartItem product={item} isCurrentCart={false} />
         ))}
       </CollapseBox>

@@ -11,9 +11,9 @@ import { Button } from "@components/ui/Button";
 import { useCart } from "@hooks/useCart";
 import { Grid } from "@components/ui/Grid";
 import { Loader } from "@components/Loader";
-import { FavouriteButton } from "@components/FavouriteButton";
+import { WishlistButton } from "@/components/WishlistButton";
 import { useAuth } from "@hooks/useAuth";
-import { useFavourites } from "@hooks/useFavourites";
+import { useWishlist } from "@/hooks/useWishlist";
 import { useNotify } from "@hooks/useNotify";
 import { Notify } from "@components/ui/Notify";
 import "./style.scss";
@@ -52,12 +52,12 @@ export const ProductInfo = (): ReactElement => {
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
   const { isAuth } = useAuth();
-    const { toggleFavourite } = useFavourites((state) => state);
+    const { toggleWishlist } = useWishlist((state) => state);
     const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
       useNotify({ delay: 3000 });
-    const addToFavourites = (product: IProduct) => {
+    const addToWishlist = (product: IProduct) => {
       if (isAuth) {
-        toggleFavourite(product);
+        toggleWishlist(product);
       } else {
         toggleNotify(
           "warning",
@@ -76,7 +76,7 @@ export const ProductInfo = (): ReactElement => {
   }
   return (
     <Flex className="product-info" flexDirection="column">
-      <FavouriteButton product={data} addToFavourites={addToFavourites} />
+      <WishlistButton product={data} addToWishlist={addToWishlist} />
       <Flex className="product-info__details">
         <ProductImages images={data.images} title={data.title} />
         <Flex
