@@ -3,7 +3,7 @@ import "./style.scss";
 
 interface IGridProps {
   children: ReactNode;
-  className: string;
+  className?: string;
   size: "xs" | "md" | "lg";
 }
 
