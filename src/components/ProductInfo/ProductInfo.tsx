@@ -116,44 +116,46 @@ export const ProductInfo = (): ReactElement => {
               {data.availabilityStatus}
             </Button>
           </AddToCartButton>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>SKU</h3>
-            <h3>{data.sku}</h3>
-          </Flex>
-          {Object.entries(data.dimensions).map((item, index) => (
+          <Grid size="md">
             <Flex
-              key={index}
               className="product-info__properties"
               justifyContent="space-between"
             >
-              <h3>{item[0]}</h3>
-              <h3>{item[1]}</h3>
+              <h3>SKU</h3>
+              <h3>{data.sku}</h3>
             </Flex>
-          ))}
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>warranty</h3>
-            <h3>{data.warrantyInformation}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>shipping</h3>
-            <h3>{data.shippingInformation}</h3>
-          </Flex>
-          <Flex
-            className="product-info__properties"
-            justifyContent="space-between"
-          >
-            <h3>return</h3>
-            <h3>{data.returnPolicy}</h3>
-          </Flex>
+            {Object.entries(data.dimensions).map((item, index) => (
+              <Flex
+                key={index}
+                className="product-info__properties"
+                justifyContent="space-between"
+              >
+                <h3>{item[0]}</h3>
+                <h3>{item[1]}</h3>
+              </Flex>
+            ))}
+            <Flex
+              className="product-info__properties"
+              justifyContent="space-between"
+            >
+              <h3>warranty</h3>
+              <h3>{data.warrantyInformation}</h3>
+            </Flex>
+            <Flex
+              className="product-info__properties"
+              justifyContent="space-between"
+            >
+              <h3>shipping</h3>
+              <h3>{data.shippingInformation}</h3>
+            </Flex>
+            <Flex
+              className="product-info__properties"
+              justifyContent="space-between"
+            >
+              <h3>return</h3>
+              <h3>{data.returnPolicy}</h3>
+            </Flex>
+          </Grid>
         </Flex>
       </Flex>
       <Grid className="product-info__reviews" size="md">

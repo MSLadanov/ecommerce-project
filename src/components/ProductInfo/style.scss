@@ -115,13 +115,25 @@
       margin: 3% 0%;
     }
   }
+  .in-cart-controls{
+    width: 50%;
+    @include mobile{
+      width: 100%;
+    }
+  }
   button {
     margin: 5% 0%;
     padding: 5%;
     width: 100%;
     font-family: "GT Eesti Pro Display Regular";
     @include tablet {
+      width: 50%;
       margin: 3% 0%;
+      padding: 3%;
+    }
+    @include mobile{
+      padding: 5%;
+      width: 100%;
     }
   }
 }
