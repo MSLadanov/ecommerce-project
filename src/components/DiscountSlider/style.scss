@@ -6,7 +6,7 @@
   border-radius: 16px;
   background-repeat: repeat;
   padding: 2%;
-  min-height: 100vh;
+  min-height: 50vh;
   @include laptop {
     flex-direction: column !important;
   }
