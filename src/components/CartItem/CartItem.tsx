@@ -3,20 +3,24 @@ import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
 import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
-import { FaDollarSign, FaShoppingCart, FaTrash } from "react-icons/fa";
+import { FaDollarSign, FaHeart, FaShoppingCart, FaTrash } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
+import { useWishlist } from "@/hooks/useWishlist";
 import "./style.scss";
 
 interface ICartItem {
   product: IProduct;
   isCurrentCart: boolean;
+  isWishlist: boolean;
 }
 
 export const CartItem: React.FC<ICartItem> = ({
   product,
   isCurrentCart,
+  isWishlist,
 }): ReactElement => {
   const { removeAllProductsById, addToCart } = useCart((state) => state);
+  const { removeFromWishlist } = useWishlist((state) => state);
   return (
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
@@ -52,8 +56,21 @@ export const CartItem: React.FC<ICartItem> = ({
               {product.availabilityStatus}
             </Button>
           </AddToCartButton>
-          <Button onClickAction={() => removeAllProductsById(product)} styleGuide="wb">
+          <Button
+            onClickAction={() => removeAllProductsById(product)}
+            styleGuide="wb"
+          >
             <FaTrash />
+          </Button>
+        </div>
+      )}
+      {isWishlist && (
+        <div className="cart-item__controls">
+          <Button
+            onClickAction={() => removeFromWishlist(product.id)}
+            styleGuide="wb"
+          >
+            <FaHeart size="1.5rem" color="white" />
           </Button>
         </div>
       )}

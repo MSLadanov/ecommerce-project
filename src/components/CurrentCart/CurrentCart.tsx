@@ -17,7 +17,7 @@ export const CurrentCart = (): ReactElement => {
       <Flex className="current-cart" flexDirection="column">
         {[...new Map(cart.map((item : IProduct) => [item.id, item])).values()].map(
           (item) => (
-            <CartItem key={item.cart_id} product={item} isCurrentCart={true} />
+            <CartItem key={item.cart_id} product={item} isCurrentCart={true} isWishlist={false} />
           )
         )}
       </Flex>

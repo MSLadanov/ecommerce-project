@@ -19,7 +19,7 @@ export const UserPage = (): ReactElement => {
         <CollapseBox title="Returns & Refunds">Returns & Refunds</CollapseBox>
         <CollapseBox title="Wishlist">
           {wishlist.map((item: IProduct) => (
-            <CartItem product={item} isCurrentCart={false} />
+            <CartItem product={item} isCurrentCart={false} isWishlist={true} />
           ))}
         </CollapseBox>
         <CollapseBox title="Recently Viewed">Recently Viewed</CollapseBox>

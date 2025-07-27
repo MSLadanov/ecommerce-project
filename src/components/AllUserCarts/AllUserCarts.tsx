@@ -28,6 +28,7 @@ const PreviousOrderedCart: React.FC<IPreviousOrderedCartProps> = ({ cart }) => {
           key={product.cart_id}
           product={product}
           isCurrentCart={false}
+          isWishlist={false}
         />
       ))}
     </Flex>
