@@ -16,12 +16,12 @@ import { useAuth } from "@hooks/useAuth";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useNotify } from "@hooks/useNotify";
 import { Notify } from "@components/ui/Notify";
+import { RateProduct } from "@components/RateProduct";
 import "./style.scss";
 
-const ProductImages: React.FC<{ data: IProduct }> = ({
-  data,
+const ProductImages: React.FC<{ data: IProduct, isAuth: boolean }> = ({
+  data, isAuth
 }): ReactElement => {
-  const { isAuth } = useAuth();
   const { toggleWishlist } = useWishlist((state) => state);
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
@@ -68,6 +68,7 @@ export const ProductInfo = (): ReactElement => {
   const { addToCart } = useCart((state) => state);
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
+  const { isAuth } = useAuth();
   const { get } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
@@ -86,7 +87,7 @@ export const ProductInfo = (): ReactElement => {
   return (
     <Flex className="product-info" flexDirection="column">
       <Flex className="product-info__details">
-        <ProductImages data={data} />
+        <ProductImages data={data} isAuth={isAuth} />
         <Flex
           className="product-info__description"
           flexDirection="column"
@@ -160,6 +161,7 @@ export const ProductInfo = (): ReactElement => {
           </Grid>
         </Flex>
       </Flex>
+      {isAuth &&<RateProduct />}
       <Grid className="product-info__reviews" size="md">
         {data.reviews.map((review, index) => (
           <ProductReview review={review} key={index} />
