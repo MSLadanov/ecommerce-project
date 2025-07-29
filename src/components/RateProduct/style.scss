@@ -5,16 +5,16 @@
   padding: 0%;
   width: 40%;
   border-radius: 16px;
+  @include tablet{ 
+    width: 100%;
+  }
   & > div {
-    width: 80%;
-    textarea {
-      border-radius: 16px;
-      margin: 5% 0%;
-      width: 100%;
-      padding: 5%;
-    }
+    width: 75%;
   }
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 16px;
     width: 20% !important;
   }
