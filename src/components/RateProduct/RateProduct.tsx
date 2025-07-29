@@ -6,7 +6,7 @@ import { FaCommentAlt } from "react-icons/fa";
 import './style.scss';
 
 export const RateProduct = () : ReactElement => {
-    return (<Flex className="rate-product">
+    return (<Flex className="rate-product" justifyContent="space-between"> 
         <TextArea/>
         <Button styleGuide="ozon">
             <FaCommentAlt/>

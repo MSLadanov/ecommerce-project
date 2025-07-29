@@ -1,5 +1,21 @@
-.rate-product{
-    margin: 0%;
-    padding: 0%;
-    width: auto;
+@use "../../globals.scss" as *;
+
+.rate-product {
+  margin: 0%;
+  padding: 0%;
+  width: 40%;
+  border-radius: 16px;
+  & > div {
+    width: 80%;
+    textarea {
+      border-radius: 16px;
+      margin: 5% 0%;
+      width: 100%;
+      padding: 5%;
+    }
+  }
+  button {
+    border-radius: 16px;
+    width: 20% !important;
+  }
 }
