@@ -3,31 +3,24 @@
 .rate-product {
   margin: 0%;
   padding: 0%;
-  width: 50%;
+  width: 100%;
   border-radius: 16px;
-  @include tablet {
-    width: 75%;
-  }
-  @include mobile {
-    width: 100%;
-  }
   & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 75%;
     textarea {
       border-radius: 16px;
-      margin: 5% 0%;
       width: 100%;
       padding: 5%;
-      font-size: 24px;
+      font-size: 16px;
       transition: all ease-in 0.1s;
       outline: none;
       background-color: #f1f1f5;
       &:focus {
         border: 1px solid $wb-base;
         background-color: transparent;
-      }
-      @include mobile {
-        font-size: 16px;
       }
     }
   }

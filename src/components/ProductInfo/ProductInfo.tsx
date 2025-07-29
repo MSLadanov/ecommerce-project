@@ -161,8 +161,8 @@ export const ProductInfo = (): ReactElement => {
           </Grid>
         </Flex>
       </Flex>
-      {isAuth &&<RateProduct />}
       <Grid className="product-info__reviews" size="md">
+        {isAuth &&<RateProduct />}
         {data.reviews.map((review, index) => (
           <ProductReview review={review} key={index} />
         ))}
