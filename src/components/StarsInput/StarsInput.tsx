@@ -36,6 +36,8 @@ export const StarsInput = (): ReactElement => {
     <div className="stars-input">
       {starValues.map((value, index) => (
         <Star
+          key={index}
+          value={value}
           onClick={() => handleStarClick(value)}
           onFocus={() => handleStarFocus(value)}
           onBlur={() => handleStarBlur()}
