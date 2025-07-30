@@ -1,7 +1,30 @@
-.stars-input{
-    width: 20%;
-    align-self: flex-end;
-    svg{
-        cursor: pointer;
+.stars-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: end;
+  padding: 2% 0%;
+  .star-icon {
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+    &:hover {
+      transform: scale(1.1);
     }
+    &:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
