@@ -35,7 +35,7 @@ export const Flex: React.FC<IFlexProps> = ({
   alignItems = "align-stretch",
   wrap = "nowrap",
   className,
-  onClickAction,
+  onClickAction = () => {},
 }): ReactElement => {
   return (
     <div

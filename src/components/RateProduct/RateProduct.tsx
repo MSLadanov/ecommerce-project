@@ -9,7 +9,7 @@ import "./style.scss";
 export const RateProduct = (): ReactElement => {
   return (
     <Flex className="rate-product__wrapper" flexDirection="column">
-      <StarsInput/>
+      <StarsInput />
       <Flex className="rate-product" justifyContent="space-between">
         <TextArea id="rate-field" name="rate-field" />
         <Button styleGuide="ozon">
