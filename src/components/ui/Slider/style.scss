@@ -6,6 +6,18 @@
     width: 100%;
     overflow: hidden;
     padding: 5%;
+    height: 100%;
+    .slide{
+      min-width: 300px;
+      min-height: 300px;
+      background-size: contain;
+      position: absolute;
+      &__title{
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+      }
+    }
   }
 
   &__controls {

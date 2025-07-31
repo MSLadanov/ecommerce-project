@@ -7,7 +7,7 @@ export const useSlider = () => {
     setCurrentSlide((prev) => prev--);
   };
   const nextSlide = () => {
-    setCurrentSlide((prev) => prev++);
+    setCurrentSlide(currentSlide + 1);
   };
 
   return { nextSlide, prevSlide, currentSlide };

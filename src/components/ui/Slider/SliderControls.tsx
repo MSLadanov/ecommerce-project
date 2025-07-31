@@ -1,9 +1,8 @@
-import { useSlider } from "@/hooks/useSlider";
-import { RefObject, ReactElement, useEffect } from "react";
+import { useSlider } from "@hooks/useSlider";
+import { ReactElement, useEffect } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
 interface ISliderControlsProps {
-  sliderRef: RefObject<HTMLDivElement>;
   autoSlide?: boolean;
   slideDelay?: number;
   withControls: boolean;
@@ -11,19 +10,18 @@ interface ISliderControlsProps {
 }
 
 export const SliderControls: React.FC<ISliderControlsProps> = ({
-  sliderRef,
   autoSlide,
   slideDelay,
   withControls,
 }): ReactElement => {
   const { prevSlide, nextSlide } = useSlider();
   useEffect(() => {
-    if (autoSlide && sliderRef) {
+    if (autoSlide) {
       setInterval(() => {
         nextSlide();
       }, slideDelay);
     }
-  }, [autoSlide, nextSlide, slideDelay, sliderRef]);
+  }, [autoSlide, nextSlide, slideDelay]);
   if (withControls) {
     return (
       <div className="slider__controls">

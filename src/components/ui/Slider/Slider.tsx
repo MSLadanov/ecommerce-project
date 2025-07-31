@@ -1,36 +1,42 @@
-import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
+import { ReactElement } from "react";
 import { SliderControls } from "./SliderControls";
+import { useSlider } from "@hooks/useSlider";
 import "./style.scss";
 
 interface ISliderProps {
-  children: ReactNode[];
+  slidesData: any;
   withControls?: boolean;
   autoSlide?: boolean;
   slideDelay?: number;
 }
 
+const Slide = ({ imageUrl }: { imageUrl: string }): ReactElement => {
+  return (
+    <div className="slide" style={{ backgroundImage: `url(${imageUrl})` }}>
+      <div className="slide__title">hello</div>
+    </div>
+  );
+};
+
 export const Slider: React.FC<ISliderProps> = ({
-  children,
+  slidesData,
   withControls = true,
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const sliderRef = useRef(null);
-  const [sliderRefState, setSliderRefState] = useState(null);
-  useEffect(() => {
-    setSliderRefState(sliderRef);
-  }, [sliderRef]);
+  const { currentSlide } = useSlider();
   return (
     <div className="slider">
-      <div className="slider__frame" ref={sliderRef}>
-        {children}
+      <div className="slider__frame">
+        {slidesData.map((slideData) => (
+          <Slide imageUrl={slideData.images[0]} />
+        ))}
       </div>
       <SliderControls
-        sliderRef={sliderRefState}
         autoSlide={autoSlide}
         slideDelay={slideDelay}
         withControls={withControls}
-        slidesCount={children.length - 1}
+        slidesCount={images.length - 1}
       />
     </div>
   );
