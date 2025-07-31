@@ -13,8 +13,9 @@ export const SliderControls: React.FC<ISliderControlsProps> = ({
   autoSlide,
   slideDelay,
   withControls,
+  slidesCount
 }): ReactElement => {
-  const { prevSlide, nextSlide } = useSlider();
+  const { prevSlide, nextSlide } = useSlider(slidesCount - 1);
   useEffect(() => {
     if (autoSlide) {
       setInterval(() => {

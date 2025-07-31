@@ -29,7 +29,7 @@ export const DiscountSlider = (): ReactElement => {
       ) : (
         <>
           <Slider
-            autoSlide
+            autoSlide={true}
             withControls={false}
             slidesData={data.products}
           ></Slider>

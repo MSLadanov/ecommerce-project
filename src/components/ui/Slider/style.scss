@@ -12,6 +12,10 @@
       min-height: 300px;
       background-size: contain;
       position: absolute;
+      opacity: 0;
+      &.active{
+        opacity: 1;
+      }
       &__title{
         position: absolute;
         bottom: 5%;

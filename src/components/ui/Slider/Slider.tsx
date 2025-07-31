@@ -10,9 +10,18 @@ interface ISliderProps {
   slideDelay?: number;
 }
 
-const Slide = ({ imageUrl }: { imageUrl: string }): ReactElement => {
+const Slide = ({
+  imageUrl,
+  isActive,
+}: {
+  imageUrl: string;
+  isActive: boolean;
+}): ReactElement => {
   return (
-    <div className="slide" style={{ backgroundImage: `url(${imageUrl})` }}>
+    <div
+      className={isActive ? "slide active" : "slide"}
+      style={{ backgroundImage: `url(${imageUrl})` }}
+    >
       <div className="slide__title">hello</div>
     </div>
   );
@@ -24,19 +33,23 @@ export const Slider: React.FC<ISliderProps> = ({
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const { currentSlide } = useSlider();
+  const { currentSlide } = useSlider(slidesData.length - 1);
   return (
     <div className="slider">
       <div className="slider__frame">
-        {slidesData.map((slideData) => (
-          <Slide imageUrl={slideData.images[0]} />
+        {slidesData.map((slideData, index) => (
+          <Slide
+            key={index}
+            imageUrl={slideData.images[0]}
+            isActive={currentSlide === index}
+          />
         ))}
       </div>
       <SliderControls
         autoSlide={autoSlide}
         slideDelay={slideDelay}
         withControls={withControls}
-        slidesCount={images.length - 1}
+        slidesCount={slidesData.length - 1}
       />
     </div>
   );
