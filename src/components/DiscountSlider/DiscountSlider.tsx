@@ -20,9 +20,6 @@ export const DiscountSlider = (): ReactElement => {
         "?limit=10&sortBy=discountPercentage&order=desc"
       ),
   });
-  // if (isLoading ) {
-  //   return <Loader />;
-  // }
   if (isError) {
     return <div>Error</div>;
   }

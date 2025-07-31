@@ -14,17 +14,6 @@
     outline: none;
     padding: 0% 30%;
   }
-  .slider {
-    align-self: center;
-    width: 50%;
-    scale: 1;
-    background-color: white;
-    padding: 1%;
-    border-radius: 16px;
-    @include fablet {
-      width: 95%;
-    }
-  }
 }
 
 .discount__info {
