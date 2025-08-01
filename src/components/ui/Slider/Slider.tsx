@@ -4,7 +4,9 @@ import { useSlider } from "@hooks/useSlider";
 import "./style.scss";
 
 interface ISliderProps {
-  slidesData: any;
+  slidesData: {
+    [key: string]: string | number;
+  }[];
   withControls?: boolean;
   autoSlide?: boolean;
   slideDelay?: number;
@@ -33,7 +35,7 @@ export const Slider: React.FC<ISliderProps> = ({
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const { currentSlide } = useSlider(slidesData.length - 1);
+  const { currentSlide } = useSlider(slidesData.length - 1, true, slideDelay);
   return (
     <div className="slider">
       <div className="slider__frame">

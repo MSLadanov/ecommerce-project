@@ -13,6 +13,9 @@
       background-size: contain;
       position: absolute;
       opacity: 0;
+      transition: opacity 0.5s ease-in;
+      background-color: white;
+      border-radius: 16px;
       &.active{
         opacity: 1;
       }
