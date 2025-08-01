@@ -1,4 +1,3 @@
-import { useSlider } from "@hooks/useSlider";
 import { ReactElement } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
@@ -7,21 +6,15 @@ interface ISliderControlsProps {
   slideDelay?: number;
   withControls: boolean;
   slidesCount: number;
+  nextSlide: () => void;
+  prevSlide:() => void;
 }
 
 export const SliderControls: React.FC<ISliderControlsProps> = ({
-  autoSlide,
-  slideDelay,
+  nextSlide,
+  prevSlide,
   withControls,
-  slidesCount
 }): ReactElement => {
-  const { nextSlide, prevSlide } = useSlider({
-    slidesCount,
-    options: {
-      autoScroll: autoSlide,
-      delay: slideDelay,
-    },
-  });
   if (withControls) {
     return (
       <div className="slider__controls">

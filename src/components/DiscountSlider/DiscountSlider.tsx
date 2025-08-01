@@ -1,14 +1,14 @@
 import { ReactElement } from "react";
 import { Slider } from "@components/ui/Slider";
-import { Slide } from "../ui/Slider/Slide";
+import { Slide } from "@components/ui/Slider/Slide";
 import { useApi } from "@hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
 import { Flex } from "@components/ui/Flex";
 import { Loader } from "@components/Loader";
 import { MostRated } from "@components/MostRated";
-import "./style.scss";
 import { useSlider } from "@/hooks/useSlider";
+import "./style.scss";
 
 export const DiscountSlider = (): ReactElement => {
   const slidesCount = 10;
@@ -21,7 +21,7 @@ export const DiscountSlider = (): ReactElement => {
         `?limit=${slidesCount}&sortBy=discountPercentage&order=desc`
       ),
   });
-  const { currentSlide } = useSlider({
+  const { currentSlide, nextSlide, prevSlide } = useSlider({
     slidesCount,
     options: {
       autoScroll: true,
@@ -45,6 +45,8 @@ export const DiscountSlider = (): ReactElement => {
             autoSlide={true}
             withControls={false}
             slidesCount={slidesCount}
+            nextSlide={nextSlide}
+            prevSlide={prevSlide}
           >
             {data.products.map((product, index) => (
               <Slide

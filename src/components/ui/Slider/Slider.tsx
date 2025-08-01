@@ -8,6 +8,8 @@ interface ISliderProps {
   autoSlide?: boolean;
   slideDelay?: number;
   slidesCount: number;
+  nextSlide: () => void;
+  prevSlide: () => void;
 }
 
 export const Slider: React.FC<ISliderProps> = ({
@@ -15,7 +17,9 @@ export const Slider: React.FC<ISliderProps> = ({
   withControls = true,
   autoSlide = false,
   slideDelay = 2000,
-  slidesCount
+  slidesCount,
+  nextSlide,
+  prevSlide
 }): ReactElement => {
   
   return (
@@ -28,6 +32,8 @@ export const Slider: React.FC<ISliderProps> = ({
         slideDelay={slideDelay}
         withControls={withControls}
         slidesCount={slidesCount}
+        nextSlide={nextSlide}
+        prevSlide={prevSlide}
       />
     </div>
   );
