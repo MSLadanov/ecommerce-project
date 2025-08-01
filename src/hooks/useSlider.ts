@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 
-export const useSlider = (slidesCount: number, autoScroll: boolean, delay) => {
+interface ISliderOptions {
+  slidesCount: number;
+  options: {
+    autoScroll: boolean;
+    delay: number;
+  };
+}
+
+export const useSlider = ({ slidesCount, options }: ISliderOptions) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const prevSlide = () => {
@@ -11,11 +19,11 @@ export const useSlider = (slidesCount: number, autoScroll: boolean, delay) => {
     setCurrentSlide((prev) => (prev + 1) % slidesCount);
   };
   useEffect(() => {
-    if(autoScroll){
+    if (options.autoScroll) {
       setInterval(() => {
-        nextSlide() 
-      },delay)
+        nextSlide();
+      }, options.delay);
     }
-  },[autoScroll, delay])
+  }, [options]);
   return { nextSlide, prevSlide, currentSlide };
 };

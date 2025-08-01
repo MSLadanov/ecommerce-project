@@ -35,7 +35,13 @@ export const Slider: React.FC<ISliderProps> = ({
   autoSlide = false,
   slideDelay = 2000,
 }): ReactElement => {
-  const { currentSlide } = useSlider(slidesData.length - 1, true, slideDelay);
+  const { currentSlide } = useSlider({
+    slidesCount: slidesData.length - 1,
+    options: {
+      autoScroll: true,
+      delay: slideDelay,
+    },
+  });
   return (
     <div className="slider">
       <div className="slider__frame">
