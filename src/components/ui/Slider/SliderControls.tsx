@@ -2,10 +2,7 @@ import { ReactElement } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
 interface ISliderControlsProps {
-  autoSlide?: boolean;
-  slideDelay?: number;
   withControls: boolean;
-  slidesCount: number;
   nextSlide: () => void;
   prevSlide:() => void;
 }

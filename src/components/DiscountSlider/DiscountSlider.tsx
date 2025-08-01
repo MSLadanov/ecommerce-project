@@ -42,9 +42,7 @@ export const DiscountSlider = (): ReactElement => {
       ) : (
         <>
           <Slider
-            autoSlide={true}
             withControls={false}
-            slidesCount={slidesCount}
             nextSlide={nextSlide}
             prevSlide={prevSlide}
           >
