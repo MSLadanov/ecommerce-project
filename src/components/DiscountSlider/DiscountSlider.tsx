@@ -22,12 +22,13 @@ export const DiscountSlider = (): ReactElement => {
       ),
   });
   const { currentSlide, nextSlide, prevSlide } = useSlider({
-    slidesCount,
+    slidesCount: slidesCount,
     options: {
       autoScroll: true,
       delay: 3000,
     },
   });
+  console.log(currentSlide)
   if (isError) {
     return <div>Error</div>;
   }

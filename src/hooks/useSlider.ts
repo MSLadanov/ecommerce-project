@@ -18,12 +18,16 @@ export const useSlider = ({ slidesCount, options }: ISliderOptions) => {
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slidesCount);
   };
+
   useEffect(() => {
-    if (options.autoScroll) {
-      setInterval(() => {
-        nextSlide();
-      }, options.delay);
-    }
-  }, [options.autoScroll]);
+    if (!options.autoScroll) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, options.delay);
+
+    return () => clearInterval(interval);
+  }, [options.autoScroll, options.delay, slidesCount]);
+
   return { nextSlide, prevSlide, currentSlide };
 };
