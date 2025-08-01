@@ -7,7 +7,7 @@
   background-repeat: repeat;
   padding: 2%;
   min-height: 50vh;
-  @include laptop {
+  @include tablet {
     flex-direction: column !important;
   }
   &__link{

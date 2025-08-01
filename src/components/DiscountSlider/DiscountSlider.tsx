@@ -23,7 +23,7 @@ export const DiscountSlider = (): ReactElement => {
   }
 
   return (
-    <Flex className="discount-slider" justifyContent="space-between">
+    <Flex className="discount-slider" justifyContent="space-between" flexDirection="row">
       {isLoading ? (
         <Loader />
       ) : (
