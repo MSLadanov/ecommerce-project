@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Slider } from "@components/ui/Slider";
+import { Slide } from "../ui/Slider/Slide";
 import { useApi } from "@hooks/useApi";
 import { IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
@@ -7,32 +8,46 @@ import { Flex } from "@components/ui/Flex";
 import { Loader } from "@components/Loader";
 import { MostRated } from "@components/MostRated";
 import "./style.scss";
+import { useSlider } from "@/hooks/useSlider";
 
 export const DiscountSlider = (): ReactElement => {
+  const slidesCount = 10;
   const { get } = useApi();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["sale-products"],
     queryFn: () =>
       get<IProductsResponse>(
         "PRODUCTS",
-        "?limit=10&sortBy=discountPercentage&order=desc"
+        `?limit=${slidesCount}&sortBy=discountPercentage&order=desc`
       ),
+  });
+  const { currentSlide } = useSlider({
+    slidesCount,
+    options: {
+      autoScroll: true,
+      delay: 3000,
+    },
   });
   if (isError) {
     return <div>Error</div>;
   }
-
   return (
-    <Flex className="discount-slider" justifyContent="space-between" flexDirection="row">
+    <Flex
+      className="discount-slider"
+      justifyContent="space-between"
+      flexDirection="row"
+    >
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <Slider
-            autoSlide={true}
-            withControls={false}
-            slidesData={data.products}
-          ></Slider>
+          <Slider autoSlide={true} withControls={false} slidesCount={slidesCount}>
+            {data.products.map((product, index) => (
+              <Slide key={product.id} isActive={currentSlide === index} imageUrl={product.images[0]}>
+                <p>Hello</p>
+              </Slide>
+            ))}
+          </Slider>
           <MostRated />
         </>
       )}
