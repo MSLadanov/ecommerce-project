@@ -2,13 +2,41 @@ import { ReactElement } from "react";
 import { Slider } from "@components/ui/Slider";
 import { Slide } from "@components/ui/Slider/Slide";
 import { useApi } from "@hooks/useApi";
-import { IProductsResponse } from "@/types/Products";
+import { IProduct, IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
 import { Flex } from "@components/ui/Flex";
 import { Loader } from "@components/Loader";
 import { MostRated } from "@components/MostRated";
-import { useSlider } from "@/hooks/useSlider";
+import { useSlider } from "@hooks/useSlider";
+import { FaDollarSign } from "react-icons/fa";
+import { useNavigate } from "react-router";
 import "./style.scss";
+
+const DiscountSliderBadge = ({
+  product,
+}: {
+  product: IProduct;
+}): ReactElement => {
+  const navigate = useNavigate();
+  return (
+    <div
+      className="discount-slider__badge"
+      onClick={() => navigate(`/product?id=${product.id}`)}
+    >
+      <h3>{product.brand}</h3>
+      <h4>{product.title}</h4>
+      <Flex className="product-card__price">
+        <h1>
+          {product.price} <FaDollarSign />
+        </h1>
+        <h2>
+          {Math.round(product.price / (1 - product.discountPercentage / 100))}{" "}
+          <FaDollarSign />
+        </h2>
+      </Flex>
+    </div>
+  );
+};
 
 export const DiscountSlider = (): ReactElement => {
   const slidesCount = 10;
@@ -28,7 +56,6 @@ export const DiscountSlider = (): ReactElement => {
       delay: 3000,
     },
   });
-  console.log(currentSlide)
   if (isError) {
     return <div>Error</div>;
   }
@@ -53,7 +80,7 @@ export const DiscountSlider = (): ReactElement => {
                 isActive={currentSlide === index}
                 imageUrl={product.images[0]}
               >
-                <p>Hello</p>
+                <DiscountSliderBadge product={product} />
               </Slide>
             ))}
           </Slider>

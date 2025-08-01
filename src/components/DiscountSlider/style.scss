@@ -16,14 +16,15 @@
   }
 }
 
-.discount__info {
+.discount-slider__badge {
   font-family: "GT Eesti Pro Display Regular";
   background-color: $ozon-blue;
   padding: 2%;
   border-radius: 8px;
   position: relative;
-  top: 20%;
-  left: 25%;
+  cursor: pointer;
+  width: 70%;
+  transform: translate3d(20px, 170px, 10px);
   @include laptop {
     h4 {
       font-size: 0.8rem;
@@ -37,9 +38,9 @@
     h1 {
       font-size: 1.8rem;
     }
-    left: 25%;
   }
   @include tablet {
+    width: 30%;
     h4 {
       font-size: 0.8rem;
     }
@@ -53,14 +54,11 @@
       font-size: 1.3rem;
     }
     min-width: 180px;
-    left: 15%;
   }
   @include fablet {
-    left: 20%;
   }
   @include mobile {
-    left: 20%;
-    min-width: 130px;
+    width: 40%;
     h4 {
       font-size: 0.8rem;
     }
