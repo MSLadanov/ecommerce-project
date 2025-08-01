@@ -66,7 +66,7 @@ export const DiscountSlider = (): ReactElement => {
       flexDirection="row"
     >
       {isLoading ? (
-        <Loader />
+        <Loader color="gray" secondaryColor="white" />
       ) : (
         <>
           <Slider

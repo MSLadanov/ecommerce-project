@@ -1,10 +1,6 @@
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .circle-loader {
@@ -18,9 +14,8 @@
   &__spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(124, 26, 248, 0.2);
-    border-top: 4px solid #7c1af8;
     border-radius: 50%;
+    border: 4px solid;
     animation: spin 1s linear infinite;
   }
 }
