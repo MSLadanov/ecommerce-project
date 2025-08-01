@@ -24,6 +24,6 @@ export const useSlider = ({ slidesCount, options }: ISliderOptions) => {
         nextSlide();
       }, options.delay);
     }
-  }, [options]);
+  }, [options.autoScroll]);
   return { nextSlide, prevSlide, currentSlide };
 };

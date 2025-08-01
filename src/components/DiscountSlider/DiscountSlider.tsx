@@ -41,9 +41,17 @@ export const DiscountSlider = (): ReactElement => {
         <Loader />
       ) : (
         <>
-          <Slider autoSlide={true} withControls={false} slidesCount={slidesCount}>
+          <Slider
+            autoSlide={true}
+            withControls={false}
+            slidesCount={slidesCount}
+          >
             {data.products.map((product, index) => (
-              <Slide key={product.id} isActive={currentSlide === index} imageUrl={product.images[0]}>
+              <Slide
+                key={product.id}
+                isActive={currentSlide === index}
+                imageUrl={product.images[0]}
+              >
                 <p>Hello</p>
               </Slide>
             ))}
