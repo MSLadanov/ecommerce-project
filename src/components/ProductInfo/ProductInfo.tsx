@@ -22,13 +22,21 @@ export const ProductInfo = (): ReactElement => {
   const { addToCart } = useCart((state) => state);
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
-  const { isAuth } = useAuth();
+  const { isAuth, userData } = useAuth();
   const { get } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-
+  const rate = () => {
+    console.log({
+      rating,
+      comment,
+      reviewerEmail: userData.email,
+      reviewerName: `${userData.firstName} ${userData.lastName}`,
+      date: new Date(Date.now()).toISOString(),
+    });
+  };
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -122,6 +130,7 @@ export const ProductInfo = (): ReactElement => {
             comment={comment}
             setRating={setRating}
             setComment={setComment}
+            rateProduct={rate}
           />
         )}
         {data.reviews.map((review, index) => (

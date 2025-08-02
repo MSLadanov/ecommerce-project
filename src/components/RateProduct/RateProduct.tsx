@@ -11,6 +11,7 @@ interface IRateProductProps {
   comment: string;
   setRating: Dispatch<SetStateAction<number>>;
   setComment: Dispatch<SetStateAction<string>>;
+  rateProduct: () => void;
 }
 
 export const RateProduct: React.FC<IRateProductProps> = ({
@@ -18,6 +19,7 @@ export const RateProduct: React.FC<IRateProductProps> = ({
   comment,
   setRating,
   setComment,
+  rateProduct
 }): ReactElement => {
   return (
     <Flex className="rate-product__wrapper" flexDirection="column">
@@ -29,7 +31,7 @@ export const RateProduct: React.FC<IRateProductProps> = ({
           text={comment}
           setText={setComment}
         />
-        <Button styleGuide="ozon">
+        <Button styleGuide="ozon" onClickAction={() => rateProduct()}>
           <FaCommentAlt />
         </Button>
       </Flex>
