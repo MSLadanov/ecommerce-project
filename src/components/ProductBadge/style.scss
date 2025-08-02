@@ -2,12 +2,15 @@
 
 .most-rated {
   width: 50%;
-  padding: 2% 0%;    
+  padding: 2%;    
   justify-items: center;
   @include laptop{
     align-items: center;
     align-self: center;
     width: 100%;
+  }
+  @include tablet{
+    padding: 2% 0%;
   }
   &-card {
     font-family: "GT Eesti Pro Display Regular";
