@@ -11,6 +11,7 @@ import { useAuth } from "@hooks/useAuth";
 import { useWishlist } from "@/hooks/useWishlist";
 import { Notify } from "@components/ui/Notify";
 import { useNotify } from "@/hooks/useNotify";
+import "./style.scss";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
@@ -46,30 +47,31 @@ export const ProductsList = (): ReactElement => {
   useEffect(() => {
     refetch();
   }, [refetch, searchParams, sortBy, order]);
-  if (isLoading) {
-    return <Loader />;
-  }
   if (isError) {
     return <div>Error</div>;
   }
   return (
-    <>
+    <div className="products-list">
       <Sort />
-      <Grid className="product-list" size="xs">
-        {data.products.map((product: IProduct) => (
-          <ProductCard
-            key={product.id}
-            data={product}
-            addToWishlist={addToWishlist}
-          />
-        ))}
-      </Grid>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Grid className="product-list" size="xs">
+          {data.products.map((product: IProduct) => (
+            <ProductCard
+              key={product.id}
+              data={product}
+              addToWishlist={addToWishlist}
+            />
+          ))}
+        </Grid>
+      )}
       <Notify
         ref={notifyRef}
         notifyVisibility={isNotifyShowed}
         notifyType={notifyType}
         notifyText={notifyText}
       />
-    </>
+    </div>
   );
 };
