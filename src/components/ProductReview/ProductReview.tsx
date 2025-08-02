@@ -21,7 +21,9 @@ export const ProductReview: React.FC<{ review: IReview }> = ({
           ))}
         </Flex>
       </Flex>
-      <Flex className="product-review__body">{review.comment}</Flex>
+      <Flex className="product-review__body">
+        <p>{review.comment}</p>
+      </Flex>
     </div>
   );
 };

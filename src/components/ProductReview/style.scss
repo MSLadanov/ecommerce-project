@@ -1,5 +1,29 @@
+@use '../../globals.scss' as *;
+
 .product-review{
+    min-height: 150px;
     padding: 24px;
     border-radius: 15px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+    &__header{
+        h4{
+            font-size: 20px;
+            @include mobile{
+                font-size: 16px;
+            }
+        }
+        h6{
+            margin-left: 12px;
+            font-size: 18px;
+            @include mobile{
+                font-size: 12px;
+            }
+        }
+    }
+    &__body{
+        margin-top: 5%;
+        p{
+            font-size: 24px;
+        }
+    }
 }
