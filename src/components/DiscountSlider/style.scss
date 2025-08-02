@@ -27,10 +27,11 @@
   background-color: $ozon-blue;
   padding: 2%;
   border-radius: 8px;
-  position: relative;
+  position: absolute;
   cursor: pointer;
-  width: 70%;
-  transform: translate3d(20px, 170px, 10px);
+  width: auto;
+  bottom: 5%;
+  right: 15%;
   @include laptop {
     h4 {
       font-size: 0.8rem;
