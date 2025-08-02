@@ -8,6 +8,7 @@
   }
   &__images {
     position: relative;
+    min-width: 70%;
     @include tablet {
       flex-direction: column-reverse !important;
     }

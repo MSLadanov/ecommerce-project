@@ -15,7 +15,7 @@ export const CategoryButton: React.FC<{ category: string }> = ({
       get<IProductsResponse>("PRODUCTS_BY_CATEGORY", `/${category}?limit=1`),
   });
   if (isLoading) {
-    return <Loader/>;
+    return <Loader color="gray" secondaryColor="white"/>;
   }
   if (isError) {
     return <div>Error</div>;

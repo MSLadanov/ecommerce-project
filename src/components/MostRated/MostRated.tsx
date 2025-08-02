@@ -16,7 +16,7 @@ export const MostRated = (): ReactElement => {
       get<IProductsResponse>("PRODUCTS", "?limit=4&sortBy=rating&order=desc"),
   });
   if (isLoading) {
-    return <Loader />;
+    return <Loader color="gray" secondaryColor="white"/>;
   }
   if (isError) {
     return <div>Error</div>;
