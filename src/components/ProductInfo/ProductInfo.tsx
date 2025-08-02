@@ -29,13 +29,14 @@ export const ProductInfo = (): ReactElement => {
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
   const rate = () => {
-    console.log({
+    const newComment = {
       rating,
       comment,
       reviewerEmail: userData.email,
       reviewerName: `${userData.firstName} ${userData.lastName}`,
       date: new Date(Date.now()).toISOString(),
-    });
+    };
+    console.log([newComment, ...data.reviews]);
   };
   useEffect(() => {
     refetch();
