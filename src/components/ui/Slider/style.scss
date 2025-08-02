@@ -1,15 +1,24 @@
 @use '../../../globals.scss' as *;
 .slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__frame {
     display: flex;
     overflow: hidden;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 100%;
+    min-height: 100%;
     position: relative;
+    justify-content: center;
+    @include tablet{
+      min-height: 350px;
+    }
     .slide{
-      min-width: 300px;
-      min-height: 300px;
+      min-width: 100%;
+      min-height: 100%;
       background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       position: absolute;
       opacity: 0;
       transition: opacity 0.5s ease-in;

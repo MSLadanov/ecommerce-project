@@ -7,6 +7,12 @@
   background-repeat: repeat;
   padding: 2%;
   min-height: 50vh;
+  .slider{
+    width: 50%;
+    @include tablet{
+      width: 100%;
+    }
+  }
   @include tablet {
     flex-direction: column !important;
   }
