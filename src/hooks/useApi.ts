@@ -34,7 +34,25 @@ export const useApi = () => {
         notifyToggler("error", error.response.data.message);
       }
     },
-    async update() {},
-    async delete() {},
+    async update<T>(
+      requestEndpoint: TRequestEndpoint,
+      queryParam: string = "",
+      body: {
+        [key: string]: string | number | Array<object>;
+      },
+      notifyToggler?: (type: string, message: string) => void,
+      config?: AxiosRequestConfig
+    ) {
+      try {
+        const request = await axios.patch<T>(
+          API_ENDPOINTS[requestEndpoint] + queryParam,
+          body,
+          config
+        );
+        return request.data;
+      } catch (error) {
+        notifyToggler("error", error.response.data.message);
+      }
+    },
   };
 };

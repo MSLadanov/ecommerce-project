@@ -23,7 +23,7 @@ export const ProductInfo = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
-  const { get } = useApi();
+  const { get, update } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
@@ -36,7 +36,13 @@ export const ProductInfo = (): ReactElement => {
       reviewerName: `${userData.firstName} ${userData.lastName}`,
       date: new Date(Date.now()).toISOString(),
     };
-    console.log([newComment, ...data.reviews]);
+    const updatedComments = [newComment, ...data.reviews];
+    const updatedRate = (data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating) / data.reviews.length
+    console.log(updatedComments);
+    console.log(updatedRate);
+    // update<IProduct>("PRODUCTS", `/${productId}`,{
+    //   rating: updatedComments
+    // })
   };
   useEffect(() => {
     refetch();
