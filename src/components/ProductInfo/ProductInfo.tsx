@@ -23,16 +23,12 @@ export const ProductInfo = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
-  const { get } = useApi();
+  const { get, update } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-  const { mutate } = useMutation({
-    mutationKey: ["product"],
-    mutationFn: () => rate(),
-  });
-  const rate = async () => {
+  const rate = () => {
     const newComment = {
       rating,
       comment,
@@ -44,14 +40,16 @@ export const ProductInfo = (): ReactElement => {
     const updatedRate =
       (data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating) /
       (data.reviews.length + 1);
-    return new Promise((resolve) => {
-      resolve({
-        ...data,
-        rate: updatedRate,
-        reviews: updatedReviews
-      })
+    const updatedProduct = update<IProduct>("PRODUCTS", `/${productId}`, {
+      rating: updatedRate,
+      reviews: updatedReviews,
     });
+    return updatedProduct;
   };
+  const { mutate: rateProduct } = useMutation({
+    mutationKey: ["product", productId],
+    mutationFn: rate,
+  });
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -145,7 +143,7 @@ export const ProductInfo = (): ReactElement => {
             comment={comment}
             setRating={setRating}
             setComment={setComment}
-            rateProduct={mutate}
+            rateProduct={rateProduct}
           />
         )}
         {data.reviews.map((review, index) => (
