@@ -28,19 +28,19 @@ export const ProductInfo = (): ReactElement => {
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-  const rate = () => {
+  const rate = async () => {
     const newComment = {
       rating,
       comment,
       reviewerEmail: userData.email,
       reviewerName: `${userData.firstName} ${userData.lastName}`,
-      date: new Date(Date.now()).toISOString(),
+      date: new Date().toISOString(),
     };
     const updatedReviews = [newComment, ...data.reviews];
-    const updatedRate =
-      (data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating) /
-      (data.reviews.length + 1);
-    const updatedProduct = update<IProduct>("PRODUCTS", `/${productId}`, {
+    const totalRating =
+      data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating;
+    const updatedRate = totalRating / (data.reviews.length + 1);
+    const updatedProduct = await update<IProduct>("PRODUCTS", `/${productId}`, {
       rating: updatedRate,
       reviews: updatedReviews,
     });

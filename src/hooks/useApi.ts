@@ -44,7 +44,7 @@ export const useApi = () => {
       config?: AxiosRequestConfig
     ) {
       try {
-        const request = await axios.patch<T>(
+        const request = await axios.put<T>(
           API_ENDPOINTS[requestEndpoint] + queryParam,
           body,
           config
