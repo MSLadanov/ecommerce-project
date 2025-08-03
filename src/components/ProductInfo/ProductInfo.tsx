@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useApi } from "@hooks/useApi";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
@@ -23,12 +23,16 @@ export const ProductInfo = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
-  const { get, update } = useApi();
+  const { get } = useApi();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
-  const rate = () => {
+  const { mutate } = useMutation({
+    mutationKey: ["product"],
+    mutationFn: () => rate(),
+  });
+  const rate = async () => {
     const newComment = {
       rating,
       comment,
@@ -36,13 +40,17 @@ export const ProductInfo = (): ReactElement => {
       reviewerName: `${userData.firstName} ${userData.lastName}`,
       date: new Date(Date.now()).toISOString(),
     };
-    const updatedComments = [newComment, ...data.reviews];
-    const updatedRate = (data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating) / data.reviews.length
-    console.log(updatedComments);
-    console.log(updatedRate);
-    // update<IProduct>("PRODUCTS", `/${productId}`,{
-    //   rating: updatedComments
-    // })
+    const updatedReviews = [newComment, ...data.reviews];
+    const updatedRate =
+      (data.reviews.reduce((acc, curr) => acc + curr.rating, 0) + rating) /
+      (data.reviews.length + 1);
+    return new Promise((resolve) => {
+      resolve({
+        ...data,
+        rate: updatedRate,
+        reviews: updatedReviews
+      })
+    });
   };
   useEffect(() => {
     refetch();
@@ -137,7 +145,7 @@ export const ProductInfo = (): ReactElement => {
             comment={comment}
             setRating={setRating}
             setComment={setComment}
-            rateProduct={rate}
+            rateProduct={mutate}
           />
         )}
         {data.reviews.map((review, index) => (
