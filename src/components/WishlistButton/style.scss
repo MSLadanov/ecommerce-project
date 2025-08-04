@@ -1,5 +1,12 @@
+@use '../../globals.scss' as *;
+
 .fav-button-container{
     position: absolute;
     right: 5%;
     top: 5%;
+    svg{
+        @include tablet {
+            width: 5rem;
+        }
+    }
 }
