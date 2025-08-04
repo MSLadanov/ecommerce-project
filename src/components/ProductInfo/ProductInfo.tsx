@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useApi } from "@hooks/useApi";
 import { IProduct } from "@/types/Products";
 import { Flex } from "@components/ui/Flex";
@@ -17,6 +17,7 @@ import { ProductImages } from "./ProductImages";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
+  const queryClient = useQueryClient();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const { addToCart } = useCart((state) => state);
@@ -44,11 +45,13 @@ export const ProductInfo = (): ReactElement => {
       rating: updatedRate,
       reviews: updatedReviews,
     });
-    return updatedProduct;
+    return { ...data, rating: updatedProduct.rating, reviews: updatedReviews };
   };
   const { mutate: rateProduct } = useMutation({
     mutationKey: ["product", productId],
     mutationFn: rate,
+    onSuccess: (updatedData) =>
+      queryClient.setQueryData(["product"], updatedData),
   });
   useEffect(() => {
     refetch();
