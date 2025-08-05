@@ -157,7 +157,7 @@ export const ProductInfo = (): ReactElement => {
             comment={comment}
             setRating={setRating}
             setComment={setComment}
-            rateProduct={rateProduct}
+            rateProduct={() => comment ? rateProduct() : toggleNotify('warning', 'The review cannot be empty!')}
           />
         )}
         {data.reviews.map((review, index) => (
