@@ -14,6 +14,8 @@ import { Loader } from "@components/Loader";
 import { useAuth } from "@hooks/useAuth";
 import { RateProduct } from "@components/RateProduct";
 import { ProductImages } from "./ProductImages";
+import { Notify } from "@components/ui/Notify";
+import { useNotify } from "@hooks/useNotify";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
@@ -25,6 +27,8 @@ export const ProductInfo = (): ReactElement => {
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
   const { get, update } = useApi();
+  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
+    useNotify({ delay: 3000 });
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
@@ -50,8 +54,15 @@ export const ProductInfo = (): ReactElement => {
   const { mutate: rateProduct } = useMutation({
     mutationKey: ["product", productId],
     mutationFn: rate,
-    onSuccess: (updatedData) =>
-      queryClient.setQueryData(["product"], updatedData),
+    onSuccess: (updatedData) => {
+      queryClient.setQueryData(["product"], updatedData);
+      setComment('')
+      setRating(0)
+      toggleNotify('success', 'Review successfully published!')
+    },
+    onError:(error) => {
+      toggleNotify('error', error.message)
+    }
   });
   useEffect(() => {
     refetch();
@@ -153,6 +164,12 @@ export const ProductInfo = (): ReactElement => {
           <ProductReview review={review} key={index} />
         ))}
       </Grid>
+      <Notify
+        ref={notifyRef}
+        notifyVisibility={isNotifyShowed}
+        notifyType={notifyType}
+        notifyText={notifyText}
+      />
     </Flex>
   );
 };
