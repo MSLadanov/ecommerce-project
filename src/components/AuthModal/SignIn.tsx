@@ -52,6 +52,7 @@ export const SignIn: React.FC<ISignInProps> = ({
         setValue={setPassword}
         required
       />
+      <p>*Username 'oliviaw', password 'oliviawpass' for example</p>
       <Button styleGuide="ozon" type="submit">Sign In</Button>
       {/* <Button onClickAction={() => switchToSignUp()}>Sign Up</Button> */}
       <Notify

@@ -23,6 +23,7 @@
   &__description {
     width: 50%;
     h1 {
+      font-size: 24px;
       @include mobile {
         font-size: 1.2rem;
       }
@@ -32,10 +33,16 @@
     align-self: center;
     height: 140px;
     width: 120px;
-    img {
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      width: 100%;
+    cursor: pointer;
+    a {
+      display: flex;
+      align-items: center;
+      margin: 5%;
+      img {
+        border-radius: 12px;
+        height: 80%;
+        width: auto;
+      }
     }
   }
   &__controls {
