@@ -15,11 +15,17 @@ export const CurrentCart = (): ReactElement => {
   return (
     <Flex className="cart" justifyContent="space-between">
       <Flex className="current-cart" flexDirection="column">
-        {[...new Map(cart.map((item : IProduct) => [item.id, item])).values()].map(
-          (item) => (
-            <CartItem key={item.cart_id} product={item} isCurrentCart={true} isWishlist={false} />
-          )
-        )}
+        {[
+          ...new Map(cart.map((item: IProduct) => [item.id, item])).values(),
+        ].map((item) => (
+          <CartItem
+            key={item.cart_id}
+            product={item}
+            isCurrentCart={true}
+            isWishlist={false}
+            isCurrentOrder={false}
+          />
+        ))}
       </Flex>
       <CartSum />
     </Flex>

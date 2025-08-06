@@ -18,6 +18,7 @@ export const useAuth = () => {
       navigate("/products")
       window.localStorage.removeItem('cart-storage')
       window.localStorage.removeItem('wishlist-storage')
+      window.localStorage.removeItem('ordered-storage')
     }
   };
   const checkUserAuth = async () => {

@@ -40,6 +40,7 @@ export const UserPage = (): ReactElement => {
                   product={item}
                   isCurrentCart={false}
                   isWishlist={true}
+                  isCurrentOrder={false}
                 />
               ))}
             </CollapseBox>

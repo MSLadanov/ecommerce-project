@@ -6,21 +6,26 @@ import { Button } from "@components/ui/Button";
 import { FaDollarSign, FaHeart, FaShoppingCart, FaTrash } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useWishlist } from "@/hooks/useWishlist";
+import { MdOutlineCancel } from "react-icons/md";
 import "./style.scss";
+import { useOrderedProducts } from "@/hooks/useOrderedProducts";
 
 interface ICartItem {
   product: IProduct;
   isCurrentCart: boolean;
   isWishlist: boolean;
+  isCurrentOrder: boolean;
 }
 
 export const CartItem: React.FC<ICartItem> = ({
   product,
   isCurrentCart,
   isWishlist,
+  isCurrentOrder,
 }): ReactElement => {
   const { removeAllProductsById, addToCart } = useCart((state) => state);
   const { removeFromWishlist } = useWishlist((state) => state);
+  const { cancelOrderedProduct } = useOrderedProducts((state) => state)
   return (
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
@@ -71,6 +76,16 @@ export const CartItem: React.FC<ICartItem> = ({
             styleGuide="wb"
           >
             <FaHeart size="1.5rem" color="white" />
+          </Button>
+        </div>
+      )}
+      {isCurrentOrder && (
+        <div className="cart-item__controls">
+          <Button
+            onClickAction={() => cancelOrderedProduct(product.id)}
+            styleGuide="wb"
+          >
+            <MdOutlineCancel size="1.5rem" color="white" />
           </Button>
         </div>
       )}
