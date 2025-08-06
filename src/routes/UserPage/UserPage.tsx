@@ -24,6 +24,9 @@ export const UserPage = (): ReactElement => {
         <>
           <UserInfo userData={userData} />
           <Grid size="md">
+            <CollapseBox title="Current Orders">
+              Current Orders
+            </CollapseBox>
             <AllUserCarts userData={userData} />
             <CollapseBox title="Addresses">Addresses</CollapseBox>
             <CollapseBox title="Payment Methods">Payment Methods</CollapseBox>
