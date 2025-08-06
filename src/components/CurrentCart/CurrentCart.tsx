@@ -21,9 +21,7 @@ export const CurrentCart = (): ReactElement => {
           <CartItem
             key={item.cart_id}
             product={item}
-            isCurrentCart={true}
-            isWishlist={false}
-            isCurrentOrder={false}
+            cartItemType={'current-cart'}
           />
         ))}
       </Flex>

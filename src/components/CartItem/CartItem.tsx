@@ -5,23 +5,19 @@ import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
 import { FaDollarSign, FaHeart, FaShoppingCart, FaTrash } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
-import { useWishlist } from "@/hooks/useWishlist";
+import { useWishlist } from "@hooks/useWishlist";
 import { MdOutlineCancel } from "react-icons/md";
+import { useOrderedProducts } from "@hooks/useOrderedProducts";
 import "./style.scss";
-import { useOrderedProducts } from "@/hooks/useOrderedProducts";
 
 interface ICartItem {
   product: IProduct;
-  isCurrentCart: boolean;
-  isWishlist: boolean;
-  isCurrentOrder: boolean;
+  cartItemType: 'current-cart' | 'wishlist-cart' | 'current-order' | 'order-history'
 }
 
 export const CartItem: React.FC<ICartItem> = ({
   product,
-  isCurrentCart,
-  isWishlist,
-  isCurrentOrder,
+  cartItemType
 }): ReactElement => {
   const { removeAllProductsById, addToCart } = useCart((state) => state);
   const { removeFromWishlist } = useWishlist((state) => state);
@@ -49,7 +45,7 @@ export const CartItem: React.FC<ICartItem> = ({
           </Flex>
         </Flex>
       </Flex>
-      {isCurrentCart && (
+      {cartItemType === 'current-cart' && (
         <div className="cart-item__controls">
           <AddToCartButton productData={product}>
             <Button
@@ -69,7 +65,7 @@ export const CartItem: React.FC<ICartItem> = ({
           </Button>
         </div>
       )}
-      {isWishlist && (
+      {cartItemType === 'wishlist-cart' && (
         <div className="cart-item__controls">
           <Button
             onClickAction={() => removeFromWishlist(product.id)}
@@ -79,7 +75,7 @@ export const CartItem: React.FC<ICartItem> = ({
           </Button>
         </div>
       )}
-      {isCurrentOrder && (
+      {cartItemType === 'current-order' && (
         <div className="cart-item__controls">
           <Button
             onClickAction={() => cancelOrderedProduct(product.id)}

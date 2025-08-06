@@ -9,8 +9,8 @@ import { Grid } from "@/components/ui/Grid";
 import { EmptyWishlist } from "@components/EmptyWishlist";
 import { useAuth } from "@hooks/useAuth";
 import { Loader } from "@components/Loader";
-import { useOrderedProducts } from "@/hooks/useOrderedProducts";
-import { EmptyOrders } from "@/components/EmptyOrders";
+import { useOrderedProducts } from "@hooks/useOrderedProducts";
+import { EmptyOrders } from "@components/EmptyOrders";
 
 export const UserPage = (): ReactElement => {
   const { wishlist } = useWishlist((state) => state);
@@ -32,26 +32,19 @@ export const UserPage = (): ReactElement => {
               {orderedProducts.map((item: IProduct) => (
                 <CartItem
                   product={item}
-                  isCurrentCart={false}
-                  isWishlist={false}
-                  isCurrentOrder={true}
+                  cartItemType='current-order'
                 />
               ))}
             </CollapseBox>
             <AllUserCarts userData={userData} />
             <CollapseBox title="Addresses">Addresses</CollapseBox>
             <CollapseBox title="Payment Methods">Payment Methods</CollapseBox>
-            <CollapseBox title="Returns & Refunds">
-              Returns & Refunds
-            </CollapseBox>
             <CollapseBox title="Wishlist">
               {wishlist.length === 0 && <EmptyWishlist />}
               {wishlist.map((item: IProduct) => (
                 <CartItem
                   product={item}
-                  isCurrentCart={false}
-                  isWishlist={true}
-                  isCurrentOrder={false}
+                  cartItemType="wishlist-cart"
                 />
               ))}
             </CollapseBox>
