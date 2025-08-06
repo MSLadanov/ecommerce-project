@@ -5,17 +5,20 @@ import { Flex } from "@components/ui/Flex";
 import { useAuth } from "@hooks/useAuth";
 import { Notify } from "@components/ui/Notify";
 import { useNotify } from "@hooks/useNotify";
+import { useOrderedProducts } from "@hooks/useOrderedProducts";
 import "./style.scss";
 
 export const CartSum = (): ReactElement => {
   const { cart, getSum, getSumWithoutDiscounts, clearCart } = useCart(
     (state) => state
   );
+  const { addToOrderedProducts } = useOrderedProducts((state) => state)
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
   const { isAuth } = useAuth();
   const placeAnOrder = () => {
     toggleNotify("success", "You have successfully placed your order");
+    addToOrderedProducts(cart)
     setTimeout(() => clearCart(), 3000);
   };
   return (

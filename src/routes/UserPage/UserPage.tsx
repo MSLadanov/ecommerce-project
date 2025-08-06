@@ -9,9 +9,12 @@ import { Grid } from "@/components/ui/Grid";
 import { EmptyWishlist } from "@components/EmptyWishlist";
 import { useAuth } from "@hooks/useAuth";
 import { Loader } from "@components/Loader";
+import { useOrderedProducts } from "@/hooks/useOrderedProducts";
+import { EmptyOrders } from "@/components/EmptyOrders";
 
 export const UserPage = (): ReactElement => {
   const { wishlist } = useWishlist((state) => state);
+  const {orderedProducts} = useOrderedProducts((state) => state)
   const { userData, isLoading, isError } = useAuth();
   if (isError) {
     return <div>{isError}</div>;
@@ -25,7 +28,15 @@ export const UserPage = (): ReactElement => {
           <UserInfo userData={userData} />
           <Grid size="md">
             <CollapseBox title="Current Orders">
-              Current Orders
+              {orderedProducts.length === 0 && <EmptyOrders />}
+              {orderedProducts.map((item: IProduct) => (
+                <CartItem
+                  product={item}
+                  isCurrentCart={false}
+                  isWishlist={false}
+                  isCurrentOrder={true}
+                />
+              ))}
             </CollapseBox>
             <AllUserCarts userData={userData} />
             <CollapseBox title="Addresses">Addresses</CollapseBox>
