@@ -5,20 +5,23 @@ import { IUser } from "@/types/Users";
 import { useNavigate } from "react-router";
 
 export const useAuth = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [cookie, , removeCookie] = useCookies(["authToken"]);
   const { get } = useApi();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [userData, setUserData] = useState<IUser>(null);
+  const clearStorages = () => {
+    window.localStorage.removeItem("cart-storage");
+    window.localStorage.removeItem("wishlist-storage");
+    window.localStorage.removeItem("ordered-storage");
+  };
   const clearAuth = () => {
     if (cookie) {
       removeCookie("authToken");
-      navigate("/products")
-      window.localStorage.removeItem('cart-storage')
-      window.localStorage.removeItem('wishlist-storage')
-      window.localStorage.removeItem('ordered-storage')
+      navigate("/products");
+      clearStorages();
     }
   };
   const checkUserAuth = async () => {
@@ -36,6 +39,7 @@ export const useAuth = () => {
     } catch (error) {
       setIsAuth(false);
       setIsError(error.response.data.message);
+      clearStorages();
     } finally {
       setIsLoading(false);
     }

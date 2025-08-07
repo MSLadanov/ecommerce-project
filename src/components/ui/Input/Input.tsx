@@ -25,8 +25,8 @@ export const Input: React.FC<IInputProps> = ({
   setValue,
   required = false,
   className = "",
-  onFocusAction,
-  onBlurAction,
+  onFocusAction = () => {},
+  onBlurAction = () => {},
 }): ReactElement => {
   const [isOnFocused, setIsOnFocused] = useState(false);
   const handleChange = (changedValue: string) => {

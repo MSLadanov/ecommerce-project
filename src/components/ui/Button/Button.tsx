@@ -12,7 +12,7 @@ interface IButtonProps {
 
 export const Button: React.FC<IButtonProps> = ({
   children,
-  onClickAction,
+  onClickAction = () => {},
   type = "button",
   styleGuide = "",
   orientation = "horizontal",
@@ -23,7 +23,7 @@ export const Button: React.FC<IButtonProps> = ({
       type={type}
       className={styleGuide + " " + orientation}
       onClick={() => {
-        onClickAction()
+        onClickAction();
       }}
       disabled={disabled}
     >
