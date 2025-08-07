@@ -28,7 +28,7 @@ createRoot(document.getElementById("root")!).render(
               <Route
                 path="user"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute redirect="/products">
                     <UserPage />
                   </ProtectedRoute>
                 }
