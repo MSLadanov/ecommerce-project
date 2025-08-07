@@ -16,6 +16,7 @@ export const useAuth = () => {
     window.localStorage.removeItem("cart-storage");
     window.localStorage.removeItem("wishlist-storage");
     window.localStorage.removeItem("ordered-storage");
+    window.localStorage.removeItem("viewed-storage");
   };
   const clearAuth = () => {
     if (cookie) {

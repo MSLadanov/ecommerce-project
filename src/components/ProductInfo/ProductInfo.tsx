@@ -16,6 +16,7 @@ import { RateProduct } from "@components/RateProduct";
 import { ProductImages } from "./ProductImages";
 import { Notify } from "@components/ui/Notify";
 import { useNotify } from "@hooks/useNotify";
+import { useRecentlyViewed } from "@hooks/useRecentlyViewed";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
@@ -23,13 +24,14 @@ export const ProductInfo = (): ReactElement => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const { addToCart } = useCart((state) => state);
+  const { addRecentlyViewed } = useRecentlyViewed((state) => state);
   const [searchParams] = useSearchParams();
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
   const { get, update } = useApi();
   const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
     useNotify({ delay: 3000 });
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, isSuccess, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
   });
@@ -56,17 +58,22 @@ export const ProductInfo = (): ReactElement => {
     mutationFn: rate,
     onSuccess: (updatedData) => {
       queryClient.setQueryData(["product"], updatedData);
-      setComment('')
-      setRating(0)
-      toggleNotify('success', 'Review successfully published!')
+      setComment("");
+      setRating(0);
+      toggleNotify("success", "Review successfully published!");
     },
-    onError:(error) => {
-      toggleNotify('error', error.message)
-    }
+    onError: (error) => {
+      toggleNotify("error", error.message);
+    },
   });
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
+  useEffect(() => {
+    if (isSuccess) {
+      addRecentlyViewed(data);
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <Loader />;
   }
@@ -157,7 +164,11 @@ export const ProductInfo = (): ReactElement => {
             comment={comment}
             setRating={setRating}
             setComment={setComment}
-            rateProduct={() => comment ? rateProduct() : toggleNotify('warning', 'The review cannot be empty!')}
+            rateProduct={() =>
+              comment
+                ? rateProduct()
+                : toggleNotify("warning", "The review cannot be empty!")
+            }
           />
         )}
         {data.reviews.map((review, index) => (
