@@ -10,6 +10,9 @@
     @include fablet {
       width: 70%;
     }
+    @include mobile {
+      width: 90%;
+    }
   }
   &__price {
     h4 {
@@ -22,10 +25,18 @@
   }
   &__description {
     width: 50%;
+    &.order-history{
+      width: 100%;
+    }
+    &.current-cart{
+      @include mobile{
+        width: 80%;
+      }
+    }
     h1 {
-      font-size: 24px;
+      font-size: 18px;
       @include mobile {
-        font-size: 1.2rem;
+        font-size: 16px;
       }
     }
   }
@@ -53,6 +64,9 @@
     width: 30%;
     @include fablet {
       margin: 0px 10px 0px 0px;
+      width: 30%;
+    }
+    @include mobile{
       width: 30%;
     }
     .in-cart-controls {

@@ -37,7 +37,7 @@
     border-bottom: 1px solid $wb-base;
     border-left: 1px solid $wb-base;
     border-right: 1px solid $wb-base;
-    overflow: scroll;
+    overflow-x: hidden;
     height: 1000%;
     p {
       padding: 5%;

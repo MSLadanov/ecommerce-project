@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { Flex } from "@components/ui/Flex";
 import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
-import { FaDollarSign, FaHeart, FaShoppingCart, FaTrash } from "react-icons/fa";
+import { FaDollarSign, FaHeartBroken, FaShoppingCart, FaTrash } from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useWishlist } from "@hooks/useWishlist";
 import { MdOutlineCancel } from "react-icons/md";
@@ -30,7 +30,7 @@ export const CartItem: React.FC<ICartItem> = ({
             <img src={product.thumbnail} />
           </a>
         </Flex>
-        <Flex className="cart-item__description" flexDirection="column">
+        <Flex className={"cart-item__description" + ' ' + cartItemType} flexDirection="column">
           <h1>{product.title}</h1>
           <Flex className="cart-item__price">
             <h3>
@@ -71,7 +71,7 @@ export const CartItem: React.FC<ICartItem> = ({
             onClickAction={() => removeFromWishlist(product.id)}
             styleGuide="wb"
           >
-            <FaHeart size="1.5rem" color="white" />
+            <FaHeartBroken size="1.5rem" color="white" />
           </Button>
         </div>
       )}
