@@ -78,7 +78,7 @@ export const CartItem: React.FC<ICartItem> = ({
       {cartItemType === 'current-order' && (
         <div className="cart-item__controls">
           <Button
-            onClickAction={() => cancelOrderedProduct(product.id)}
+            onClickAction={() => cancelOrderedProduct(product.cart_id)}
             styleGuide="wb"
           >
             <MdOutlineCancel size="1.5rem" color="white" />

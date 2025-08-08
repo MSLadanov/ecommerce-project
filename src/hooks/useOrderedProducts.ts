@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware";
 export interface IOrderedProductsState {
   orderedProducts: IProduct[];
   addToOrderedProducts: (products: IProduct[]) => void;
-  cancelOrderedProduct: (productId: number) => void;
+  cancelOrderedProduct: (productId: string) => void;
 }
 
 export const useOrderedProducts = create<IOrderedProductsState>()(
@@ -19,11 +19,11 @@ export const useOrderedProducts = create<IOrderedProductsState>()(
           };
         });
       },
-      cancelOrderedProduct: (productId: number) => {
+      cancelOrderedProduct: (productId: string) => {
         set((state) => {
           return {
             orderedProducts: state.orderedProducts.filter(
-              (item) => item.id !== productId
+              (item) => item.cart_id !== productId
             ),
           };
         });
