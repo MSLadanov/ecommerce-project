@@ -30,7 +30,7 @@ export const ProductsList = (): ReactElement => {
     } else {
       toggleNotify(
         "warning",
-        "You must be logged in to add a product to your favorites."
+        "You must be logged in to add a product to your wishlist."
       );
     }
   };
