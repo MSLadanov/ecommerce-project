@@ -11,6 +11,7 @@ import { useAuth } from "@hooks/useAuth";
 import { useWishlist } from "@/hooks/useWishlist";
 import { Notify } from "@components/ui/Notify";
 import { useNotify } from "@/hooks/useNotify";
+import { Error } from "../Error";
 import "./style.scss";
 
 export const ProductsList = (): ReactElement => {
@@ -48,7 +49,7 @@ export const ProductsList = (): ReactElement => {
     refetch();
   }, [refetch, searchParams, sortBy, order]);
   if (isError) {
-    return <div>Error</div>;
+    return <div><Error/></div>;
   }
   return (
     <div className="products-list">

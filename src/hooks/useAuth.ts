@@ -39,7 +39,8 @@ export const useAuth = () => {
       setIsAuth(true);
     } catch (error) {
       setIsAuth(false);
-      setIsError(error.response.data.message);
+      console.log(error.message)
+      setIsError(error.message);
       clearStorages();
     } finally {
       setIsLoading(false);

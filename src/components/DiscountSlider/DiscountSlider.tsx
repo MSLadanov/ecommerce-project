@@ -11,6 +11,7 @@ import { useSlider } from "@hooks/useSlider";
 import { FaDollarSign } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import "./style.scss";
+import { Error } from "../Error";
 
 const DiscountSliderBadge = ({
   product,
@@ -57,7 +58,7 @@ export const DiscountSlider = (): ReactElement => {
     },
   });
   if (isError) {
-    return <div>Error</div>;
+    return <div><Error/></div>;
   }
   return (
     <Flex

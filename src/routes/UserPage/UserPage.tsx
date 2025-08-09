@@ -22,6 +22,7 @@ export const UserPage = (): ReactElement => {
   if (isError) {
     return <div>{isError}</div>;
   }
+  console.log(isError)
   return (
     <main>
       {isLoading ? (
