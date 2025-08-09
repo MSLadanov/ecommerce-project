@@ -1,0 +1,45 @@
+@use '../../globals.scss' as *;
+@use 'sass:color';
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  margin: 2rem 0;
+  border: 1px solid #f0f0f0;
+  font-family: "GT Eesti Pro Display Regular";
+  
+  &__content {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__icon {
+    color: #e74c3c;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+  }
+
+  &__message {
+    color: #7f8c8d;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+}

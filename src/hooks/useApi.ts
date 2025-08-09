@@ -31,7 +31,11 @@ export const useApi = () => {
         );
         return request.data;
       } catch (error) {
-        notifyToggler("error", error.response.data.message);
+        if (error.response) {
+          notifyToggler("error", error.response.data.message);
+        } else {
+          notifyToggler("error", error.message);
+        }
       }
     },
     async update<T>(

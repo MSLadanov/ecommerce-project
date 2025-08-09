@@ -6,6 +6,7 @@ import { IProductsResponse } from "@/types/Products";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "@components/Loader";
 import { ProductBadge } from "@components/ProductBadge";
+import { Error } from "../Error";
 import "./style.scss";
 
 interface ISearchResultsProps {
@@ -32,7 +33,11 @@ const SearchResults: React.FC<ISearchResultsProps> = ({
     );
   }
   if (isError) {
-    return <div>Error</div>;
+    return (
+      <div className="search-results">
+        <Error />
+      </div>
+    );
   }
   if (data.products.length === 0) {
     return (
