@@ -27,10 +27,10 @@ export const SignIn: React.FC<ISignInProps> = ({
     const data = await post<TSignInResponse>(
       "AUTH",
       { username, password },
-      toggleNotify
     );
     if (data) {
       setCookie("authToken", data.accessToken);
+      toggleNotify('success', 'You have successfully logged in!')
       closeModal();
     }
   };

@@ -20,7 +20,7 @@ export const useApi = () => {
       body: {
         [key: string]: string | number;
       },
-      notifyToggler: (type: string, message: string) => void,
+      notifyToggler?: (type: string, message: string) => void,
       config?: AxiosRequestConfig
     ) {
       try {
