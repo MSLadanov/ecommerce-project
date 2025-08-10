@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface UseNotifyParams {
   delay: number;
@@ -27,11 +27,11 @@ export const useNotify = ({ delay }: UseNotifyParams): UseNotifyReturn => {
     setNotifyText(null);
   };
 
-  const toggleNotify = (type: NotifyType, text: string) => {
+  const toggleNotify = useCallback((type: NotifyType, text: string) => {
     setNotifyType(type);
     setNotifyText(text);
     setIsNotifyShowed(true);
-  };
+  },[]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;

@@ -3,11 +3,8 @@ import { useApi } from "./useApi";
 import { useEffect, useState } from "react";
 import { IUser } from "@/types/Users";
 import { useNavigate } from "react-router";
-import { useContext } from "react";
-import { NotifyContext } from "@/contexts/NotifyContext";
 
 export const useAuth = () => {
-  const { toggleNotify } = useContext(NotifyContext);
   const navigate = useNavigate();
   const [cookie, , removeCookie] = useCookies(["authToken"]);
   const { get } = useApi();
@@ -28,7 +25,6 @@ export const useAuth = () => {
         navigate("/products");
         clearStorages();
       }, 3000);
-      toggleNotify("success", "You have successfully logged out!");
     }
   };
   const checkUserAuth = async () => {
@@ -45,7 +41,6 @@ export const useAuth = () => {
       setIsAuth(true);
     } catch (error) {
       setIsAuth(false);
-      console.log(error.message);
       setIsError(error.message);
       clearStorages();
     } finally {

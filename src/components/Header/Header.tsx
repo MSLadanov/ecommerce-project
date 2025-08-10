@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useContext, useState } from "react";
 import { Modal } from "@components/ui/Modal/Modal";
 import { AuthModal } from "@components/AuthModal";
 import { Button } from "@components/ui/Button";
@@ -13,11 +13,12 @@ import { CartCountBadge } from "@components/CartCountBadge";
 import { useAuth } from "@hooks/useAuth";
 import { Search } from "@components/Search";
 import { useSearch } from "@hooks/useSearch";
+import { NotifyContext } from "@/contexts/NotifyContext";
 import "./style.scss";
 
 export const Header = (): ReactElement => {
   const { isAuth, clearAuth } = useAuth();
-
+  const { toggleNotify } = useContext(NotifyContext);
   const navigate = useNavigate();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const { search, setSearch } = useSearch((state) => state);
@@ -69,7 +70,13 @@ export const Header = (): ReactElement => {
               <FaUserCircle />
               <p>Account</p>
             </Button>
-            <Button onClickAction={() => clearAuth()} orientation="vertical">
+            <Button
+              onClickAction={() => {
+                toggleNotify("success", "You have successfully logged out!");
+                clearAuth();
+              }}
+              orientation="vertical"
+            >
               <GoSignOut />
               <p>Sign Out</p>
             </Button>
