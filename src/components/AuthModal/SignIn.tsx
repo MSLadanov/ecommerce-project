@@ -28,6 +28,7 @@ export const SignIn: React.FC<ISignInProps> = ({
       toggleNotify("success", "You have successfully logged in!");
       closeModal();
     } else {
+      closeModal();
       toggleNotify("error", data);
     }
   };

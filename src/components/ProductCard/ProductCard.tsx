@@ -1,5 +1,5 @@
 import { IProduct } from "@/types/Products";
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import { Flex } from "@components/ui/Flex";
 import {
   FaCommentDots,
@@ -11,13 +11,15 @@ import { Button } from "@components/ui/Button";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useCart } from "@hooks/useCart";
 import { WishlistButton } from "@/components/WishlistButton";
+import { NotifyContext } from "@/contexts/NotifyContext";
 import "./style.scss";
 
-export const ProductCard: React.FC<{ data: IProduct, addToWishlist: (product: IProduct) => void }> = ({
-  data,
-  addToWishlist
-}): ReactElement => {
+export const ProductCard: React.FC<{
+  data: IProduct;
+  addToWishlist: (product: IProduct) => void;
+}> = ({ data, addToWishlist }): ReactElement => {
   const { addToCart } = useCart((state) => state);
+  const { toggleNotify } = useContext(NotifyContext);
   return (
     <Flex
       className={
@@ -58,7 +60,14 @@ export const ProductCard: React.FC<{ data: IProduct, addToWishlist: (product: IP
         </Flex>
       </Flex>
       <AddToCartButton productData={data}>
-        <Button styleGuide="ozon" disabled={data.availabilityStatus === "Out of Stock"} onClickAction={() => addToCart(data)}>
+        <Button
+          styleGuide="ozon"
+          disabled={data.availabilityStatus === "Out of Stock"}
+          onClickAction={() => {
+            toggleNotify("success", "Product has been added to the cart");
+            addToCart(data);
+          }}
+        >
           <FaShoppingCart />
           {data.availabilityStatus}
         </Button>

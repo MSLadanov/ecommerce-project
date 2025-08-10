@@ -107,7 +107,10 @@ export const ProductInfo = (): ReactElement => {
             <Button
               styleGuide="ozon"
               disabled={data.availabilityStatus === "Out of Stock"}
-              onClickAction={() => addToCart(data)}
+              onClickAction={() => {
+                toggleNotify("success", "Product has been added to the cart");
+                addToCart(data);
+              }}
             >
               <FaShoppingCart />
               {data.availabilityStatus}

@@ -1,27 +1,38 @@
 import { IProduct } from "@/types/Products";
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import { Flex } from "@components/ui/Flex";
 import { useCart } from "@hooks/useCart";
 import { Button } from "@components/ui/Button";
-import { FaDollarSign, FaHeartBroken, FaShoppingCart, FaTrash } from "react-icons/fa";
+import {
+  FaDollarSign,
+  FaHeartBroken,
+  FaShoppingCart,
+  FaTrash,
+} from "react-icons/fa";
 import { AddToCartButton } from "@components/AddToCartButton";
 import { useWishlist } from "@hooks/useWishlist";
 import { MdOutlineCancel } from "react-icons/md";
 import { useOrderedProducts } from "@hooks/useOrderedProducts";
+import { NotifyContext } from "@/contexts/NotifyContext";
 import "./style.scss";
 
 interface ICartItem {
   product: IProduct;
-  cartItemType: 'current-cart' | 'wishlist-cart' | 'current-order' | 'order-history'
+  cartItemType:
+    | "current-cart"
+    | "wishlist-cart"
+    | "current-order"
+    | "order-history";
 }
 
 export const CartItem: React.FC<ICartItem> = ({
   product,
-  cartItemType
+  cartItemType,
 }): ReactElement => {
+  const { toggleNotify } = useContext(NotifyContext);
   const { removeAllProductsById, addToCart } = useCart((state) => state);
   const { removeFromWishlist } = useWishlist((state) => state);
-  const { cancelOrderedProduct } = useOrderedProducts((state) => state)
+  const { cancelOrderedProduct } = useOrderedProducts((state) => state);
   return (
     <Flex className="cart-item" justifyContent="space-between">
       <Flex className="cart-item__info" alignItems="align-center">
@@ -30,7 +41,10 @@ export const CartItem: React.FC<ICartItem> = ({
             <img src={product.thumbnail} />
           </a>
         </Flex>
-        <Flex className={"cart-item__description" + ' ' + cartItemType} flexDirection="column">
+        <Flex
+          className={"cart-item__description" + " " + cartItemType}
+          flexDirection="column"
+        >
           <h1>{product.title}</h1>
           <Flex className="cart-item__price">
             <h3>
@@ -45,7 +59,7 @@ export const CartItem: React.FC<ICartItem> = ({
           </Flex>
         </Flex>
       </Flex>
-      {cartItemType === 'current-cart' && (
+      {cartItemType === "current-cart" && (
         <div className="cart-item__controls">
           <AddToCartButton productData={product}>
             <Button
@@ -58,27 +72,39 @@ export const CartItem: React.FC<ICartItem> = ({
             </Button>
           </AddToCartButton>
           <Button
-            onClickAction={() => removeAllProductsById(product)}
+            onClickAction={() => {
+              toggleNotify("success", "Product has been removed from the cart");
+              removeAllProductsById(product);
+            }}
             styleGuide="wb"
           >
             <FaTrash />
           </Button>
         </div>
       )}
-      {cartItemType === 'wishlist-cart' && (
+      {cartItemType === "wishlist-cart" && (
         <div className="cart-item__controls">
           <Button
-            onClickAction={() => removeFromWishlist(product.id)}
+            onClickAction={() => {
+              toggleNotify(
+                "success",
+                "Product has been removed from the wishlist"
+              );
+              removeFromWishlist(product.id);
+            }}
             styleGuide="wb"
           >
             <FaHeartBroken size="1.5rem" color="white" />
           </Button>
         </div>
       )}
-      {cartItemType === 'current-order' && (
+      {cartItemType === "current-order" && (
         <div className="cart-item__controls">
           <Button
-            onClickAction={() => cancelOrderedProduct(product.cart_id)}
+            onClickAction={() => {
+              cancelOrderedProduct(product.cart_id);
+              toggleNotify("success", "Order canceled");
+            }}
             styleGuide="wb"
           >
             <MdOutlineCancel size="1.5rem" color="white" />
