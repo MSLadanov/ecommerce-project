@@ -17,6 +17,7 @@ import "./style.scss";
 
 export const Header = (): ReactElement => {
   const { isAuth, clearAuth } = useAuth();
+
   const navigate = useNavigate();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const { search, setSearch } = useSearch((state) => state);

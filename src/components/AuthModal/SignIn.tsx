@@ -3,8 +3,6 @@ import { Input } from "@components/ui/Input";
 import { Button } from "@components/ui/Button";
 import { useApi } from "@hooks/useApi";
 import { TSignInResponse } from "@/types/Auth";
-import { useNotify } from "@/hooks/useNotify";
-import { Notify } from "@components/ui/Notify";
 import { useCookies } from "react-cookie";
 
 interface ISignInProps {
@@ -20,8 +18,6 @@ export const SignIn: React.FC<ISignInProps> = ({
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const { post } = useApi();
-  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-    useNotify({ delay: 3000 });
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = await post<TSignInResponse>(
@@ -30,7 +26,6 @@ export const SignIn: React.FC<ISignInProps> = ({
     );
     if (data) {
       setCookie("authToken", data.accessToken);
-      toggleNotify('success', 'You have successfully logged in!')
       closeModal();
     }
   };
@@ -55,12 +50,6 @@ export const SignIn: React.FC<ISignInProps> = ({
       <p>*Username 'oliviaw', password 'oliviawpass' for example</p>
       <Button styleGuide="ozon" type="submit">Sign In</Button>
       {/* <Button onClickAction={() => switchToSignUp()}>Sign Up</Button> */}
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
     </form>
   );
 };

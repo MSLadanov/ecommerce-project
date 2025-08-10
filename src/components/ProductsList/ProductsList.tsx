@@ -1,7 +1,7 @@
 import { IProduct, IProductsResponse } from "@/types/Products";
 import { useApi } from "@hooks/useApi";
 import { useQuery } from "@tanstack/react-query";
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import { ProductCard } from "@components/ProductCard";
 import { Grid } from "@components/ui/Grid/Grid";
 import { useSearchParams } from "react-router";
@@ -9,21 +9,19 @@ import { Loader } from "@components/Loader";
 import { Sort } from "@components/Sort";
 import { useAuth } from "@hooks/useAuth";
 import { useWishlist } from "@/hooks/useWishlist";
-import { Notify } from "@components/ui/Notify";
-import { useNotify } from "@/hooks/useNotify";
 import { Error } from "../Error";
+import { NotifyContext } from "@/contexts/NotifyContext";
 import "./style.scss";
 
 export const ProductsList = (): ReactElement => {
   const { get } = useApi();
+  const { toggleNotify } = useContext(NotifyContext);
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
   const sortBy = searchParams.get("sortBy");
   const order = searchParams.get("order");
   const { isAuth } = useAuth();
   const { toggleWishlist } = useWishlist((state) => state);
-  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-    useNotify({ delay: 3000 });
   const addToWishlist = (product: IProduct) => {
     if (isAuth) {
       toggleWishlist(product);
@@ -49,7 +47,11 @@ export const ProductsList = (): ReactElement => {
     refetch();
   }, [refetch, searchParams, sortBy, order]);
   if (isError) {
-    return <div><Error/></div>;
+    return (
+      <div>
+        <Error />
+      </div>
+    );
   }
   return (
     <div className="products-list">
@@ -67,12 +69,6 @@ export const ProductsList = (): ReactElement => {
           ))}
         </Grid>
       )}
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
     </div>
   );
 };

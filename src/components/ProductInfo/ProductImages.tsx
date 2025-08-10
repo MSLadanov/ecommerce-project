@@ -1,18 +1,16 @@
-import { useNotify } from "@/hooks/useNotify";
 import { useWishlist } from "@/hooks/useWishlist";
 import { IProduct } from "@/types/Products";
-import { ReactElement, useState } from "react";
+import { ReactElement, useContext, useState } from "react";
 import { Flex } from "@components/ui/Flex";
-import { Notify } from "@components/ui/Notify";
 import { WishlistButton } from "@components/WishlistButton";
+import { NotifyContext } from "@/contexts/NotifyContext";
 
 export const ProductImages: React.FC<{ data: IProduct; isAuth: boolean }> = ({
   data,
   isAuth,
 }): ReactElement => {
+  const { toggleNotify } = useContext(NotifyContext);
   const { toggleWishlist } = useWishlist((state) => state);
-  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-    useNotify({ delay: 3000 });
   const [currentImage, setCurrentImage] = useState(data.images[0]);
   const addToWishlist = (product: IProduct) => {
     if (isAuth) {
@@ -42,12 +40,6 @@ export const ProductImages: React.FC<{ data: IProduct; isAuth: boolean }> = ({
           <img src={currentImage} alt={`${data.title} image`} />
         </div>
       </Flex>
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
     </Flex>
   );
 };

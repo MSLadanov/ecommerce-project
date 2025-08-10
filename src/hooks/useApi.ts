@@ -1,8 +1,11 @@
 import { TRequestEndpoint } from "@/types/Requests";
 import API_ENDPOINTS from "@/api/endpoints";
 import axios, { AxiosRequestConfig } from "axios";
+import { NotifyContext } from "@/contexts/NotifyContext";
+import { useContext } from "react";
 
 export const useApi = () => {
+  const { toggleNotify } = useContext(NotifyContext);
   return {
     async get<T>(
       requestEndpoint: TRequestEndpoint,
@@ -20,7 +23,6 @@ export const useApi = () => {
       body: {
         [key: string]: string | number;
       },
-      notifyToggler?: (type: string, message: string) => void,
       config?: AxiosRequestConfig
     ) {
       try {
@@ -32,9 +34,9 @@ export const useApi = () => {
         return request.data;
       } catch (error) {
         if (error.response) {
-          notifyToggler("error", error.response.data.message);
+          toggleNotify("error", error.response.data.message);
         } else {
-          notifyToggler("error", error.message);
+          toggleNotify("error", error.message);
         }
       }
     },

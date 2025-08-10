@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useApi } from "@hooks/useApi";
@@ -14,13 +14,13 @@ import { Loader } from "@components/Loader";
 import { useAuth } from "@hooks/useAuth";
 import { RateProduct } from "@components/RateProduct";
 import { ProductImages } from "./ProductImages";
-import { Notify } from "@components/ui/Notify";
-import { useNotify } from "@hooks/useNotify";
 import { useRecentlyViewed } from "@hooks/useRecentlyViewed";
+import { NotifyContext } from "@/contexts/NotifyContext";
 import "./style.scss";
 
 export const ProductInfo = (): ReactElement => {
   const queryClient = useQueryClient();
+  const { toggleNotify } = useContext(NotifyContext);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const { addToCart } = useCart((state) => state);
@@ -29,8 +29,6 @@ export const ProductInfo = (): ReactElement => {
   const productId = searchParams.get("id");
   const { isAuth, userData } = useAuth();
   const { get, update } = useApi();
-  const { notifyRef, isNotifyShowed, notifyType, notifyText, toggleNotify } =
-    useNotify({ delay: 3000 });
   const { data, isLoading, isError, isSuccess, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () => get<IProduct>("PRODUCTS", `/${productId}`),
@@ -175,12 +173,6 @@ export const ProductInfo = (): ReactElement => {
           <ProductReview review={review} key={index} />
         ))}
       </Grid>
-      <Notify
-        ref={notifyRef}
-        notifyVisibility={isNotifyShowed}
-        notifyType={notifyType}
-        notifyText={notifyText}
-      />
     </Flex>
   );
 };
